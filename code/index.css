@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: 0;
+    border: 5px solid red;
+    background-color: #20212C;
+}
+
+.side-bar {
+    background-color: #2B2C37;
+    border: 5px solid rgb(0, 0, 0);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#side-logo-div {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#logo {
+    width: 170px;
+}
+
+header {
+    background-color: #2B2C37;
+    height: 10vh;
+    border: 5px solid rgb(29, 220, 237);
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+    border: 5px solid rgb(170, 211, 58);
+}
+
+.card-column-main {
+    display: flex;
+    flex-direction: row;
+    border: 5px solid rgb(127, 84, 187);
+    justify-content: space-around;
+}
+
+.to-do-div,
+.doing-div,
+.done-div {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    border: 5px solid;
+    height: 90vh;
+}
+
+.to-do-div {
+    border-color: rgb(177, 187, 84);
+}
+
+.doing-div {
+    border-color: rgb(80, 86, 31);
+}
+
+.done-div {
+    border-color: rgb(30, 11, 17);
+}
