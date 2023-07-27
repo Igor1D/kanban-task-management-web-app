@@ -1,27 +1,105 @@
 body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: row;
     margin: 0;
     border: 5px solid red;
     background-color: #20212C;
+
 }
 
 .side-bar {
     background-color: #2B2C37;
     border: 5px solid rgb(0, 0, 0);
-    flex: 1;
+    flex: 0.8;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    gap: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.boards-nav-links-div {
+    border: 5px solid white;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 20px;
+
+}
+
+.board-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    border-radius: 20px;
+    
+    height: 40px;
+    background-color: transparent;
+    border: 0;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: calc(100% + 10px);
+    height: 100%;
+    background-color: #635fc7;
+    border: 1px solid rgb(184, 178, 178);
+    border-radius: 20px;
+    z-index: -1;
+  }
+  
+  /* ... existing styles ... */
+  
+  .board-btn {
+    /* ... existing styles ... */
+    position: relative;
+    z-index: 1;
+  }
+  
+  .active {
+    color: white;
+  }
+
+.active, .board-btn:hover {
+    background-color: #635FC7;
+    border: 1px solid rgb(184, 178, 178);
+    color: white;
+
+    
+  }
+
+
+
+
+h4 {
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 #side-logo-div {
+    margin-top: 40px;
     display: flex;
     justify-content: flex-start;
+    
+
 }
 
 #logo {
-    width: 170px;
+    width: 90%;
 }
 
 header {
@@ -43,26 +121,102 @@ header {
     flex-direction: row;
     border: 5px solid rgb(127, 84, 187);
     justify-content: space-around;
+    height: 100%;
 }
 
-.to-do-div,
-.doing-div,
-.done-div {
+.column-div {
     flex: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 20px;
     border: 5px solid;
-    height: 90vh;
+    padding: 40px;
+
 }
 
-.to-do-div {
+.board-link {
+
+}
+
+.task-div {
     border-color: rgb(177, 187, 84);
+    width: 100%;
+    background-color: #2B2C37;
+    color: white;
+    height: 100px;
+    border-radius: 8px;
 }
 
-.doing-div {
-    border-color: rgb(80, 86, 31);
+.side-bar-bottom {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: auto;
+    margin-bottom: 40px;
 }
 
-.done-div {
-    border-color: rgb(30, 11, 17);
+/* Toggle Section */
+
+.toggle-div {
+    display: flex;
+    justify-content: center;
+    background-color: #20212C;
+    padding: 15px;
+    border-radius: 10px;
+
+}
+
+
+#icon-light {
+    margin-right: 10px;
+    width: 22px;
+
+}
+
+#icon-dark {
+    margin-left: 20px;
+    width: 22px;
+}
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 55px;
+	height: 23px;
+	background: rgb(37, 22, 200);
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 14px;
+	height: 14px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: #bada55;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 50px;
 }

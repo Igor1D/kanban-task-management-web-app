@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+  </style>
   <link rel="stylesheet" href="./index.css">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
@@ -14,36 +17,55 @@
 <body>
   <nav class="side-bar">
     <div id="side-logo-div"><img id="logo" src="./assets/logo-light.svg" alt="logo-dark"></div>
-    <div class="boards-nav-links-div">
-      <a href="" class="board-link">Platform Launch</a>
-      <a href="" class="board-link">Marketing Plan</a>
-      <a href="" class="board-link">Road Map</a>
-    </div>
-    <div class="mode-div"></div>
-    <button class="hide-side-panel-div"></button>
 
+    <div class="boards-nav-links-div" id="boards-nav-links-div">
+      <h4>All BOARDS</h4>
+      <button class="board-btn" id="board-btn">
+        <img src="./assets/icon-board.svg" alt="icon-board">Platform Launch
+      </button>
+      <button class="board-btn" id="board-btn">
+        <img src="./assets/icon-board.svg" alt="icon-board">Marketing Plan
+      </button>
+      <button  class="board-btn" id="board-btn">
+        <img src="./assets/icon-board.svg" alt="icon-board">Road Map
+      </button>
+
+
+    </div>
+
+    <div class="side-bar-bottom">
+    <div class="toggle-div">
+      <img src="./assets/icon-light-theme.svg" id="icon-light" alt="icon-light-theme">
+      <input type="checkbox" id="switch" /><label for="switch"></label>
+      <img src="./assets/icon-dark-theme.svg" id="icon-dark" alt="icon-dark-theme.svg">
+    </div>
+    <button class="hide-side-bar-div">Hide Sidebar</button>
+  </div>
   </nav>
   <div class="container">
     <header>
       <div class="header-board-name">Board Name</div>
       <button class="add-new-task-btn"></button>
-      <button class="secondary-btn"></button>
-
+     
     </header>
     <main class="card-column-main">
-      <div class="to-do-div">
-        <div class="to-do-task-div">
-
+      <div class="column-div">
+        <div class="task-div">
+          <p>Building UI for onboarding flow</p>
+        </div>
+        <div class="task-div">
+          <p>Building UI for search</p>
         </div>
       </div>
 
-      <div class="doing-div">
-        <div class="doing-task-div">
+      <div class="column-div">
+        <div class="task-div">
+
 
         </div>
       </div>
-      <div class="done-div">
-        <div class="done-task-div">
+      <div class="column-div">
+        <div class="task-div">
 
         </div>
 
@@ -57,5 +79,3 @@
 
   <script src="./index.js"></script>
 </body>
-
-</html>
