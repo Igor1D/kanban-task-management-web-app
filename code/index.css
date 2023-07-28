@@ -9,6 +9,7 @@ body {
 
 }
 
+
 .side-bar {
     background-color: #2B2C37;
     border: 5px solid rgb(0, 0, 0);
@@ -29,7 +30,7 @@ body {
     flex-direction: column;
     color: white;
     gap: 20px;
-
+    height: 200px;
 }
 
 .board-btn {
@@ -40,46 +41,42 @@ body {
     gap: 10px;
     margin: 0;
     border-radius: 20px;
-    
     height: 40px;
     background-color: transparent;
     border: 0;
     color: white;
     font-size: 16px;
     cursor: pointer;
+    /* width: 300px; */
+    position: relative; /* Add this to ensure the transform works properly */
+    overflow: hidden;
 }
 
-.active::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -10px;
-    width: calc(100% + 10px);
-    height: 100%;
-    background-color: #635fc7;
-    border: 1px solid rgb(184, 178, 178);
-    border-radius: 20px;
-    z-index: -1;
-  }
-  
-  /* ... existing styles ... */
-  
-  .board-btn {
-    /* ... existing styles ... */
-    position: relative;
-    z-index: 1;
-  }
-  
-  .active {
-    color: white;
-  }
 
-.active, .board-btn:hover {
+
+
+
+.active {
     background-color: #635FC7;
     border: 1px solid rgb(184, 178, 178);
     color: white;
+    /* margin-left: -200px; */
+
 
     
+  }
+
+.hide-side-bar-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+  .hide-side-bar-btn {
+    color: white;
+    background-color: transparent;
+    border: 0;
   }
 
 
@@ -103,11 +100,36 @@ h4 {
 }
 
 header {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     background-color: #2B2C37;
     height: 10vh;
     border: 5px solid rgb(29, 220, 237);
-
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
+.header-board-name {
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.primary-btn {
+    background-color: #635FC7;
+    color: white;
+    border-radius: 30px;
+    border: 0;
+    font-size: 16px;
+    padding: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
 
 .container {
     display: flex;
@@ -134,9 +156,6 @@ header {
 
 }
 
-.board-link {
-
-}
 
 .task-div {
     border-color: rgb(177, 187, 84);
