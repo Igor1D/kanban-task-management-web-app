@@ -19,15 +19,15 @@
     <div id="side-logo-div"><img id="logo" src="./assets/logo-light.svg" alt="logo-dark"></div>
 
     <div class="boards-nav-links-div" id="boards-nav-links-div">
-      <h4>All BOARDS</h4>
+      <h4 id="headline-sidepanel">ALL BOARDS</h4>
       <button class="board-btn" id="board-btn">
-        <img src="./assets/icon-board.svg" alt="icon-board">Platform Launch
+        <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Platform Launch
       </button>
       <button class="board-btn" id="board-btn">
-        <img src="./assets/icon-board.svg" alt="icon-board">Marketing Plan
+        <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Marketing Plan
       </button>
       <button  class="board-btn" id="board-btn">
-        <img src="./assets/icon-board.svg" alt="icon-board">Road Map
+        <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Roadmap
       </button>
 
 
@@ -47,29 +47,29 @@
   </nav>
   <div class="container">
     <header>
-      <div class="header-board-name">Board Name</div>
+      <div class="header-board-name">Platform Launch</div>
       <button id="add-new-task-btn" class="primary-btn">+ Add New Task</button>
      
     </header>
     <main class="card-column-main">
       <div class="column-div">
-        <div class="todo-head-div"><span class="dot"></span><h3>TODO (4)</h3></div>
+        <div id="todo-head-div" class ="column-head-div"><span class="dot" id="todo-dot"></span><h4>TODO (4)</h4></div>
         <div class="task-div">
-          <p>Building UI for onboarding flow</p>
+          <p class="p-task">Building UI for onboarding flow</p>
         </div>
         <div class="task-div">
-          <p>Building UI for search</p>
+          <p class="p-task">Building UI for search</p>
         </div>
       </div>
 
       <div class="column-div">
-        <div class="doing-head-div"><span class="dot"></span><h3>DOING (2)</h3></div>
+        <div id="doing-head-div" class="column-head-div"><span class="dot" id="doing-dot"></span><h4>DOING (2)</h4></div>
         <div class="task-div">
 
         </div>
       </div>
       <div class="column-div">
-        <div class="done-head-div"<span class="dot"></span>><h3>DONE (2)</h3></div>
+        <div id="done-head-div" class ="column-head-div"><span class="dot" id="done-dot"></span><h4>DONE (2)</h4></div>
         <div class="task-div">
 
         </div>

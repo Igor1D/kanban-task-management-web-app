@@ -4,7 +4,7 @@ body {
     min-height: 100vh;
     flex-direction: row;
     margin: 0;
-    border: 5px solid red;
+    /* border: 5px solid red; */
     background-color: #20212C;
 
 }
@@ -12,24 +12,25 @@ body {
 
 .side-bar {
     background-color: #2B2C37;
-    border: 5px solid rgb(0, 0, 0);
+    /* border: 5px solid rgb(0, 0, 0); */
+    border-right: 0.1px solid #979797;
     flex: 0.8;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 60px;
-    padding-left: 50px;
-    padding-right: 50px;
+    gap: 50px;
+    /* padding-left: 50px; */
+    padding-right: 20px;
     height: 100vh;
     overflow-x: hidden;
+    margin-right: 0;
+    /* padding: 0 12px 0 26px; */
 }
 
 .boards-nav-links-div {
-    border: 5px solid white;
     display: flex;
     flex-direction: column;
     color: white;
-    gap: 20px;
+    gap: 18px;
     height: 200px;
 }
 
@@ -40,36 +41,79 @@ body {
     align-items: center;
     gap: 10px;
     margin: 0;
-    border-radius: 20px;
+    border-radius: 0 20px 20px 0;
     height: 40px;
     background-color: transparent;
     border: 0;
-    color: white;
+    color: #828FA3;
     font-size: 16px;
     cursor: pointer;
     /* width: 300px; */
-    position: relative; /* Add this to ensure the transform works properly */
+    /* position: relative; Add this to ensure the transform works properly */
     overflow: hidden;
+    font-weight: 500;
+    padding: 28px 12px 28px 50px;
+}
+
+.active {
+    background-color: #635FC7;
+    color: white;
+    font-weight: 500;
+    padding: 28px 12px 28px 50px;
+  }
+
+  .active .icon-board {
+    filter: brightness(0) invert(1); /* Change the color of the icon to white */
+  }
+
+#headline-sidepanel{
+    padding: 0 12px 0 50px;
+}
+
+
+.column-head-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#todo-dot {
+    background-color: #49C4E5;
+}
+
+#doing-dot {
+    background-color: #8471F2;
+}
+
+#done-dot {
+    background-color: #67E2AE;
+}
+
+h4 {
+    color: #828FA3;
+    font-size: 14px;
+    letter-spacing: 2px;
+    
 }
 
 
 
 
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #fdf8f8;
+    border-radius: 50%;
+    display: inline-block;
+}
 
-.active {
-    background-color: #635FC7;
-    border: 1px solid rgb(184, 178, 178);
-    color: white;
-    /* margin-left: -200px; */
 
-
-    
-  }
 
 .hide-side-bar-div {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin-left: 50px;
 }
 
 
@@ -77,6 +121,7 @@ body {
     color: white;
     background-color: transparent;
     border: 0;
+    color: #828FA3;
   }
 
 
@@ -91,6 +136,7 @@ h4 {
     margin-top: 40px;
     display: flex;
     justify-content: flex-start;
+    padding: 0 12px 0 50px;
     
 
 }
@@ -106,9 +152,10 @@ header {
     align-items: center;
     background-color: #2B2C37;
     height: 10vh;
-    border: 5px solid rgb(29, 220, 237);
-    padding-left: 20px;
-    padding-right: 20px;
+    /* border: 5px solid rgb(29, 220, 237); */
+    padding-left: 30px;
+    padding-right: 35px;
+    border-bottom: 0.1px solid #979797;;
 }
 
 .header-board-name {
@@ -117,13 +164,15 @@ header {
     font-weight: 600;
 }
 
-.primary-btn {
+#add-new-task-btn {
     background-color: #635FC7;
     color: white;
     border-radius: 30px;
     border: 0;
     font-size: 16px;
     padding: 18px;
+    padding-left: 35px;
+    padding-right: 35px;
     font-weight: 600;
     cursor: pointer;
 }
@@ -135,14 +184,13 @@ header {
     display: flex;
     flex-direction: column;
     flex: 5;
-    border: 5px solid rgb(170, 211, 58);
+    /* border: 5px solid rgb(170, 211, 58); */
 }
 
 .card-column-main {
     display: flex;
     flex-direction: row;
-    border: 5px solid rgb(127, 84, 187);
-    justify-content: space-around;
+    /* border: 5px solid rgb(127, 84, 187); */
     height: 100%;
 }
 
@@ -151,19 +199,32 @@ header {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 5px solid;
+    /* border: 5px solid; */
     padding: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
 
 }
 
 
 .task-div {
-    border-color: rgb(177, 187, 84);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* border-color: rgb(177, 187, 84); */
     width: 100%;
     background-color: #2B2C37;
     color: white;
-    height: 100px;
-    border-radius: 8px;
+    height: 90px;
+    border-radius: 12px;
+    box-shadow: 1px 18px 37px 7px rgba(43,44,55,0.23);
+    -webkit-box-shadow: 1px 18px 37px 7px rgba(43,44,55,0.23);
+    -moz-box-shadow: 1px 18px 37px 7px rgba(43,44,55,0.23);
+
+}
+
+.p-task {
+    margin-left: 25px;
 }
 
 .side-bar-bottom {
@@ -183,6 +244,8 @@ header {
     background-color: #20212C;
     padding: 15px;
     border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 30px;
 
 }
 
