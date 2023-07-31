@@ -211,6 +211,7 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-left: 20px;
     /* border-color: rgb(177, 187, 84); */
     width: 100%;
     background-color: #2B2C37;
