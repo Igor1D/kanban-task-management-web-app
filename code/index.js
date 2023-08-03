@@ -30,12 +30,12 @@ async function main() {
     columnDiv.innerHTML = `<div id="todo-head-div" class ="column-head-div"><span class="dot" id="todo-dot"></span><h4>TODO (4)</h4></div>`;
     
     const filteredTasks = tasks.filter(task => task.board === selectedBoard);
-    console.log(tasks);
+    console.log(filteredTasks);
     console.log(selectedBoard);
 
     for (let i = 0; i < filteredTasks.length; i++) {
       let taskDiv = document.createElement('div');
-      taskDiv.innerText = tasks[i].title;
+      taskDiv.innerText = filteredTasks[i].title; // changed from tasks[i].title to filteredTasks[i].title
       taskDiv.classList.add('task-div');
       columnDiv.appendChild(taskDiv);
 
