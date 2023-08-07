@@ -20,7 +20,7 @@
 
     <div class="boards-nav-links-div" id="boards-nav-links-div">
       <h4 id="headline-sidepanel">ALL BOARDS</h4>
-      <button class="board-btn" id="board-btn">
+      <button class="board-btn active" id="board-btn">
         <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Platform Launch
       </button>
       <button class="board-btn" id="board-btn">
@@ -36,7 +36,7 @@
     <div class="side-bar-bottom">
     <div class="toggle-div">
       <img src="./assets/icon-light-theme.svg" id="icon-light" alt="icon-light-theme">
-      <input type="checkbox" id="switch" /><label for="switch"></label>
+      <input type="checkbox" id="switch" /><label for="switch" id="label-checkbox-theme"></label>
       <img src="./assets/icon-dark-theme.svg" id="icon-dark" alt="icon-dark-theme.svg">
     </div>
     <div class="hide-side-bar-div">
@@ -52,7 +52,7 @@
      
     </header>
     <main class="card-column-main">
-      <div class="column-div" id="column-div">
+      <div class="column-div">
         <div id="todo-head-div" class ="column-head-div"><span class="dot" id="todo-dot"></span><h4 id="toDoText">TODO (4)</h4></div>
         
         <!-- <div class="task-div">
@@ -64,7 +64,7 @@
         </div> -->
       </div>
 
-      <div class="column-div" id="column-div">
+      <div class="column-div">
         <div id="doing-head-div" class="column-head-div"><span class="dot" id="doing-dot"></span><h4>DOING (2)</h4></div>
         
         <!-- <div class="task-div" id="task-div">
@@ -72,7 +72,7 @@
         
         </div> -->
       </div>
-      <div class="column-div" id="column-div">
+      <div class="column-div">
         <div id="done-head-div" class ="column-head-div"><span class="dot" id="done-dot"></span><h4>DONE (2)</h4></div>
         
         <!-- <div class="task-div" id="task-div">
@@ -84,7 +84,28 @@
 
 
   </div>
+  <form class="modal-window" id="new-task-modal-window">
 
+    <h4 class="modal-title" >Add New Task</h4>
+    <div class="input-div">
+      <label class="label-modal-window" id="modal-title-input" for="title-input">Title</label>
+      <input type="text" class="modal-input" id="title-input" placeholder="e.g. Take coffee break">
+    </div>
+    <div class="input-div">
+      <label class="label-modal-window" id="modal-desc-input" for="desc-input">Description</label>
+      <!-- <input type="text" class="modal-input" id="desc-input" placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."> -->
+    <textarea name="description" id="desc-input" placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."></textarea>
+    </div>
+    <div class="input-div">
+      <label class="label-modal-window" id="modal-select-status" for="select-status">Status</label>
+      <select name="status"  id="select-status">
+        <option value="todo">Todo</option>
+        <option value="doing">Doing</option>
+        <option value="done">Done</option>
+      </select>
+    </div>
+    <button type="submit" class="submit-btn" id="create-task-btn">Create Task</button>
+  </form>
 
 
   <script src="./index.js"></script>

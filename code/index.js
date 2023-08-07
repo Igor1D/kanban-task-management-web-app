@@ -2,11 +2,17 @@
 let btns = document.querySelectorAll(".board-btn");
 
 //Tasks
-let columnDiv = document.getElementById("column-div");
+let columnDivs = document.getElementsByClassName("column-div");
 let selectedBoard = 'Platform Launch';
 let headerBoardName = document.getElementById('header-board-name');
 let toDoTasksAmount = document.getElementById('toDoText');
-console.log(toDoTasksAmount);
+
+// Modal
+
+let createNewTaskBtn = document.getElementById("add-new-task-btn");
+let modalWindow =  document.getElementById("new-task-modal-window");
+
+console.log(modalWindow);
 
 
 
@@ -19,6 +25,7 @@ async function main() {
 
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", () => {
+
       document.querySelector('.active')?.classList.remove('active');
       btns[i].classList.add('active')
 
@@ -31,19 +38,52 @@ async function main() {
     });
   }
 
+  createNewTaskBtn.addEventListener("click", () => {
+    modalWindow.style.display = 'flex';
+    
+  })
+
+  // window.addEventListener("click", (event) => {
+  //   if(event.target == modalWindow) {
+  //     modalWindow.style.display = 'none';
+  //   }
+  // })
+  
+  
+  
+
+
   function showTasks() {
-    columnDiv.innerHTML = `<div id="todo-head-div" class ="column-head-div"><span class="dot" id="todo-dot"></span><h4>TODO (4)</h4></div>`;
+
+    for (let i = 0; i < columnDivs.length; i++) {
+      
+      let header = columnDivs[i].children[0];
+      columnDivs[i].innerHTML = '';
+      columnDivs[i].appendChild(header);
+
+
+    }
+
 
     const filteredTasks = tasks.filter(task => task.board === selectedBoard);
     console.log(filteredTasks);
     console.log(selectedBoard);
 
-    for (let i = 0; i < filteredTasks.length; i++) {
+
+
+    for (let j = 0; j < filteredTasks.length; j++) {
      
       let taskDiv = document.createElement('div');
-      taskDiv.innerText = filteredTasks[i].title; // changed from tasks[i].title to filteredTasks[i].title
+      taskDiv.innerText = filteredTasks[j].title; // changed from tasks[i].title to filteredTasks[i].title
       taskDiv.classList.add('task-div');
-      columnDiv.appendChild(taskDiv);
+      
+      if (filteredTasks[j].status == 'todo') {
+        columnDivs[0].appendChild(taskDiv);
+      } else if (filteredTasks[j].status == 'doing') {
+        columnDivs[1].appendChild(taskDiv);
+      } else if (filteredTasks[j].status == 'done') {
+        columnDivs[2].appendChild(taskDiv);
+      }
 
      
     }

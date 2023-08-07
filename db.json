@@ -25,7 +25,7 @@
             "id": 4,
             "title": "QA and tests",
             "description": "description example",
-            "status": "todo",
+            "status": "done",
             "board": "Platform Launch"
         },
         {
