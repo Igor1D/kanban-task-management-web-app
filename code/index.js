@@ -11,8 +11,8 @@ let toDoTasksAmount = document.getElementById('toDoText');
 
 let createNewTaskBtn = document.getElementById("add-new-task-btn");
 let modalWindow =  document.getElementById("new-task-modal-window");
+let filterDiv = document.getElementById("filterDiv");
 
-console.log(modalWindow);
 
 
 
@@ -38,16 +38,31 @@ async function main() {
     });
   }
 
-  createNewTaskBtn.addEventListener("click", () => {
+  createNewTaskBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     modalWindow.style.display = 'flex';
+    
+
+    modalWindow.style.marginTop = '40px';
+    modalWindow.style.opacity = 0;
+    filterDiv.style.opacity = 0;
+    filterDiv.style.display = 'block';
+    setTimeout(() => {
+      modalWindow.style.marginTop = 0;
+      modalWindow.style.opacity = 1;
+      filterDiv.style.opacity = 1;
+    },100);
+
+    document.addEventListener("click", (event) => {
+      if(event.target != modalWindow && !modalWindow.contains(event.target)) {
+        modalWindow.style.display = 'none';
+        filterDiv.style.display = 'none';
+      }
+    })
     
   })
 
-  // window.addEventListener("click", (event) => {
-  //   if(event.target == modalWindow) {
-  //     modalWindow.style.display = 'none';
-  //   }
-  // })
+  
   
   
   
@@ -66,8 +81,7 @@ async function main() {
 
 
     const filteredTasks = tasks.filter(task => task.board === selectedBoard);
-    console.log(filteredTasks);
-    console.log(selectedBoard);
+
 
 
 

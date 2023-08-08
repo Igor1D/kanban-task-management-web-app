@@ -246,7 +246,7 @@ header {
 }
 
 .modal-window {
-    border: 5px solid red;
+    /* border: 5px solid red; */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -261,6 +261,8 @@ header {
     font-size: 14px;
     border-radius: 10px;
     display: none;
+    z-index: 3;
+    transition: all 0.3s ease-in;
 }
 
 .label-modal-window {
@@ -348,7 +350,15 @@ input {
 }
 
 
-
+/* filter */
+#filterDiv {
+    background-color: rgba(00, 00, 00, 0.5);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: none;
+    z-index: 2;
+}
 
 
 /* Toggle Section */
