@@ -8,13 +8,51 @@ let headerBoardName = document.getElementById('header-board-name');
 let toDoTasksAmount = document.getElementById('toDoText');
 
 // Modal
-
 let createNewTaskBtn = document.getElementById("add-new-task-btn");
 let modalWindow =  document.getElementById("new-task-modal-window");
 let filterDiv = document.getElementById("filterDiv");
+let titleInput = document.getElementById("title-input");
+let descInput = document.getElementById("desc-input");
 
+// Form
+let form = document.getElementById("new-task-modal-window");
 
+//DDL
+let ddl = document.getElementById("select-status")
+console.log(ddl.value)
 
+console.log(form);
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  
+  const createNewTask = async () => {
+    const response = await fetch(`http://localhost:3000/tasks`, {
+      
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "id": 1,
+      "title": titleInput.value,
+      "description": descInput.value,
+      "status": ddl.value,
+      "board": selectedBoard
+    })
+    
+    });
+    console.log(response);
+  }
+  createNewTask();
+  console.log({
+    "id": 1,
+    "title": titleInput.value,
+    "description": descInput.value,
+    "status": ddl.value,
+    "board": selectedBoard
+});
+})
 
 
 async function main() {
@@ -57,6 +95,10 @@ async function main() {
       if(event.target != modalWindow && !modalWindow.contains(event.target)) {
         modalWindow.style.display = 'none';
         filterDiv.style.display = 'none';
+        titleInput.value = '';
+        descInput.value = '';
+
+
       }
     })
     
