@@ -34,24 +34,18 @@ form.addEventListener("submit", (event) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "id": 1,
+      // "id": 11,
       "title": titleInput.value,
       "description": descInput.value,
       "status": ddl.value,
       "board": selectedBoard
     })
+
     
     });
-    console.log(response);
+    // console.log(response, 'abra');
   }
   createNewTask();
-  console.log({
-    "id": 1,
-    "title": titleInput.value,
-    "description": descInput.value,
-    "status": ddl.value,
-    "board": selectedBoard
-});
 })
 
 

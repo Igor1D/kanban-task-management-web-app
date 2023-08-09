@@ -1,76 +1,102 @@
 {
-    "tasks": [
-        {
-            "id": 1,
-            "title": "Build UI for onboarding flow",
-            "description": "description example",
-            "status": "todo",
-            "board": "Platform Launch"
-        },
-        {
-            "id": 2,
-            "title": "Build UI for Search",
-            "description": "description example",
-            "status": "doing",
-            "board": "Platform Launch"
-        },
-        {
-            "id": 3,
-            "title": "Build settings UI",
-            "description": "description example",
-            "status": "doing",
-            "board": "Roadmap"
-        },
-        {
-            "id": 4,
-            "title": "QA and tests",
-            "description": "description example",
-            "status": "done",
-            "board": "Platform Launch"
-        },
-        {
-            "id": 5,
-            "title": "UI Design",
-            "description": "description example",
-            "status": "todo",
-            "board": "Platform Launch"
-        },
-        {
-            "id": 6,
-            "title": "Code review",
-            "description": "description example",
-            "status": "todo",
-            "board": "Roadmap"
-        },
-        {
-            "id": 7,
-            "title": "Wireframe tests",
-            "description": "description example",
-            "status": "doing",
-            "board": "Roadmap"
-        },
-        {
-            "id": 8,
-            "title": "Competitor analysis",
-            "description": "description example",
-            "status": "todo",
-            "board": "Marketing Plan"
-        },
-        {
-            "id": 9,
-            "title": "Research the market",
-            "description": "description example",
-            "status": "doing",
-            "board": "Marketing Plan"
-        },
-        {
-            "id": 10,
-            "title": "Design onboarding flow",
-            "description": "description example",
-            "status": "doing",
-            "board": "Platform Launch"
-        }
-
-
-    ]
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Build UI for onboarding flow",
+      "description": "description example",
+      "status": "todo",
+      "board": "Platform Launch"
+    },
+    {
+      "id": 2,
+      "title": "Build UI for Search",
+      "description": "description example",
+      "status": "doing",
+      "board": "Platform Launch"
+    },
+    {
+      "id": 3,
+      "title": "Build settings UI",
+      "description": "description example",
+      "status": "doing",
+      "board": "Roadmap"
+    },
+    {
+      "id": 4,
+      "title": "QA and tests",
+      "description": "description example",
+      "status": "done",
+      "board": "Platform Launch"
+    },
+    {
+      "id": 5,
+      "title": "UI Design",
+      "description": "description example",
+      "status": "todo",
+      "board": "Platform Launch"
+    },
+    {
+      "id": 6,
+      "title": "Code review",
+      "description": "description example",
+      "status": "todo",
+      "board": "Roadmap"
+    },
+    {
+      "id": 7,
+      "title": "Wireframe tests",
+      "description": "description example",
+      "status": "doing",
+      "board": "Roadmap"
+    },
+    {
+      "id": 8,
+      "title": "Competitor analysis",
+      "description": "description example",
+      "status": "todo",
+      "board": "Marketing Plan"
+    },
+    {
+      "id": 9,
+      "title": "Research the market",
+      "description": "description example",
+      "status": "doing",
+      "board": "Marketing Plan"
+    },
+    {
+      "id": 10,
+      "title": "Design onboarding flow",
+      "description": "description example",
+      "status": "doing",
+      "board": "Platform Launch"
+    },
+    {
+      "title": "titleInput.value",
+      "description": "descInput.value",
+      "status": "done",
+      "board": "selectedBoard",
+      "id": 11
+    },
+    {
+      "title": "wefwef",
+      "description": "wefwef",
+      "status": "todo",
+      "board": "Platform Launch",
+      "id": 12
+    },
+    {
+      "title": "test2",
+      "description": "ewtwe",
+      "status": "todo",
+      "board": "Platform Launch",
+      "id": 13
+    },
+    {
+      "title": "test4",
+      "description": "test3",
+      "status": "doing",
+      "board": "Platform Launch",
+      "id": 14
+    }
+  ]
 }

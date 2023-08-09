@@ -237,6 +237,68 @@ header {
     margin-bottom: 40px;
 }
 
+/* Edit task */
+
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #828FA3;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#edit-task-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.task-title {
+    color: white;
+    font-size: 18px;
+}
+
+.edit-task-description {
+    color: #828FA3;
+    font-size: 16px;
+}
+
+#edit-task-status {
+    height: 40px;
+    padding: 10px;
+    background-color: #2B2C37;
+    border: 1px solid #424852;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.edit-task-div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.edit-task-modal-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    background-color: #2B2C37;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 10px;
+    /* display: none; */
+    z-index: 3;
+    transition: all 0.3s ease-in;
+}
+
+
 /* Modal Window */
 
 .modal-title {
