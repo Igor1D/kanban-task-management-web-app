@@ -49,7 +49,9 @@ async function main() {
 
       document.querySelector('.active')?.classList.remove('active');
       btns[i].classList.add('active');
+      
       selectedBoard = btns[i].innerText;
+      
       headerBoardName.innerText = selectedBoard;
       console.log("Button clicked:", selectedBoard);
       localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
@@ -58,8 +60,15 @@ async function main() {
 
 
 
-
     });
+
+    // ask Lazar about the following:
+    if (selectedBoard) {
+      const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+    }
     
   }
 
