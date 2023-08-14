@@ -28,68 +28,39 @@ let selectedBoard;
 let boardLocalStorage = localStorage.getItem('selectedBoard');
 
 
-// console.log(form);
+
 console.log(boardLocalStorage);
 
-  if (!boardLocalStorage) {
-    selectedBoard = "Platform Launch";
-  } else {
-    selectedBoard = boardLocalStorage;
-  }
-  // localStorage.setItem("selectedBoard", boardLocalStorage);
-  console.log(boardLocalStorage, selectedBoard);
+if (!boardLocalStorage) {
+  selectedBoard = "Platform Launch";
+} else {
+  selectedBoard = boardLocalStorage;
+}
 
-
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const createNewTask = async () => {
-    const response = await fetch(`http://localhost:3000/tasks`, {
-
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        // "id": 11,
-        "title": titleInput.value,
-        "description": descInput.value,
-        "status": ddl.value,
-        "board": selectedBoard
-      })
-
-
-    });
-    // console.log(response, 'abra');
-  }
-  createNewTask();
-})
-
+console.log(boardLocalStorage, selectedBoard);
 
 async function main() {
 
   let results = await fetch(`http://localhost:3000/tasks`);
   let tasks = await results.json();
 
-
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", () => {
 
       document.querySelector('.active')?.classList.remove('active');
       btns[i].classList.add('active');
-
       selectedBoard = btns[i].innerText;
       headerBoardName.innerText = selectedBoard;
-      
       console.log("Button clicked:", selectedBoard);
-      localStorage.setItem("selectedBoard", boardLocalStorage)
-      console.log(boardLocalStorage);
+      localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
+      console.log(selectedBoard);
       showTasks();
-      
-      
+
+
+
 
     });
+    
   }
 
   createNewTaskBtn.addEventListener("click", (e) => {
@@ -121,11 +92,6 @@ async function main() {
   })
 
 
-
-
-
-
-
   function showTasks() {
 
     for (let i = 0; i < columnDivs.length; i++) {
@@ -133,8 +99,6 @@ async function main() {
       let header = columnDivs[i].children[0];
       columnDivs[i].innerHTML = '';
       columnDivs[i].appendChild(header);
-
-
     }
 
 
@@ -157,21 +121,37 @@ async function main() {
         columnDivs[2].appendChild(taskDiv);
       }
 
-
     }
-
-
-
-
-
-
-
   }
 
 
   showTasks();
-  
+
 }
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const createNewTask = async () => {
+    const response = await fetch(`http://localhost:3000/tasks`, {
+
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "title": titleInput.value,
+        "description": descInput.value,
+        "status": ddl.value,
+        "board": selectedBoard
+      })
+
+
+    });
+    // console.log(response, 'abra');
+  }
+  createNewTask();
+})
 
 main();
 
