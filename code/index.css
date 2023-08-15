@@ -275,6 +275,7 @@ header {
 .edit-task-div {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 7px;
 }
 
@@ -293,7 +294,7 @@ header {
     font-weight: 500;
     font-size: 14px;
     border-radius: 10px;
-    /* display: none; */
+    display: none;
     z-index: 3;
     transition: all 0.3s ease-in;
 }

@@ -16,12 +16,21 @@ let filterDiv = document.getElementById("filterDiv");
 let titleInput = document.getElementById("title-input");
 let descInput = document.getElementById("desc-input");
 
+//Edit task Modal window
+let editTaskModalWindow = document.getElementsByClassName("edit-task-modal-window")[0];
+let taskTitle = editTaskModalWindow.getElementsByClassName("task-title")[0];
+let taskDesc = editTaskModalWindow.getElementsByClassName("edit-task-description")[0];
+let editDdl = document.getElementById("edit-select-status");
+console.log(editDdl.value);
+
+
+
 // Form
 let form = document.getElementById("new-task-modal-window");
 
 //DDL
 let ddl = document.getElementById("select-status")
-// console.log(ddl.value)
+console.log(ddl.value)
 
 // Board local storage
 let selectedBoard;
@@ -37,12 +46,22 @@ if (!boardLocalStorage) {
   selectedBoard = boardLocalStorage;
 }
 
-console.log(boardLocalStorage, selectedBoard);
+
+    // ask Lazar about the following:
+    if (selectedBoard) {
+      const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+    }
+    headerBoardName.innerText = selectedBoard;
+
 
 async function main() {
 
   let results = await fetch(`http://localhost:3000/tasks`);
   let tasks = await results.json();
+
 
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", () => {
@@ -62,13 +81,6 @@ async function main() {
 
     });
 
-    // ask Lazar about the following:
-    if (selectedBoard) {
-      const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
-      if (activeButton) {
-        activeButton.classList.add('active');
-      }
-    }
     
   }
 
@@ -93,6 +105,7 @@ async function main() {
         filterDiv.style.display = 'none';
         titleInput.value = '';
         descInput.value = '';
+        
 
 
       }
@@ -129,6 +142,19 @@ async function main() {
       } else if (filteredTasks[j].status == 'done') {
         columnDivs[2].appendChild(taskDiv);
       }
+
+      taskDiv.addEventListener('click', () => {
+        editTaskModalWindow.style.display = 'flex';
+        taskTitle.innerText = filteredTasks[j].title;
+        taskDesc.innerText = filteredTasks[j].description;
+        editDdl.value = filteredTasks[j].status;
+        console.log(filteredTasks[j].status)
+
+
+
+      })
+
+
 
     }
   }
