@@ -143,7 +143,8 @@ async function main() {
         columnDivs[2].appendChild(taskDiv);
       }
 
-      taskDiv.addEventListener('click', () => {
+      taskDiv.addEventListener('click', (e) => {
+        e.stopPropagation();
         editTaskModalWindow.style.display = 'flex';
         editTaskModalWindow.style.marginTop = '40px';
         editTaskModalWindow.style.opacity = 0;
