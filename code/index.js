@@ -145,18 +145,41 @@ async function main() {
 
       taskDiv.addEventListener('click', () => {
         editTaskModalWindow.style.display = 'flex';
+        editTaskModalWindow.style.marginTop = '40px';
+        editTaskModalWindow.style.opacity = 0;
+        filterDiv.style.opacity = 0;
+        filterDiv.style.display = 'block';
+        setTimeout(() => {
+          editTaskModalWindow.style.marginTop = 0;
+          editTaskModalWindow.style.opacity = 1;
+          filterDiv.style.opacity = 1;
+        }, 100);
+
         taskTitle.innerText = filteredTasks[j].title;
         taskDesc.innerText = filteredTasks[j].description;
         editDdl.value = filteredTasks[j].status;
-        console.log(filteredTasks[j].status)
+
+        document.addEventListener("click", (event) => {
+          if (event.target != taskDiv && !taskDiv.contains(event.target)) {
+            console.log("clicked")
+    
+            editTaskModalWindow.style.display = 'none';
+            filterDiv.style.display = 'none';
+           
+    
+          }
+        })
+        
+      });
 
 
-
-      })
 
 
 
     }
+
+
+    
   }
 
 

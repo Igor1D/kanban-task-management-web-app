@@ -221,6 +221,7 @@ header {
     height: 90px;
     border-radius: 12px;
     box-shadow: 1px 18px 37px 7px rgba(43, 44, 55, 0.23);
+    cursor: pointer;
 
 }
 
@@ -367,10 +368,16 @@ header {
 #select-status {
     height: 40px;
     padding: 10px;
-
+    background-color: #2B2C37;
+    border: 1px solid #424852;
+    border-radius: 4px;
+    color: #fff;
 }
 
-#select-status {
+
+#edit-select-status {
+    height: 40px;
+    padding: 10px;
     background-color: #2B2C37;
     border: 1px solid #424852;
     border-radius: 4px;
