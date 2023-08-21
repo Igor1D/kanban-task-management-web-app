@@ -21,7 +21,9 @@ let editTaskModalWindow = document.getElementsByClassName("edit-task-modal-windo
 let taskTitle = editTaskModalWindow.getElementsByClassName("task-title")[0];
 let taskDesc = editTaskModalWindow.getElementsByClassName("edit-task-description")[0];
 let editDdl = document.getElementById("edit-select-status");
+let threeDotsBtn = document.getElementById("edit-btn");
 console.log(editDdl.value);
+console.log(threeDotsBtn);
 
 
 
@@ -143,6 +145,8 @@ async function main() {
         columnDivs[2].appendChild(taskDiv);
       }
 
+
+      // Modal window task
       taskDiv.addEventListener('click', (e) => {
         e.stopPropagation();
         editTaskModalWindow.style.display = 'flex';
@@ -161,19 +165,38 @@ async function main() {
         editDdl.value = filteredTasks[j].status;
 
         document.addEventListener("click", (event) => {
-          if (event.target != taskDiv && !taskDiv.contains(event.target)) {
+          if (event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)) {
             console.log("clicked")
     
             editTaskModalWindow.style.display = 'none';
             filterDiv.style.display = 'none';
+            editBtnsDiv.style.display = 'none';
+
            
     
           }
         })
+        // Three dots
+        threeDotsBtn.addEventListener('click', (e) => {
+          
+          e.preventDefault();
+          if (editBtnsDiv.style.display === 'none') {
+            editBtnsDiv.style.display = 'flex';
+          } else {
+            editBtnsDiv.style.display = 'none'
+          };
+          // Ask Lazar
+          const rect = threeDotsBtn.getBoundingClientRect();
+          editBtnsDiv.style.top = rect.bottom + 'px';
+          editBtnsDiv.style.left = rect.left + 'px';
+          console.log('clicked');
+
+
+        })
         
       });
 
-
+      
 
 
 

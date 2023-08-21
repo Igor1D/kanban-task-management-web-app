@@ -190,6 +190,7 @@ header {
 }
 
 .card-column-main {
+
     display: flex;
     flex-direction: row;
     /* border: 5px solid rgb(127, 84, 187); */
@@ -239,15 +240,6 @@ header {
 }
 
 /* Edit task */
-
-.edit-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #828FA3;
-    font-size: 30px;
-    font-weight: 700;
-}
 
 #edit-task-header {
     display: flex;
@@ -299,6 +291,48 @@ header {
     z-index: 3;
     transition: all 0.3s ease-in;
 }
+
+#edit-btn {
+    /* position: relative;  */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #828FA3;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#editBtnsDiv {
+   border-radius: 5px;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    /* top: 45%;
+    right: 33%; */
+    background: #20212C;
+    align-items: flex-start;
+    gap: 10px;
+    justify-content: space-around;
+    padding: 10px;
+    width: 130px;
+    display: none;
+
+}
+
+.editBtns {
+    background: none;
+    border: none;
+    color: #828FA3;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#deleteTaskBtn {
+    color: #EA5555;
+}
+
+
 
 
 /* Modal Window */
