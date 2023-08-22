@@ -49,16 +49,54 @@ if (!boardLocalStorage) {
 }
 
 
-    // ask Lazar about the following:
-    if (selectedBoard) {
-      const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
-      if (activeButton) {
-        activeButton.classList.add('active');
-      }
-    }
-    headerBoardName.innerText = selectedBoard;
+// ask Lazar about the following:
+if (selectedBoard) {
+  const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
+}
+headerBoardName.innerText = selectedBoard;
+
+const createNewTask = async (task) => {
+  const response = await fetch(`http://localhost:3000/tasks`, {
+
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(task)
 
 
+  });
+}
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  createNewTask({
+    "title": titleInput.value,
+    "description": descInput.value,
+    "status": ddl.value,
+    "board": selectedBoard
+  });
+})
+
+// func that takes an ID and the task OBJ and updates it on the server
+const changeTask = async (id, task) => {
+
+
+  const results = await fetch(`http://localhost:3000/tasks/${id}`, {
+
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(id, task)
+
+  
+  })
+
+}
 async function main() {
 
   let results = await fetch(`http://localhost:3000/tasks`);
@@ -70,9 +108,9 @@ async function main() {
 
       document.querySelector('.active')?.classList.remove('active');
       btns[i].classList.add('active');
-      
+
       selectedBoard = btns[i].innerText;
-      
+
       headerBoardName.innerText = selectedBoard;
       console.log("Button clicked:", selectedBoard);
       localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
@@ -83,7 +121,7 @@ async function main() {
 
     });
 
-    
+
   }
 
   createNewTaskBtn.addEventListener("click", (e) => {
@@ -107,7 +145,7 @@ async function main() {
         filterDiv.style.display = 'none';
         titleInput.value = '';
         descInput.value = '';
-        
+
 
 
       }
@@ -129,9 +167,10 @@ async function main() {
     const filteredTasks = tasks.filter(task => task.board === selectedBoard);
 
     console.log(filteredTasks, tasks, selectedBoard)
-
+    
 
     for (let j = 0; j < filteredTasks.length; j++) {
+
 
       let taskDiv = document.createElement('div');
       taskDiv.innerText = filteredTasks[j].title; // changed from tasks[i].title to filteredTasks[i].title
@@ -144,6 +183,7 @@ async function main() {
       } else if (filteredTasks[j].status == 'done') {
         columnDivs[2].appendChild(taskDiv);
       }
+      console.log(filteredTasks[j].id)
 
 
       // Modal window task
@@ -164,46 +204,59 @@ async function main() {
         taskDesc.innerText = filteredTasks[j].description;
         editDdl.value = filteredTasks[j].status;
 
+        // status change
+        editDdl.addEventListener("change", (e) => {
+          // console.log(e.target.value)
+          
+          changeTask({
+            "id": filteredTasks[j].id,
+            "status": e.target.value,
+
+
+          });
+          
+
+        })
+
+        
+
         document.addEventListener("click", (event) => {
           if (event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)) {
             console.log("clicked")
-    
+
             editTaskModalWindow.style.display = 'none';
             filterDiv.style.display = 'none';
             editBtnsDiv.style.display = 'none';
 
-           
-    
+
+
           }
         })
         // Three dots
         threeDotsBtn.addEventListener('click', (e) => {
-          
-          e.preventDefault();
+
+
           if (editBtnsDiv.style.display === 'none') {
             editBtnsDiv.style.display = 'flex';
           } else {
             editBtnsDiv.style.display = 'none'
           };
-          // Ask Lazar
-          const rect = threeDotsBtn.getBoundingClientRect();
-          editBtnsDiv.style.top = rect.bottom + 'px';
-          editBtnsDiv.style.left = rect.left + 'px';
-          console.log('clicked');
+
+
 
 
         })
-        
+
       });
 
-      
+
 
 
 
     }
 
 
-    
+
   }
 
 
@@ -211,29 +264,9 @@ async function main() {
 
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const createNewTask = async () => {
-    const response = await fetch(`http://localhost:3000/tasks`, {
-
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "title": titleInput.value,
-        "description": descInput.value,
-        "status": ddl.value,
-        "board": selectedBoard
-      })
 
 
-    });
-    // console.log(response, 'abra');
-  }
-  createNewTask();
-})
+
 
 main();
 

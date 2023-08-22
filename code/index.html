@@ -106,28 +106,31 @@
     <button type="submit" class="submit-btn" id="create-task-btn">Create Task</button>
   </form>
 
-  <form class="edit-task-modal-window">
+  <div class="edit-task-modal-window">
     <div class="edit-task-div" id="edit-task-header">
     <h4 class="task-title">Research pricing points of various competitors and trial different business models</h4>
-    <button id="edit-btn">&#8942;</button>
+    <button id="edit-btn"><p style="display: inline;">&#8942;</p>
+    </button>
+    <div id="editBtnsDiv">
+      <button class="editBtns">Edit Task</button>
+      <button class="editBtns" id="deleteTaskBtn">Delete Task</button>
+    </div>
     </div>
     <div class="edit-task-div">
     <p class="edit-task-description" >We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.</p>
     </div>
     <div class="edit-task-div">
       <label class="label-modal-window" id="edit-modal-select-status" for="edit-select-status">Current Status</label>
+      
       <select name="status"  id="edit-select-status">
         <option value="todo">Todo</option>
         <option value="doing">Doing</option>
         <option value="done">Done</option>
       </select>
     </div>
-  </form>
-
-  <div id="editBtnsDiv">
-    <button class="editBtns">Edit Task</button>
-    <button class="editBtns" id="deleteTaskBtn">Delete Task</button>
   </div>
+
+  
   <div id="filterDiv"></div>
 
 

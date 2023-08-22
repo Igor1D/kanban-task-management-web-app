@@ -85,17 +85,14 @@
       "id": 12
     },
     {
-      "title": "test2",
-      "description": "ewtwe",
-      "status": "todo",
+      "title": "",
+      "description": "",
+      "status": "done",
       "board": "Platform Launch",
       "id": 13
     },
     {
-      "title": "test4",
-      "description": "test3",
-      "status": "doing",
-      "board": "Platform Launch",
+      "status": "done",
       "id": 14
     },
     {
@@ -146,6 +143,13 @@
       "status": "doing",
       "board": "Roadmap",
       "id": 21
+    },
+    {
+      "title": "test new func",
+      "description": "form.addEventListener(\"submit\", (event) => {\n  event.preventDefault();\n\n\n  createNewTask({\n    \"title\": titleInput.value,\n    \"description\": descInput.value,\n    \"status\": ddl.value,\n    \"board\": selectedBoard\n  });\n})",
+      "status": "todo",
+      "board": "Platform Launch",
+      "id": 22
     }
   ]
 }
