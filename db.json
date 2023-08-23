@@ -80,14 +80,14 @@
     {
       "title": "wefwef",
       "description": "wefwef",
-      "status": "todo",
+      "status": "done",
       "board": "Platform Launch",
       "id": 12
     },
     {
       "title": "",
       "description": "",
-      "status": "done",
+      "status": "doing",
       "board": "Platform Launch",
       "id": 13
     },

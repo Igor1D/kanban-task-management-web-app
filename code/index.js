@@ -22,8 +22,10 @@ let taskTitle = editTaskModalWindow.getElementsByClassName("task-title")[0];
 let taskDesc = editTaskModalWindow.getElementsByClassName("edit-task-description")[0];
 let editDdl = document.getElementById("edit-select-status");
 let threeDotsBtn = document.getElementById("edit-btn");
-console.log(editDdl.value);
-console.log(threeDotsBtn);
+let editBtnsDiv = document.getElementById("editBtnsDiv");
+console
+console.log(editBtnsDiv.style.display);
+
 
 
 
@@ -83,7 +85,7 @@ form.addEventListener("submit", (event) => {
 
 // func that takes an ID and the task OBJ and updates it on the server
 const changeTask = async (id, task) => {
-
+console.log(id, task)
 
   const results = await fetch(`http://localhost:3000/tasks/${id}`, {
 
@@ -91,7 +93,7 @@ const changeTask = async (id, task) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(id, task)
+    body: JSON.stringify(task)
 
   
   })
@@ -206,14 +208,17 @@ async function main() {
 
         // status change
         editDdl.addEventListener("change", (e) => {
-          // console.log(e.target.value)
+
           
-          changeTask({
-            "id": filteredTasks[j].id,
-            "status": e.target.value,
+          changeTask(
+            filteredTasks[j].id,{
+              status: e.target.value
+            }
+
+            
 
 
-          });
+          );
           
 
         })
@@ -222,26 +227,35 @@ async function main() {
 
         document.addEventListener("click", (event) => {
           if (event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)) {
-            console.log("clicked")
-
+            console.log('beginign of the off click');
+            console.log(editBtnsDiv.style.display);
             editTaskModalWindow.style.display = 'none';
             filterDiv.style.display = 'none';
             editBtnsDiv.style.display = 'none';
 
-
+            console.log('end of the off click');
+            console.log(editBtnsDiv.style.display);
 
           }
         })
         // Three dots
         threeDotsBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          console.log('clicked');
 
-
-          if (editBtnsDiv.style.display === 'none') {
+          console.log(editBtnsDiv.style.display)
+          if (editBtnsDiv.style.display === 'none' || editBtnsDiv.style.display === ''){
+            console.log('if part')
             editBtnsDiv.style.display = 'flex';
+
           } else {
-            editBtnsDiv.style.display = 'none'
+            console.log('else part')
+            editBtnsDiv.style.display = 'none';
+
           };
 
+          console.log('end of eventlistener')
+          console.log(editBtnsDiv.style.display)
 
 
 
