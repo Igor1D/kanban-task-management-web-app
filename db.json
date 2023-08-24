@@ -25,21 +25,21 @@
       "id": 4,
       "title": "QA and tests",
       "description": "description example",
-      "status": "done",
+      "status": "doing",
       "board": "Platform Launch"
     },
     {
       "id": 5,
       "title": "UI Design",
       "description": "description example",
-      "status": "todo",
+      "status": "doing",
       "board": "Platform Launch"
     },
     {
       "id": 6,
       "title": "Code review",
       "description": "description example",
-      "status": "todo",
+      "status": "doing",
       "board": "Roadmap"
     },
     {
@@ -80,7 +80,7 @@
     {
       "title": "wefwef",
       "description": "wefwef",
-      "status": "done",
+      "status": "doing",
       "board": "Platform Launch",
       "id": 12
     },
@@ -98,7 +98,7 @@
     {
       "title": "test",
       "description": "test",
-      "status": "todo",
+      "status": "doing",
       "board": "Platform Launch",
       "id": 15
     },
@@ -133,14 +133,14 @@
     {
       "title": "task title",
       "description": "task desc",
-      "status": "todo",
+      "status": "done",
       "board": "Roadmap",
       "id": 20
     },
     {
       "title": "test1001",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "status": "doing",
+      "status": "todo",
       "board": "Roadmap",
       "id": 21
     },
@@ -150,6 +150,13 @@
       "status": "todo",
       "board": "Platform Launch",
       "id": 22
+    },
+    {
+      "title": "אקדא1010",
+      "description": "׳קכ׳קכ׳קכ",
+      "status": "doing",
+      "board": "Roadmap",
+      "id": 23
     }
   ]
 }

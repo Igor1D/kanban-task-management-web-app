@@ -23,6 +23,7 @@ let taskDesc = editTaskModalWindow.getElementsByClassName("edit-task-description
 let editDdl = document.getElementById("edit-select-status");
 let threeDotsBtn = document.getElementById("edit-btn");
 let editBtnsDiv = document.getElementById("editBtnsDiv");
+let editTaskBtn = document.getElementById("editTaskBtn");
 console
 console.log(editBtnsDiv.style.display);
 
@@ -227,7 +228,7 @@ async function main() {
 
         document.addEventListener("click", (event) => {
           if (event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)) {
-            console.log('beginign of the off click');
+            console.log('beginning of the off click');
             console.log(editBtnsDiv.style.display);
             editTaskModalWindow.style.display = 'none';
             filterDiv.style.display = 'none';
@@ -239,12 +240,24 @@ async function main() {
           }
         })
         // Three dots
+        // threeDotsBtn.addEventListener('click', (e) => {
+        //   e.stopPropagation();
+        //   console.log('clicked');
+        
+        //   if (editBtnsDiv.classList.contains('show')) {
+        //     editBtnsDiv.classList.remove('show');
+        //   } else {
+        //     editBtnsDiv.classList.add('show');
+        //   }
+        // });
         threeDotsBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           console.log('clicked');
+         
 
           console.log(editBtnsDiv.style.display)
-          if (editBtnsDiv.style.display === 'none' || editBtnsDiv.style.display === ''){
+          // if (editBtnsDiv.style.display === 'none' || editBtnsDiv.style.display === ''){
+            if (editBtnsDiv.style.display !== 'flex'){
             console.log('if part')
             editBtnsDiv.style.display = 'flex';
 
@@ -256,6 +269,16 @@ async function main() {
 
           console.log('end of eventlistener')
           console.log(editBtnsDiv.style.display)
+
+
+
+        })
+
+
+        //Edit task btn
+        editTaskBtn.addEventListener('click', () => {
+          // taskTitle.contentEditable = true;
+          
 
 
 
