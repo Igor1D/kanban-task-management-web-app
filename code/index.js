@@ -278,6 +278,10 @@ async function main() {
         //Edit task btn
         editTaskBtn.addEventListener('click', () => {
           // taskTitle.contentEditable = true;
+          let inputField = document.createElement('input');
+          inputField.type ='text';
+          inputField.value = taskTitle.innerText;
+          taskTitle.parentElement.replaceChild(inputField, taskTitle);
           
 
 
