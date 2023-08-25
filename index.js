@@ -225,19 +225,7 @@ async function main() {
 
         
 
-        document.addEventListener("click", (event) => {
-          if (event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)) {
-            console.log('beginning of the off click');
-            console.log(editBtnsDiv.style.display);
-            editTaskModalWindow.style.display = 'none';
-            filterDiv.style.display = 'none';
-            editBtnsDiv.style.display = 'none';
 
-            console.log('end of the off click');
-            console.log(editBtnsDiv.style.display);
-
-          }
-        })
         // Three dots
         // threeDotsBtn.addEventListener('click', (e) => {
         //   e.stopPropagation();
@@ -249,30 +237,47 @@ async function main() {
         //     editBtnsDiv.classList.add('show');
         //   }
         // });
-        threeDotsBtn.addEventListener('click', (e) => {
+        function handleThreeDots (e){
           e.stopPropagation();
-          console.log('clicked');
-         
+          console.log('------------');
 
-          console.log(editBtnsDiv.style.display)
-          // if (editBtnsDiv.style.display === 'none' || editBtnsDiv.style.display === ''){
-            if (editBtnsDiv.style.display !== 'flex'){
-            console.log('if part')
+          // console.log(editBtnsDiv.style.display)
+          if (editBtnsDiv.style.display === 'none' || editBtnsDiv.style.display === '') {
+
             editBtnsDiv.style.display = 'flex';
 
           } else {
-            console.log('else part')
+            // console.log('else part')
             editBtnsDiv.style.display = 'none';
 
           };
 
-          console.log('end of eventlistener')
-          console.log(editBtnsDiv.style.display)
+          console.log('3 dots')
+          console.log('------------')
+
+        }
 
 
 
-        })
 
+        // Three dots
+        threeDotsBtn.addEventListener('click', handleThreeDots)
+
+        function offClick(event){
+          console.log('----------')
+          if (event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)) {
+            editTaskModalWindow.style.display = 'none';
+            filterDiv.style.display = 'none';
+            editBtnsDiv.style.display = 'none';
+
+            console.log('end of the off click');
+            console.log('---------');
+            threeDotsBtn.removeEventListener('click', handleThreeDots)
+            document.removeEventListener("click", offClick)
+          }
+        }
+
+        document.addEventListener("click", offClick)
 
         //Edit task btn
         editTaskBtn.addEventListener('click', () => {
