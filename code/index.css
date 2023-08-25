@@ -338,6 +338,12 @@ header {
     display: flex;
   } */
 
+.task-title-input {
+    background-color: #2B2C37;
+    border: 1px solid #424852;
+    border-radius: 4px;
+    width: 100%;
+}
 
 /* Modal Window */
 

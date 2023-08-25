@@ -278,15 +278,46 @@ async function main() {
         //Edit task btn
         editTaskBtn.addEventListener('click', () => {
           // taskTitle.contentEditable = true;
-          let inputField = document.createElement('input');
-          inputField.type ='text';
-          inputField.value = taskTitle.innerText;
-          taskTitle.parentElement.replaceChild(inputField, taskTitle);
+
+          // let inputField = document.createElement('input');
+          // inputField.className = 'task-title-input';
+          // inputField.type ='text';
+          // inputField.value = taskTitle.innerText;
+          // taskTitle.parentElement.replaceChild(inputField, taskTitle);
+
+          let editTaskForm = document.createElement('form');
+          editTaskForm.className = "modal-window";
+          editTaskForm.id = "new-task-modal-window";
+          editTaskForm.innerHTML = `<h4 class="modal-title" >Edit Task</h4>
+          <div class="input-div">
+            <label class="label-modal-window" id="modal-title-input" for="title-input">Title</label>
+            <input type="text" class="modal-input" id="title-input" placeholder="e.g. Take coffee break">
+          </div>
+          <div class="input-div">
+            <label class="label-modal-window" id="modal-desc-input" for="desc-input">Description</label>
+          <textarea name="description" id="desc-input" placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."></textarea>
+          </div>
+          <div class="input-div">
+            <label class="label-modal-window" id="modal-select-status" for="select-status">Status</label>
+            <select name="status"  id="select-status">
+              <option value="todo">Todo</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn" id="create-task-btn">Save Changes</button>
+       `
+       editTaskModalWindow.style.display = "none";
+       editTaskForm.style.display = 'flex';
+      document.body.appendChild(editTaskForm);
+          
+
           
 
 
 
         })
+        
 
       });
 
