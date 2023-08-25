@@ -25,7 +25,7 @@
       "id": 4,
       "title": "QA and tests",
       "description": "description example",
-      "status": "doing",
+      "status": "todo",
       "board": "Platform Launch"
     },
     {
@@ -60,7 +60,7 @@
       "id": 9,
       "title": "Research the market",
       "description": "description example",
-      "status": "doing",
+      "status": "done",
       "board": "Marketing Plan"
     },
     {

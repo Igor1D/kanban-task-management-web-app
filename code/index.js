@@ -62,7 +62,7 @@ if (selectedBoard) {
 headerBoardName.innerText = selectedBoard;
 
 const createNewTask = async (task) => {
-  const response = await fetch(`http://localhost:3000/tasks`, {
+  const response = await fetch(`https://kanban-backend-server.onrender.com/tasks`, {
 
     method: 'POST',
     headers: {
@@ -88,7 +88,7 @@ form.addEventListener("submit", (event) => {
 const changeTask = async (id, task) => {
 console.log(id, task)
 
-  const results = await fetch(`http://localhost:3000/tasks/${id}`, {
+  const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
     method: 'PATCH',
     headers: {
@@ -98,11 +98,12 @@ console.log(id, task)
 
   
   })
+  location.reload();
 
 }
 async function main() {
 
-  let results = await fetch(`http://localhost:3000/tasks`);
+  let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
   let tasks = await results.json();
 
 
@@ -215,9 +216,7 @@ async function main() {
             filteredTasks[j].id,{
               status: e.target.value
             }
-
             
-
 
           );
           
