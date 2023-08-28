@@ -295,18 +295,18 @@ async function main() {
           editTaskForm.innerHTML = `<h4 class="modal-title" >Edit Task</h4>
           <div class="input-div">
             <label class="label-modal-window" id="modal-title-input" for="title-input">Title</label>
-            <input type="text" class="modal-input" id="title-input" placeholder="e.g. Take coffee break">
+            <input type="text" class="modal-input" id="title-input" value="${filteredTasks[j].title}">
           </div>
           <div class="input-div">
             <label class="label-modal-window" id="modal-desc-input" for="desc-input">Description</label>
-          <textarea name="description" id="desc-input" placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."></textarea>
+          <textarea name="description" id="desc-input">${filteredTasks[j].description}</textarea>
           </div>
           <div class="input-div">
-            <label class="label-modal-window" id="modal-select-status" for="select-status">Status</label>
-            <select name="status"  id="select-status">
+            <label class="label-modal-window" id="modal-select-status" for="edit-select-status">Status</label>
+            <select name="status"  id="edit-select-status">
               <option value="todo">Todo</option>
               <option value="doing">Doing</option>
-              <option value="done">Done</option>
+              <option value="done">Done</option>>
             </select>
           </div>
           <button type="submit" class="submit-btn" id="create-task-btn">Save Changes</button>
@@ -316,12 +316,11 @@ async function main() {
       document.body.appendChild(editTaskForm);
           
 
-          
-
 
 
         })
-        
+
+       
 
       });
 
