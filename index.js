@@ -281,6 +281,10 @@ async function main() {
 
         //Edit task btn
         editTaskBtn.addEventListener('click', () => {
+
+          editTaskModalWindow.style.display = "none";
+          threeDotsBtn.removeEventListener('click', handleThreeDots)
+          document.removeEventListener("click", offClick)
           // taskTitle.contentEditable = true;
 
           // let inputField = document.createElement('input');
@@ -304,16 +308,19 @@ async function main() {
           <div class="input-div">
             <label class="label-modal-window" id="modal-select-status" for="edit-select-status">Status</label>
             <select name="status"  id="edit-select-status">
-              <option value="todo">Todo</option>
-              <option value="doing">Doing</option>
-              <option value="done">Done</option>>
+              <option value="todo" ${(filteredTasks[j].status == 'todo') ? 'selected' : ''}>Todo</option>
+              <option value="doing" ${(filteredTasks[j].status == 'doing') ? 'selected' : ''}>Doing</option>
+              <option value="done" ${(filteredTasks[j].status == 'done') ? 'selected' : ''}>Done</option>>
             </select>
           </div>
-          <button type="submit" class="submit-btn" id="create-task-btn">Save Changes</button>
-       `
-       editTaskModalWindow.style.display = "none";
+          <button type="submit" class="submit-btn" id="create-task-btn">Save Changes</button>`
+
+       
+       
        editTaskForm.style.display = 'flex';
       document.body.appendChild(editTaskForm);
+  
+
           
 
 
