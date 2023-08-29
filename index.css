@@ -428,6 +428,15 @@ header {
     color: #fff;
 }
 
+#edit-select-status-task {
+    height: 40px;
+    padding: 10px;
+    background-color: #2B2C37;
+    border: 1px solid #424852;
+    border-radius: 4px;
+    color: #fff;
+}
+
 .submit-btn {
     background-color: #635FC7;
     color: white;

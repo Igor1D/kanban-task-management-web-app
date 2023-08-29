@@ -85,8 +85,8 @@ form.addEventListener("submit", (event) => {
 })
 
 // func that takes an ID and the task OBJ and updates it on the server
-const changeTask = async (id, task) => {
-console.log(id, task)
+const changeTaskStatus = async (id, task) => {
+  console.log(id, task)
 
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
@@ -96,11 +96,32 @@ console.log(id, task)
     },
     body: JSON.stringify(task)
 
-  
+
   })
   location.reload();
 
 }
+
+const changeTask = async (id, task) => {
+
+  const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
+
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(task)
+
+
+})
+location.reload();
+
+
+}
+
+
+
+
 async function main() {
 
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
@@ -171,7 +192,7 @@ async function main() {
     const filteredTasks = tasks.filter(task => task.board === selectedBoard);
 
     console.log(filteredTasks, tasks, selectedBoard)
-    
+
 
     for (let j = 0; j < filteredTasks.length; j++) {
 
@@ -211,33 +232,33 @@ async function main() {
         // status change
         editDdl.addEventListener("change", (e) => {
 
-          
-          changeTask(
-            filteredTasks[j].id,{
-              status: e.target.value
-            }
-            
+
+          changeTaskStatus(
+            filteredTasks[j].id, {
+            status: e.target.value
+          }
+
 
           );
-          
+
 
         })
 
-        
+
 
 
         // Three dots
         // threeDotsBtn.addEventListener('click', (e) => {
         //   e.stopPropagation();
         //   console.log('clicked');
-        
+
         //   if (editBtnsDiv.classList.contains('show')) {
         //     editBtnsDiv.classList.remove('show');
         //   } else {
         //     editBtnsDiv.classList.add('show');
         //   }
         // });
-        function handleThreeDots (e){
+        function handleThreeDots(e) {
           e.stopPropagation();
           console.log('------------');
 
@@ -263,7 +284,7 @@ async function main() {
         // Three dots
         threeDotsBtn.addEventListener('click', handleThreeDots)
 
-        function offClick(event){
+        function offClick(event) {
           console.log('----------')
           if (event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)) {
             editTaskModalWindow.style.display = 'none';
@@ -306,28 +327,48 @@ async function main() {
           <textarea name="description" id="desc-input">${filteredTasks[j].description}</textarea>
           </div>
           <div class="input-div">
-            <label class="label-modal-window" id="modal-select-status" for="edit-select-status">Status</label>
-            <select name="status"  id="edit-select-status">
+            <label class="label-modal-window" id="modal-select-status-task" for="edit-select-status-task">Status</label>
+            <select name="status"  id="edit-select-status-task">
               <option value="todo" ${(filteredTasks[j].status == 'todo') ? 'selected' : ''}>Todo</option>
               <option value="doing" ${(filteredTasks[j].status == 'doing') ? 'selected' : ''}>Doing</option>
               <option value="done" ${(filteredTasks[j].status == 'done') ? 'selected' : ''}>Done</option>>
             </select>
           </div>
-          <button type="submit" class="submit-btn" id="create-task-btn">Save Changes</button>`
-
-       
-       
-       editTaskForm.style.display = 'flex';
-      document.body.appendChild(editTaskForm);
-  
-
+          <button type="submit" class="submit-btn" id="change-task-btn" >Save Changes</button>`
+          editTaskForm.style.display = 'flex';
+          document.body.appendChild(editTaskForm);
+          let saveChangesBtn = document.getElementById('change-task-btn');
           
+          console.log(saveChangesBtn);
+          
+          editTaskForm.addEventListener('submit', (e) => {
+
+
+            changeTask(
+              filteredTasks[j].id, {
+              title: 'new title',
+              description: 'new description',
+              status: e.target.value,
+              board: selectedBoard
+            }
+  
+  
+            );
+            console.log('changed')
+  
+          })
+
+
+
+
 
 
 
         })
 
-       
+
+
+
 
       });
 
