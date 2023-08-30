@@ -399,6 +399,11 @@ header {
     font-size: 14px;
 }
 
+#title-input-edit-task{
+    height: 30px;
+    font-size: 14px;
+}
+
 #desc-input {
     font-size: 14px;
     background-color: #2B2C37;
@@ -407,6 +412,14 @@ header {
     resize: none;
 
 
+}
+
+#desc-input-edit-task {
+    font-size: 14px;
+    background-color: #2B2C37;
+    border: 1px solid #424852;
+    border-radius: 4px;
+    resize: none;
 }
 
 #select-status {

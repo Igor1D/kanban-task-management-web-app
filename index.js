@@ -72,6 +72,7 @@ const createNewTask = async (task) => {
 
 
   });
+  location.reload();
 }
 
 form.addEventListener("submit", (event) => {
@@ -102,11 +103,11 @@ const changeTaskStatus = async (id, task) => {
 
 }
 
-const changeTask = async (id, task) => {
-
+const editTask = async (id, task) => {
+  console.log(id, task)
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
-  method: 'PUT',
+  method: 'PATCH',
   headers: {
     'Content-Type': 'application/json'
   },
@@ -320,11 +321,11 @@ async function main() {
           editTaskForm.innerHTML = `<h4 class="modal-title" >Edit Task</h4>
           <div class="input-div">
             <label class="label-modal-window" id="modal-title-input" for="title-input">Title</label>
-            <input type="text" class="modal-input" id="title-input" value="${filteredTasks[j].title}">
+            <input type="text" class="modal-input" id="title-input-edit-task" value="${filteredTasks[j].title}">
           </div>
           <div class="input-div">
-            <label class="label-modal-window" id="modal-desc-input" for="desc-input">Description</label>
-          <textarea name="description" id="desc-input">${filteredTasks[j].description}</textarea>
+            <label class="label-modal-window" id="modal-desc-input" for="desc-input-edit-task">Description</label>
+          <textarea name="description" id="desc-input-edit-task">${filteredTasks[j].description}</textarea>
           </div>
           <div class="input-div">
             <label class="label-modal-window" id="modal-select-status-task" for="edit-select-status-task">Status</label>
@@ -338,17 +339,23 @@ async function main() {
           editTaskForm.style.display = 'flex';
           document.body.appendChild(editTaskForm);
           let saveChangesBtn = document.getElementById('change-task-btn');
+          let titleInputEditTask = document.getElementById('title-input-edit-task');
+          // console.log(titleInputEditTask.value)
+          let descInputEditTask = document.getElementById('desc-input-edit-task');
+          // console.log(descInputEditTask.value)
+          let ddlEditTask = document.getElementById('edit-select-status-task')
+          console.log(ddlEditTask.value)
+          // console.log(saveChangesBtn);
           
-          console.log(saveChangesBtn);
-          
-          editTaskForm.addEventListener('submit', (e) => {
+          editTaskForm.addEventListener('submit', () => {
+            // event.preventDefault();
 
 
-            changeTask(
+            editTask(
               filteredTasks[j].id, {
-              title: 'new title',
-              description: 'new description',
-              status: e.target.value,
+              title: titleInputEditTask.value,
+              description: descInputEditTask.value,
+              status: ddlEditTask.value,
               board: selectedBoard
             }
   
