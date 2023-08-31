@@ -32,7 +32,7 @@ body {
     overflow-x: hidden;
     margin-right: 0;
     /* padding: 0 12px 0 26px; */
-    width: 15%;
+    width: 12%;
 }
 
 .boards-nav-links-div {
@@ -166,7 +166,7 @@ header {
     padding-left: 30px;
     padding-right: 35px;
     border-bottom: 0.1px solid #979797;
-    width: 82%;
+    width: 85%;
     position: fixed;
     right: 0;
 }
@@ -217,7 +217,7 @@ header {
     gap: 20px;
     /* border: 5px solid; */
     padding: 40px;
-    padding-left: 80px;
+    padding-left: 12px;
     padding-right: 80px;
 
 }
@@ -234,7 +234,7 @@ header {
     color: white;
     height: 90px;
     border-radius: 12px;
-    box-shadow: 1px 18px 37px 7px rgba(43, 44, 55, 0.23);
+    box-shadow: 1px 15px 42px -2px rgba(43,44,55,0.56);
     cursor: pointer;
 
 }

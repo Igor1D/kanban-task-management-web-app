@@ -24,6 +24,9 @@ let editDdl = document.getElementById("edit-select-status");
 let threeDotsBtn = document.getElementById("edit-btn");
 let editBtnsDiv = document.getElementById("editBtnsDiv");
 let editTaskBtn = document.getElementById("editTaskBtn");
+let deleteTaskBtn = document.getElementById('deleteTaskBtn');
+console.log(deleteTaskBtn);
+
 console
 console.log(editBtnsDiv.style.display);
 
@@ -35,7 +38,7 @@ let form = document.getElementById("new-task-modal-window");
 
 //DDL
 let ddl = document.getElementById("select-status")
-console.log(ddl.value)
+// console.log(ddl.value)
 
 // Board local storage
 let selectedBoard;
@@ -43,7 +46,7 @@ let boardLocalStorage = localStorage.getItem('selectedBoard');
 
 
 
-console.log(boardLocalStorage);
+// console.log(boardLocalStorage);
 
 if (!boardLocalStorage) {
   selectedBoard = "Platform Launch";
@@ -120,6 +123,24 @@ location.reload();
 
 }
 
+const deleteTask = async (id, task) => {
+  console.log(id, task)
+  const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
+
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(task)
+
+
+})
+location.reload();
+
+
+}
+
+
 
 
 
@@ -192,7 +213,7 @@ async function main() {
 
     const filteredTasks = tasks.filter(task => task.board === selectedBoard);
 
-    console.log(filteredTasks, tasks, selectedBoard)
+    // console.log(filteredTasks, tasks, selectedBoard)
 
 
     for (let j = 0; j < filteredTasks.length; j++) {
@@ -209,7 +230,7 @@ async function main() {
       } else if (filteredTasks[j].status == 'done') {
         columnDivs[2].appendChild(taskDiv);
       }
-      console.log(filteredTasks[j].id)
+      // console.log(filteredTasks[j].id)
 
 
       // Modal window task
@@ -343,10 +364,10 @@ async function main() {
           // console.log(titleInputEditTask.value)
           let descInputEditTask = document.getElementById('desc-input-edit-task');
           // console.log(descInputEditTask.value)
-          let ddlEditTask = document.getElementById('edit-select-status-task')
-          console.log(ddlEditTask.value)
+          let ddlEditTask = document.getElementById('edit-select-status-task');
+          // console.log(ddlEditTask.value)
           // console.log(saveChangesBtn);
-          
+
           editTaskForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
@@ -365,14 +386,33 @@ async function main() {
   
           })
 
+          
 
-
-
+          
 
 
 
         })
 
+        deleteTaskBtn.addEventListener('click', ()=> {
+          // threeDotsBtn.removeEventListener('click', handleThreeDots)
+          // document.removeEventListener("click", offClick)
+          
+          
+          
+          deleteTask(
+            filteredTasks[j].id, {
+            title: filteredTasks[j].title,
+            description: filteredTasks[j].description,
+            status: filteredTasks[j].status,
+            board: selectedBoard
+          }
+
+
+          );
+
+
+        })
 
 
 
