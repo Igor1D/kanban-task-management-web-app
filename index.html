@@ -15,72 +15,86 @@
 </head>
 
 <body>
-  <nav class="side-bar">
-    <div id="side-logo-div"><img id="logo" src="./assets/logo-light.svg" alt="logo-dark"></div>
-
-    <div class="boards-nav-links-div" id="boards-nav-links-div">
-      <h4 id="headline-sidepanel">ALL BOARDS</h4>
-      <button class="board-btn" id="board-btn">
-        <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Platform Launch
-      </button>
-      <button class="board-btn" id="board-btn">
-        <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Marketing Plan
-      </button>
-      <button  class="board-btn" id="board-btn">
-        <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Roadmap
-      </button>
 
 
-    </div>
-
-    <div class="side-bar-bottom">
-    <div class="toggle-div">
-      <img src="./assets/icon-light-theme.svg" id="icon-light" alt="icon-light-theme">
-      <input type="checkbox" id="switch" /><label for="switch" id="label-checkbox-theme"></label>
-      <img src="./assets/icon-dark-theme.svg" id="icon-dark" alt="icon-dark-theme.svg">
-    </div>
-    <div class="hide-side-bar-div">
-    <img src="./assets/icon-hide-sidebar.svg" alt="icon-hide-sidebar">
-    <button class="hide-side-bar-btn">Hide Sidebar</button>
-  </div>
-  </div>
-  </nav>
-  <div class="container">
+  
+  <div id="layout">
     <header>
       <div class="header-board-name" id="header-board-name"></div>
       <button id="add-new-task-btn" class="primary-btn">+ Add New Task</button>
      
     </header>
-    <main class="card-column-main">
-      <div class="column-div">
-        <div id="todo-head-div" class ="column-head-div"><span class="dot" id="todo-dot"></span><h4 id="toDoText">TODO (4)</h4></div>
-        
-        <!-- <div class="task-div">
-          <p class="p-task">Building UI for onboarding flow</p>
-        </div> -->
-        
-        <!-- <div class="task-div" id="task-div">
-          <p class="p-task">Building UI for search</p>
-        </div> -->
+
+    <nav class="side-bar">
+      <div id="side-logo-div"><img id="logo" src="./assets/logo-light.svg" alt="logo-dark"></div>
+  
+      <div class="boards-nav-links-div" id="boards-nav-links-div">
+        <h4 id="headline-sidepanel">ALL BOARDS</h4>
+        <button class="board-btn" id="board-btn">
+          <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Platform Launch
+        </button>
+        <button class="board-btn" id="board-btn">
+          <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Marketing Plan
+        </button>
+        <button  class="board-btn" id="board-btn">
+          <img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">Roadmap
+        </button>
+  
+  
       </div>
-
-      <div class="column-div">
-        <div id="doing-head-div" class="column-head-div"><span class="dot" id="doing-dot"></span><h4>DOING (2)</h4></div>
-        
-        <!-- <div class="task-div" id="task-div">
-
-        
-        </div> -->
+  
+      <div class="side-bar-bottom">
+      <div class="toggle-div">
+        <img src="./assets/icon-light-theme.svg" id="icon-light" alt="icon-light-theme">
+        <input type="checkbox" id="switch" /><label for="switch" id="label-checkbox-theme"></label>
+        <img src="./assets/icon-dark-theme.svg" id="icon-dark" alt="icon-dark-theme.svg">
       </div>
-      <div class="column-div">
-        <div id="done-head-div" class ="column-head-div"><span class="dot" id="done-dot"></span><h4>DONE (2)</h4></div>
-        
-        <!-- <div class="task-div" id="task-div">
+      <div class="hide-side-bar-div">
+      <img src="./assets/icon-hide-sidebar.svg" alt="icon-hide-sidebar">
+      <button class="hide-side-bar-btn">Hide Sidebar</button>
+    </div>
+    </div>
+    </nav>
 
-        </div> -->
+   
 
-      </div>
-    </main>
+
+    <div class="container">
+    
+      <main class="card-column-main">
+        <div class="column-div">
+          <div id="todo-head-div" class ="column-head-div"><span class="dot" id="todo-dot"></span><h4 id="toDoText">TODO (4)</h4></div>
+          
+          <!-- <div class="task-div">
+            <p class="p-task">Building UI for onboarding flow</p>
+          </div> -->
+          
+          <!-- <div class="task-div" id="task-div">
+            <p class="p-task">Building UI for search</p>
+          </div> -->
+        </div>
+  
+        <div class="column-div">
+          <div id="doing-head-div" class="column-head-div"><span class="dot" id="doing-dot"></span><h4>DOING (2)</h4></div>
+          
+          <!-- <div class="task-div" id="task-div">
+  
+          
+          </div> -->
+        </div>
+        <div class="column-div">
+          <div id="done-head-div" class ="column-head-div"><span class="dot" id="done-dot"></span><h4>DONE (2)</h4></div>
+          
+          <!-- <div class="task-div" id="task-div">
+  
+          </div> -->
+  
+        </div>
+      </main>
+  
+  
+    </div>
+
 
 
   </div>

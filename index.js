@@ -86,7 +86,7 @@ form.addEventListener("submit", (event) => {
 })
 
 // func that takes an ID and the task OBJ and updates it on the server
-const changeTaskStatus = async (id, task) => {
+const patchTask = async (id, task) => {
   console.log(id, task)
 
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
@@ -103,11 +103,11 @@ const changeTaskStatus = async (id, task) => {
 
 }
 
-const editTask = async (id, task) => {
+const putTask = async (id, task) => {
   console.log(id, task)
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
-  method: 'PATCH',
+  method: 'PUT',
   headers: {
     'Content-Type': 'application/json'
   },
@@ -234,7 +234,7 @@ async function main() {
         editDdl.addEventListener("change", (e) => {
 
 
-          changeTaskStatus(
+          patchTask(
             filteredTasks[j].id, {
             status: e.target.value
           }
@@ -347,11 +347,11 @@ async function main() {
           console.log(ddlEditTask.value)
           // console.log(saveChangesBtn);
           
-          editTaskForm.addEventListener('submit', () => {
-            // event.preventDefault();
+          editTaskForm.addEventListener('submit', (event) => {
+            event.preventDefault();
 
 
-            editTask(
+            putTask(
               filteredTasks[j].id, {
               title: titleInputEditTask.value,
               description: descInputEditTask.value,
