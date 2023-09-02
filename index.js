@@ -26,9 +26,14 @@ let editBtnsDiv = document.getElementById("editBtnsDiv");
 let editTaskBtn = document.getElementById("editTaskBtn");
 let deleteTaskBtn = document.getElementById('deleteTaskBtn');
 console.log(deleteTaskBtn);
-
-console
 console.log(editBtnsDiv.style.display);
+
+// Side Bar
+let sideBar = document.getElementsByClassName('side-bar')[0];
+console.log(sideBar);
+let hideSideBarBtn = document.getElementById('hide-side-bar-btn');
+let showSideBarBtn = document.getElementById('show-side-bar-btn');
+console.log(showSideBarBtn);
 
 
 
@@ -140,7 +145,22 @@ location.reload();
 
 }
 
+function closeSideBar() {
+  sideBar.style.display = "none";
+  showSideBarBtn.style.display = "block"
+  
+}
 
+function openSideBar() {
+  sideBar.style.display = "flex";
+  showSideBarBtn.style.display = "none"
+}
+
+
+
+
+hideSideBarBtn.addEventListener('click',closeSideBar);
+showSideBarBtn.addEventListener('click', openSideBar)
 
 
 
@@ -299,9 +319,6 @@ async function main() {
           console.log('------------')
 
         }
-
-
-
 
         // Three dots
         threeDotsBtn.addEventListener('click', handleThreeDots)

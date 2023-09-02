@@ -126,12 +126,26 @@ h4 {
     margin-left: 50px;
 }
 
+#show-side-bar-btn{
+    border: none;
+    width: 50px;
+    height: 40px;
+    z-index: 2;
+    position: absolute;
+    bottom: 45px;
+    border-radius: 0 20px 20px 0;
+    background-color: #635FC7;
+    display: none;
+    cursor: pointer;
+}
 
-.hide-side-bar-btn {
+
+#hide-side-bar-btn {
     color: white;
     background-color: transparent;
     border: 0;
     color: #828FA3;
+    cursor: pointer;
 }
 
 
@@ -200,14 +214,16 @@ header {
     /* border: 5px solid rgb(170, 211, 58); */
     padding-top: 130px;
     padding-left: 340px;
+    
 }
 
 .card-column-main {
 
     display: flex;
     flex-direction: row;
-    /* border: 5px solid rgb(127, 84, 187); */
-    height: 100%;
+
+    
+    
 }
 
 .column-div {
