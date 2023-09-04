@@ -183,13 +183,11 @@ header {
     width: 85%;
     position: fixed;
     right: 0;
-}
-
-.header-board-name {
     color: white;
     font-size: 30px;
     font-weight: 600;
 }
+
 
 #add-new-task-btn {
     background-color: #635FC7;

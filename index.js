@@ -33,10 +33,10 @@ let sideBar = document.getElementsByClassName('side-bar')[0];
 console.log(sideBar);
 let hideSideBarBtn = document.getElementById('hide-side-bar-btn');
 let showSideBarBtn = document.getElementById('show-side-bar-btn');
+let headerDiv = document.getElementById('header');
 console.log(showSideBarBtn);
 
-
-
+let containerDiv = document.getElementsByClassName('container')[0];
 
 // Form
 let form = document.getElementById("new-task-modal-window");
@@ -147,20 +147,40 @@ location.reload();
 
 function closeSideBar() {
   sideBar.style.display = "none";
-  showSideBarBtn.style.display = "block"
+  showSideBarBtn.style.display = "block";
+  headerDiv.style.width = "100%";
+  headerDiv.style.left = "0";
+  headerDiv.style.padding = "0";
+  createNewTaskBtn.style.marginRight = "40px";
+  headerBoardName.style.marginLeft = "40px";
+  containerDiv.style.paddingLeft = "320px";
+  containerDiv.style.paddingRight = "250px"
+  containerDiv.style.paddingTop = "150px"
+  
+
+
   
 }
 
 function openSideBar() {
   sideBar.style.display = "flex";
-  showSideBarBtn.style.display = "none"
+  showSideBarBtn.style.display = "none";
+  headerDiv.style.width = "90%";
+  headerDiv.style.left = "280px";
+  createNewTaskBtn.style.marginRight = "50px";
+  headerBoardName.style.marginLeft = "80px";
+  containerDiv.style.paddingLeft = "340px";
+  containerDiv.style.paddingRight = "0"
+  containerDiv.style.paddingTop = "130px"
+
+  
 }
 
 
 
 
 hideSideBarBtn.addEventListener('click',closeSideBar);
-showSideBarBtn.addEventListener('click', openSideBar)
+showSideBarBtn.addEventListener('click', openSideBar);
 
 
 
