@@ -14,8 +14,9 @@ body {
 #layout {
     /* position: fixed; */
     height: 100vh;
-    width: 100%;
+    
     display: flex;
+    flex: 1;
     flex-direction: column;
 }
 
@@ -209,7 +210,7 @@ header {
 .container {
     display: flex;
     flex-direction: column;
-    flex: 5;
+    /* flex: 5; */
     /* border: 5px solid rgb(170, 211, 58); */
     /* padding-top: 130px; */
     padding-left: 35px;
@@ -597,8 +598,18 @@ input:checked+#label-checkbox-theme:after {
 
 @media screen and (max-width: 800px) {
 
-    .task-div {
+    /* .task-div {
         width: 450px;
+    } */
+    .side-bar {
+        display: none;
+    }
+    .container {
+        max-width: 100%;
+    }
+    #header-board-name {
+        font-size: 12px;
+
     }
     
 }

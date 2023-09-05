@@ -404,13 +404,34 @@ async function main() {
   
           })
 
+         
+
+          function editTaskOffClick(event) {
+            console.log('Start-------editTaskOffClick')
+            if (event.target != editTaskBtn && !editTaskForm.contains(event.target)) {
+              console.log(event.target)
+              editTaskForm.style.display = 'none';
+              filterDiv.style.display = 'none';
+              editBtnsDiv.style.display = 'none';
+
+  
+              console.log('end-------editTaskOffClick');
+              threeDotsBtn.removeEventListener('click', handleThreeDots)
+              document.removeEventListener("click", editTaskOffClick)
+            } else {
+              editTaskForm.style.display = 'flex';
+              filterDiv.style.display = 'block';
+            }
+          }
+          document.addEventListener("click", editTaskOffClick)
+          
           
 
-          
 
 
 
         })
+
 
         deleteTaskBtn.addEventListener('click', ()=> {
           // threeDotsBtn.removeEventListener('click', handleThreeDots)
