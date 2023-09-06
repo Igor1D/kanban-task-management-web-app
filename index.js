@@ -49,8 +49,52 @@ let ddl = document.getElementById("select-status")
 let selectedBoard;
 let boardLocalStorage = localStorage.getItem('selectedBoard');
 
+// Side bar local storage
+// let flexSideBar = sideBar.style.setProperty('display', 'flex');
+// let noneSideBar = sideBar.style.setProperty('display', 'none')
+let sideBarState;
+let sideBarLocalStorage = localStorage.getItem('sideBarState');
 
 
+
+if (!sideBarLocalStorage) {
+  sideBarState = sideBar.style.setProperty('display', 'flex');
+} else {
+  sideBarState = sideBarLocalStorage;
+
+
+}
+console.log(sideBarState);
+console.log(sideBar.style.display);
+
+
+function closeSideBar() {
+  
+  sideBar.style.display = "none";
+  showSideBarBtn.style.display = "block";
+  localStorage.setItem("sideBarState", sideBarState)
+  
+    
+}
+
+function openSideBar() {
+  
+  sideBar.style.display = "flex";
+  showSideBarBtn.style.display = "none";
+  localStorage.setItem("sideBarState", sideBarState)
+  
+
+}
+
+
+
+
+hideSideBarBtn.addEventListener('click',closeSideBar);
+showSideBarBtn.addEventListener('click', openSideBar);
+
+
+
+//Board local storage
 // console.log(boardLocalStorage);
 
 if (!boardLocalStorage) {
@@ -145,23 +189,6 @@ location.reload();
 
 }
 
-function closeSideBar() {
-  sideBar.style.display = "none";
-  showSideBarBtn.style.display = "block";
-
-    
-}
-
-function openSideBar() {
-  sideBar.style.display = "flex";
-  showSideBarBtn.style.display = "none";
-}
-
-
-
-
-hideSideBarBtn.addEventListener('click',closeSideBar);
-showSideBarBtn.addEventListener('click', openSideBar);
 
 
 
