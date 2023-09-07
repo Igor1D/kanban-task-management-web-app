@@ -53,24 +53,32 @@ let boardLocalStorage = localStorage.getItem('selectedBoard');
 // let flexSideBar = sideBar.style.setProperty('display', 'flex');
 // let noneSideBar = sideBar.style.setProperty('display', 'none')
 let sideBarState;
+// true or false - boolean
+// 'flex' or 'none'
 let sideBarLocalStorage = localStorage.getItem('sideBarState');
 
 
 
 if (!sideBarLocalStorage) {
-  sideBarState = sideBar.style.setProperty('display', 'flex');
+  sideBarState = 'flex'
 } else {
+  // here sideBarLocalStorage may be 'flex' or it may be 'none
   sideBarState = sideBarLocalStorage;
-
-
 }
-console.log(sideBarState);
-console.log(sideBar.style.display);
+
+if (sideBarState === 'flex') {
+  showSideBarBtn.style.display = "none";
+} else {
+  showSideBarBtn.style.display = "block";
+}
+
+sideBar.style.setProperty('display', sideBarState);
 
 
 function closeSideBar() {
-  
-  sideBar.style.display = "none";
+  console.log(sideBarState);
+  sideBarState = 'none';
+  sideBar.style.display = sideBarState;
   showSideBarBtn.style.display = "block";
   localStorage.setItem("sideBarState", sideBarState)
   
@@ -78,8 +86,9 @@ function closeSideBar() {
 }
 
 function openSideBar() {
-  
-  sideBar.style.display = "flex";
+  console.log(sideBarState);
+  sideBarState = 'flex';
+  sideBar.style.display = sideBarState;
   showSideBarBtn.style.display = "none";
   localStorage.setItem("sideBarState", sideBarState)
   
@@ -367,6 +376,11 @@ async function main() {
 
         document.addEventListener("click", offClick)
 
+
+
+
+        
+        
         //Edit task btn
         editTaskBtn.addEventListener('click', () => {
 
@@ -413,6 +427,8 @@ async function main() {
           // console.log(ddlEditTask.value)
           // console.log(saveChangesBtn);
 
+          // editTaskBtn.removeEventListener('click', handleEditTaskBtn);
+
           editTaskForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
@@ -431,18 +447,29 @@ async function main() {
   
           })
 
-         
+          // function handleEditTaskBtn() {
+            
+          //   if (editTaskForm.style.display === 'none'|| editTaskForm.style.display === '') {
+              
+          //     editTaskForm.style.display = 'flex'
+  
+          //   } else {
+          //     editTaskForm.style.display = 'none'
+          //   }
+          // }
+          // console.log(editTaskForm.style.display)
 
           function editTaskOffClick(event) {
             console.log('Start-------editTaskOffClick')
             if (event.target != editTaskBtn && !editTaskForm.contains(event.target)) {
               console.log(event.target)
-              editTaskForm.style.display = 'none';
+              editTaskForm.remove();
               filterDiv.style.display = 'none';
               editBtnsDiv.style.display = 'none';
 
   
               console.log('end-------editTaskOffClick');
+             
               threeDotsBtn.removeEventListener('click', handleThreeDots)
               document.removeEventListener("click", editTaskOffClick)
             } else {
@@ -453,13 +480,13 @@ async function main() {
           document.addEventListener("click", editTaskOffClick)
           
           
-
-
-
+          // editTaskBtn.removeEventListener('click', handleEditTaskBtn);
+          
+          console.log(editTaskForm.style.display)
 
         })
-
-
+        
+        
         deleteTaskBtn.addEventListener('click', ()=> {
           // threeDotsBtn.removeEventListener('click', handleThreeDots)
           // document.removeEventListener("click", offClick)
