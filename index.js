@@ -376,8 +376,16 @@ async function main() {
 
         document.addEventListener("click", offClick)
 
+        function handleEditTaskBtn(e) {
+          if (editTaskForm) {
+            
+            editTaskForm.remove();
+            document.removeEventListener("click", handleEditTaskBtn)
 
+          } 
+        }
 
+        document.removeEventListener("click", handleEditTaskBtn)
 
         
         
@@ -387,6 +395,7 @@ async function main() {
           editTaskModalWindow.style.display = "none";
           threeDotsBtn.removeEventListener('click', handleThreeDots)
           document.removeEventListener("click", offClick)
+
           // taskTitle.contentEditable = true;
 
           // let inputField = document.createElement('input');
@@ -427,7 +436,6 @@ async function main() {
           // console.log(ddlEditTask.value)
           // console.log(saveChangesBtn);
 
-          // editTaskBtn.removeEventListener('click', handleEditTaskBtn);
 
           editTaskForm.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -447,17 +455,8 @@ async function main() {
   
           })
 
-          // function handleEditTaskBtn() {
-            
-          //   if (editTaskForm.style.display === 'none'|| editTaskForm.style.display === '') {
-              
-          //     editTaskForm.style.display = 'flex'
-  
-          //   } else {
-          //     editTaskForm.style.display = 'none'
-          //   }
-          // }
-          // console.log(editTaskForm.style.display)
+          
+          console.log(editTaskForm.style.display)
 
           function editTaskOffClick(event) {
             console.log('Start-------editTaskOffClick')
@@ -471,6 +470,9 @@ async function main() {
               console.log('end-------editTaskOffClick');
              
               threeDotsBtn.removeEventListener('click', handleThreeDots)
+              editTaskBtn.removeEventListener("click", handleEditTaskBtn)
+              console.log(editTaskForm.style.display)
+
               document.removeEventListener("click", editTaskOffClick)
             } else {
               editTaskForm.style.display = 'flex';
@@ -480,16 +482,12 @@ async function main() {
           document.addEventListener("click", editTaskOffClick)
           
           
-          // editTaskBtn.removeEventListener('click', handleEditTaskBtn);
-          
-          console.log(editTaskForm.style.display)
 
         })
         
         
         deleteTaskBtn.addEventListener('click', ()=> {
-          // threeDotsBtn.removeEventListener('click', handleThreeDots)
-          // document.removeEventListener("click", offClick)
+
           
           
           
