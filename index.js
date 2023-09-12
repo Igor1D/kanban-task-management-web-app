@@ -206,6 +206,19 @@ async function main() {
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
   let tasks = await results.json();
 
+  // console.log(tasks[0].board)
+  let allBoards = [];
+
+  for (let i= 0; i <tasks.length; i++) {
+    if (tasks[i].board !== undefined) {
+      allBoards.push(tasks[i].board);
+    }
+  }
+  console.log(allBoards);
+
+  let uniqueBoards = [... new Set(allBoards)]
+  console.log(uniqueBoards)
+
 
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", () => {
@@ -376,22 +389,7 @@ async function main() {
 
         document.addEventListener("click", offClick)
 
-        function handleEditTaskBtn(e) {
-          if (editTaskForm) {
-            
-            editTaskForm.remove();
-            document.removeEventListener("click", handleEditTaskBtn)
-
-          } 
-        }
-
-        document.removeEventListener("click", handleEditTaskBtn)
-
-        
-        
-        //Edit task btn
-        editTaskBtn.addEventListener('click', () => {
-
+        function handleEditTaskBtn() {
           editTaskModalWindow.style.display = "none";
           threeDotsBtn.removeEventListener('click', handleThreeDots)
           document.removeEventListener("click", offClick)
@@ -470,7 +468,7 @@ async function main() {
               console.log('end-------editTaskOffClick');
              
               threeDotsBtn.removeEventListener('click', handleThreeDots)
-              editTaskBtn.removeEventListener("click", handleEditTaskBtn)
+              // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
               console.log(editTaskForm.style.display)
 
               document.removeEventListener("click", editTaskOffClick)
@@ -483,7 +481,17 @@ async function main() {
           
           
 
-        })
+          // removing the event listener
+          editTaskBtn.removeEventListener('click', handleEditTaskBtn);
+        }
+
+        // document.removeEventListener("click", handleEditTaskBtn)
+
+        
+        
+        //Edit task btn - we are adding an event handler to a btn that we never actually remove(btn) 
+        // because of that we need to remove the event handler from the btn to avoid adding event handler thousand times
+        editTaskBtn.addEventListener('click', handleEditTaskBtn);
         
         
         deleteTaskBtn.addEventListener('click', ()=> {
