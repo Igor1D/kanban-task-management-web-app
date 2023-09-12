@@ -25,16 +25,18 @@ let threeDotsBtn = document.getElementById("edit-btn");
 let editBtnsDiv = document.getElementById("editBtnsDiv");
 let editTaskBtn = document.getElementById("editTaskBtn");
 let deleteTaskBtn = document.getElementById('deleteTaskBtn');
-console.log(deleteTaskBtn);
-console.log(editBtnsDiv.style.display);
+// console.log(deleteTaskBtn);
+// console.log(editBtnsDiv.style.display);
 
 // Side Bar
+let boardNavLinksDiv = document.getElementById("boards-nav-links-div")
+// console.log(boardNavLinksDiv)
 let sideBar = document.getElementsByClassName('side-bar')[0];
-console.log(sideBar);
+// console.log(sideBar);
 let hideSideBarBtn = document.getElementById('hide-side-bar-btn');
 let showSideBarBtn = document.getElementById('show-side-bar-btn');
 let headerDiv = document.getElementById('header');
-console.log(showSideBarBtn);
+// console.log(showSideBarBtn);
 
 let containerDiv = document.getElementsByClassName('container')[0];
 
@@ -76,7 +78,7 @@ sideBar.style.setProperty('display', sideBarState);
 
 
 function closeSideBar() {
-  console.log(sideBarState);
+  // console.log(sideBarState);
   sideBarState = 'none';
   sideBar.style.display = sideBarState;
   showSideBarBtn.style.display = "block";
@@ -86,7 +88,7 @@ function closeSideBar() {
 }
 
 function openSideBar() {
-  console.log(sideBarState);
+  // console.log(sideBarState);
   sideBarState = 'flex';
   sideBar.style.display = sideBarState;
   showSideBarBtn.style.display = "none";
@@ -148,7 +150,7 @@ form.addEventListener("submit", (event) => {
 
 // func that takes an ID and the task OBJ and updates it on the server
 const patchTask = async (id, task) => {
-  console.log(id, task)
+  // console.log(id, task)
 
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
@@ -165,7 +167,7 @@ const patchTask = async (id, task) => {
 }
 
 const putTask = async (id, task) => {
-  console.log(id, task)
+  // console.log(id, task)
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
   method: 'PUT',
@@ -182,7 +184,7 @@ location.reload();
 }
 
 const deleteTask = async (id, task) => {
-  console.log(id, task)
+  // console.log(id, task)
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
   method: 'DELETE',
@@ -214,32 +216,68 @@ async function main() {
       allBoards.push(tasks[i].board);
     }
   }
-  console.log(allBoards);
+  // console.log(allBoards);
 
   let uniqueBoards = [... new Set(allBoards)]
-  console.log(uniqueBoards)
+  // console.log(uniqueBoards)
+
+  for (let i = 0; i < uniqueBoards.length; i++ ) {
+    let boardBtn = document.createElement('button')
+    boardBtn.classList = "board-btn";
+    
+    boardBtn.id = "board-btn";
+    boardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">${uniqueBoards[i]}</button>`
+    boardNavLinksDiv.appendChild(boardBtn);
+    // boardBtn.classList = 'active';
+
+    let boardBtns = document.querySelectorAll(".board-btn");
+    // console.log(boardBtns)
+    
+    for (let i = 0; i < boardBtns.length; i++) {
+      // console.log(boardBtns)
+      boardBtns[i].addEventListener("click", () => {
+        // console.log("clicked")
+        document.querySelector('.active')?.classList.remove('active');
+        boardBtns[i].classList.add('active');
+  
+        selectedBoard = `${uniqueBoards[i]}`;
+  
+        headerBoardName.innerText = selectedBoard;
+        console.log("Button clicked:", selectedBoard);
+        localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
+        // console.log(selectedBoard);
+        showTasks();
 
 
-  for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", () => {
+      })
 
-      document.querySelector('.active')?.classList.remove('active');
-      btns[i].classList.add('active');
-
-      selectedBoard = btns[i].innerText;
-
-      headerBoardName.innerText = selectedBoard;
-      console.log("Button clicked:", selectedBoard);
-      localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
-      console.log(selectedBoard);
-      showTasks();
-
-
-
-    });
+    }
 
 
   }
+
+
+
+  // for (let i = 0; i < btns.length; i++) {
+  //   btns[i].addEventListener("click", () => {
+
+  //     document.querySelector('.active')?.classList.remove('active');
+  //     btns[i].classList.add('active');
+
+  //     selectedBoard = btns[i].innerText;
+
+  //     headerBoardName.innerText = selectedBoard;
+  //     console.log("Button clicked:", selectedBoard);
+  //     localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
+  //     console.log(selectedBoard);
+  //     showTasks();
+
+
+
+  //   });
+
+
+  // }
 
   createNewTaskBtn.addEventListener("click", (e) => {
     e.stopPropagation();
