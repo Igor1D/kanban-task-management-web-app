@@ -115,14 +115,14 @@ if (!boardLocalStorage) {
 }
 
 
-// ask Lazar about the following:
-if (selectedBoard) {
-  const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
-  if (activeButton) {
-    activeButton.classList.add('active');
-  }
-}
-headerBoardName.innerText = selectedBoard;
+// ask Lazar about the following - moved to the
+// if (selectedBoard) {
+//   const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
+//   if (activeButton) {
+//     activeButton.classList.add('active');
+//   }
+// }
+// headerBoardName.innerText = selectedBoard;
 
 const createNewTask = async (task) => {
   const response = await fetch(`https://kanban-backend-server.onrender.com/tasks`, {
@@ -252,6 +252,14 @@ async function main() {
       })
 
     }
+    // Ask Lazar - Array.from(boardBtns).find(boardBtn => boardBtn.innerText === selectedBoard);
+    if (selectedBoard) {
+      const activeButton = Array.from(boardBtns).find(btn => btn.innerText === selectedBoard);
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+    }
+    headerBoardName.innerText = selectedBoard;
 
 
   }
