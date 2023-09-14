@@ -83,8 +83,8 @@ function closeSideBar() {
   sideBar.style.display = sideBarState;
   showSideBarBtn.style.display = "block";
   localStorage.setItem("sideBarState", sideBarState)
-  
-    
+
+
 }
 
 function openSideBar() {
@@ -93,14 +93,14 @@ function openSideBar() {
   sideBar.style.display = sideBarState;
   showSideBarBtn.style.display = "none";
   localStorage.setItem("sideBarState", sideBarState)
-  
+
 
 }
 
 
 
 
-hideSideBarBtn.addEventListener('click',closeSideBar);
+hideSideBarBtn.addEventListener('click', closeSideBar);
 showSideBarBtn.addEventListener('click', openSideBar);
 
 
@@ -170,15 +170,15 @@ const putTask = async (id, task) => {
   // console.log(id, task)
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(task)
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(task)
 
 
-})
-location.reload();
+  })
+  location.reload();
 
 
 }
@@ -187,15 +187,15 @@ const deleteTask = async (id, task) => {
   // console.log(id, task)
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
-  method: 'DELETE',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(task)
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(task)
 
 
-})
-location.reload();
+  })
+  location.reload();
 
 
 }
@@ -211,58 +211,62 @@ async function main() {
   // console.log(tasks[0].board)
   let allBoards = [];
 
-  for (let i= 0; i <tasks.length; i++) {
-    if (tasks[i].board !== undefined) {
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].board) {
       allBoards.push(tasks[i].board);
     }
   }
-  // console.log(allBoards);
 
-  let uniqueBoards = [... new Set(allBoards)]
-  // console.log(uniqueBoards)
+  const mySet = new Set(allBoards)
 
-  for (let i = 0; i < uniqueBoards.length; i++ ) {
+  let uniqueBoards = [...mySet]
+
+  for (let i = 0; i < uniqueBoards.length; i++) {
     let boardBtn = document.createElement('button')
-    boardBtn.classList = "board-btn";
-    
+
+    boardBtn.classList.add("board-btn");
+    // boardBtn.className = "board-btn";
+
+
     boardBtn.id = "board-btn";
     boardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">${uniqueBoards[i]}</button>`
     boardNavLinksDiv.appendChild(boardBtn);
     // boardBtn.classList = 'active';
+  }
 
-    let boardBtns = document.querySelectorAll(".board-btn");
+  let boardBtns = document.querySelectorAll(".board-btn");
+  // console.log(boardBtns)
+
+  if (selectedBoard) {
+    const activeButton = Array.from(boardBtns).find(boardBtn => boardBtn.innerText === selectedBoard);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+  }
+  headerBoardName.innerText = selectedBoard;
+
+
+
+  for (let i = 0; i < boardBtns.length; i++) {
     // console.log(boardBtns)
-    
-    for (let i = 0; i < boardBtns.length; i++) {
-      // console.log(boardBtns)
-      boardBtns[i].addEventListener("click", () => {
-        // console.log("clicked")
-        document.querySelector('.active')?.classList.remove('active');
-        boardBtns[i].classList.add('active');
-  
-        selectedBoard = `${uniqueBoards[i]}`;
-  
-        headerBoardName.innerText = selectedBoard;
-        console.log("Button clicked:", selectedBoard);
-        localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
-        // console.log(selectedBoard);
-        showTasks();
+    boardBtns[i].addEventListener("click", () => {
+      // console.log("clicked")
+      document.querySelector('.active')?.classList.remove('active');
+      boardBtns[i].classList.add('active');
+
+      selectedBoard = uniqueBoards[i];
+
+      headerBoardName.innerText = selectedBoard;
+      console.log("Button clicked:", selectedBoard);
+      localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
+      // console.log(selectedBoard);
+      showTasks();
 
 
-      })
-
-    }
-    // Ask Lazar - Array.from(boardBtns).find(boardBtn => boardBtn.innerText === selectedBoard);
-    if (selectedBoard) {
-      const activeButton = Array.from(boardBtns).find(btn => btn.innerText === selectedBoard);
-      if (activeButton) {
-        activeButton.classList.add('active');
-      }
-    }
-    headerBoardName.innerText = selectedBoard;
-
+    })
 
   }
+
 
 
 
@@ -492,14 +496,14 @@ async function main() {
               status: ddlEditTask.value,
               board: selectedBoard
             }
-  
-  
+
+
             );
             console.log('changed')
-  
+
           })
 
-          
+
           console.log(editTaskForm.style.display)
 
           function editTaskOffClick(event) {
@@ -510,9 +514,9 @@ async function main() {
               filterDiv.style.display = 'none';
               editBtnsDiv.style.display = 'none';
 
-  
+
               console.log('end-------editTaskOffClick');
-             
+
               threeDotsBtn.removeEventListener('click', handleThreeDots)
               // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
               console.log(editTaskForm.style.display)
@@ -524,8 +528,8 @@ async function main() {
             }
           }
           document.addEventListener("click", editTaskOffClick)
-          
-          
+
+
 
           // removing the event listener
           editTaskBtn.removeEventListener('click', handleEditTaskBtn);
@@ -533,18 +537,18 @@ async function main() {
 
         // document.removeEventListener("click", handleEditTaskBtn)
 
-        
-        
+
+
         //Edit task btn - we are adding an event handler to a btn that we never actually remove(btn) 
         // because of that we need to remove the event handler from the btn to avoid adding event handler thousand times
         editTaskBtn.addEventListener('click', handleEditTaskBtn);
-        
-        
-        deleteTaskBtn.addEventListener('click', ()=> {
 
-          
-          
-          
+
+        deleteTaskBtn.addEventListener('click', () => {
+
+
+
+
           deleteTask(
             filteredTasks[j].id, {
             title: filteredTasks[j].title,
