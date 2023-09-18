@@ -203,6 +203,7 @@ const deleteTask = async (id, task) => {
 
 
 
+
 async function main() {
 
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
@@ -221,6 +222,7 @@ async function main() {
 
   let uniqueBoards = [...mySet]
 
+
   for (let i = 0; i < uniqueBoards.length; i++) {
     let boardBtn = document.createElement('button')
 
@@ -231,9 +233,25 @@ async function main() {
     boardBtn.id = "board-btn";
     boardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">${uniqueBoards[i]}</button>`
     boardNavLinksDiv.appendChild(boardBtn);
+    
     // boardBtn.classList = 'active';
   }
 
+
+  function  createNewBoardBtn(){
+    const createBoardBtn = document.createElement('button');
+    createBoardBtn.id = 'create-board-btn';
+    createBoardBtn.innerHTML = `<button id="create-board-btn"><img src="./assets/icon-board.svg" alt="icon-board" class="icon-new-board">+ Create New Board</button>`;
+  
+    const lastBoardBtn = document.querySelector(".board-btn:last-of-type");
+  
+    lastBoardBtn.parentNode.insertBefore(createBoardBtn, lastBoardBtn.nextSibling);
+    console.log(lastBoardBtn);
+  }
+  createNewBoardBtn();
+
+
+  
   let boardBtns = document.querySelectorAll(".board-btn");
   // console.log(boardBtns)
 
@@ -263,12 +281,19 @@ async function main() {
       showTasks();
 
 
+
     })
+    
 
   }
+  
+ 
+
+  
 
 
 
+  
 
   // for (let i = 0; i < btns.length; i++) {
   //   btns[i].addEventListener("click", () => {
