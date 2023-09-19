@@ -40,6 +40,8 @@ let headerDiv = document.getElementById('header');
 
 let containerDiv = document.getElementsByClassName('container')[0];
 
+// Create New board
+
 // Form
 let form = document.getElementById("new-task-modal-window");
 
@@ -203,11 +205,20 @@ const deleteTask = async (id, task) => {
 
 
 
-
 async function main() {
 
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
   let tasks = await results.json();
+
+  function createNewBoardBtn() {
+    const createBoardBtn = document.createElement('button');
+    createBoardBtn.id = 'create-board-btn';
+    createBoardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-new-board">+ Create New Board`;
+    boardNavLinksDiv.append(createBoardBtn);
+    
+    createBoardBtn.addEventListener("click", handleCreateNewBoard)
+    // console.log(createNewBoardForm)
+  }
 
   // console.log(tasks[0].board)
   let allBoards = [];
@@ -218,11 +229,12 @@ async function main() {
     }
   }
 
+
   const mySet = new Set(allBoards)
 
   let uniqueBoards = [...mySet]
 
-
+  
   for (let i = 0; i < uniqueBoards.length; i++) {
     let boardBtn = document.createElement('button')
 
@@ -233,25 +245,40 @@ async function main() {
     boardBtn.id = "board-btn";
     boardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">${uniqueBoards[i]}</button>`
     boardNavLinksDiv.appendChild(boardBtn);
+    // console.log("button" + i + "appended")
     
     // boardBtn.classList = 'active';
   }
-
-
-  function  createNewBoardBtn(){
-    const createBoardBtn = document.createElement('button');
-    createBoardBtn.id = 'create-board-btn';
-    createBoardBtn.innerHTML = `<button id="create-board-btn"><img src="./assets/icon-board.svg" alt="icon-board" class="icon-new-board">+ Create New Board</button>`;
   
-    const lastBoardBtn = document.querySelector(".board-btn:last-of-type");
-  
-    lastBoardBtn.parentNode.insertBefore(createBoardBtn, lastBoardBtn.nextSibling);
-    console.log(lastBoardBtn);
-  }
   createNewBoardBtn();
 
 
+  function handleCreateNewBoard() {
+    let createNewBoardForm = document.createElement('form');
+    createNewBoardForm.classList = "modal-window";
+    createNewBoardForm.id = "new-task-modal-window";
+    createNewBoardForm.innerHTML = `<h4 class="modal-title" >Add New Board</h4>
+          <div class="input-div">
+            <label class="label-modal-window" id="modal-title-input" for="title-input">Board Name</label>
+            <input type="text" class="modal-input" id="title-input-edit-task" value="">
+          </div>
+          <button type="submit" class="submit-btn" id="change-task-btn" >Create New Board</button>`
+    
+    createNewBoardForm.style.display = 'flex';
+    document.body.appendChild(createNewBoardForm);
+
+    // createBoardBtn.removeEventListener("click", handleCreateNewBoard)
+
+  }
   
+  // let createNewBoardBtn =  document.getElementById('create-board-btn')
+  // createBoardBtn.addEventListener("click", handleCreateNewBoard)
+// console.log(createBoardBtn)
+  // createNewBoardBtn.addEventListener("click", handleCreateNewBoard)
+  
+  
+
+
   let boardBtns = document.querySelectorAll(".board-btn");
   // console.log(boardBtns)
 
@@ -283,6 +310,7 @@ async function main() {
 
 
     })
+    
     
 
   }
@@ -347,6 +375,7 @@ async function main() {
 
 
   function showTasks() {
+    
 
     for (let i = 0; i < columnDivs.length; i++) {
 
@@ -376,6 +405,10 @@ async function main() {
         columnDivs[2].appendChild(taskDiv);
       }
       // console.log(filteredTasks[j].id)
+
+
+      
+
 
 
       // Modal window task
@@ -605,7 +638,6 @@ async function main() {
 
 
   showTasks();
-
 }
 
 
@@ -613,5 +645,6 @@ async function main() {
 
 
 main();
+
 
 
