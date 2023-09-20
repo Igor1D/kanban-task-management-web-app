@@ -215,6 +215,7 @@ async function main() {
     createBoardBtn.id = 'create-board-btn';
     createBoardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-new-board">+ Create New Board`;
     boardNavLinksDiv.append(createBoardBtn);
+
     
     createBoardBtn.addEventListener("click", handleCreateNewBoard)
     // console.log(createNewBoardForm)
@@ -259,25 +260,70 @@ async function main() {
     createNewBoardForm.id = "new-task-modal-window";
     createNewBoardForm.innerHTML = `<h4 class="modal-title" >Add New Board</h4>
           <div class="input-div">
-            <label class="label-modal-window" id="modal-title-input" for="title-input">Board Name</label>
-            <input type="text" class="modal-input" id="title-input-edit-task" value="">
+            <label class="label-modal-window" id="form-title-input" for="title-input">Board Name</label>
+            <input type="text" class="modal-input" id="board-title-input" value="">
           </div>
-          <button type="submit" class="submit-btn" id="change-task-btn" >Create New Board</button>`
+          <button type="submit" class="submit-btn" id="create-new-board" >Create New Board</button>`
     
     createNewBoardForm.style.display = 'flex';
     document.body.appendChild(createNewBoardForm);
+    filterDiv.style.opacity = 0;
+    filterDiv.style.display = 'block';
+    setTimeout(() => {
+      createNewBoardForm.style.marginTop = 0;
+      createNewBoardForm.style.opacity = 1;
+      filterDiv.style.opacity = 1;
+    }, 10);
+    
+    let boardTitleInput = document.getElementById('board-title-input');
+    console.log(boardTitleInput)
+    
+    // console.log(createNewBoardSubmit)
+    
+
+    createNewBoardForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      createNewTask({
+        "title": boardTitleInput.value,
+        "description":"",
+        "status":"",
+        "board": boardTitleInput.value,
+      });
+    })
 
     // createBoardBtn.removeEventListener("click", handleCreateNewBoard)
 
-  }
-  
-  // let createNewBoardBtn =  document.getElementById('create-board-btn')
-  // createBoardBtn.addEventListener("click", handleCreateNewBoard)
-// console.log(createBoardBtn)
-  // createNewBoardBtn.addEventListener("click", handleCreateNewBoard)
-  
-  
 
+
+  }
+
+  let newBoardForm = document.getElementById('createNewBoardForm')
+  console.log(newBoardForm);
+  let createNewBoardSubmit = document.getElementById('create-new-board');
+  console.log(createNewBoardSubmit);
+
+  // function createNewBoardOffClick(event) {
+  //   console.log('Start-------createNewBoardOffClick')
+  //   if (event.target !== createNewBoardSubmit && newBoardForm.contains(event.target)) {
+  //     // console.log(event.target)
+  //     newBoardForm.remove();
+  //     filterDiv.style.display = 'none';
+
+  //     console.log('end-------createNewBoardOffClick');
+
+  //     // threeDotsBtn.removeEventListener('click', createNewBoardOffClick)
+  //     // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
+  //     console.log(editTaskForm.style.display)
+
+  //     document.removeEventListener("click", createNewBoardOffClick)
+  //   } 
+  //   // else {
+  //   //   newBoardForm.style.display = 'flex';
+  //   //   filterDiv.style.display = 'block';
+  //   // }
+  // }
+  // document.addEventListener("click", createNewBoardOffClick)
+  
 
   let boardBtns = document.querySelectorAll(".board-btn");
   // console.log(boardBtns)
