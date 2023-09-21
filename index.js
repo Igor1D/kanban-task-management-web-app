@@ -209,6 +209,7 @@ async function main() {
 
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
   let tasks = await results.json();
+  console.log(tasks);
 
   function createNewBoardBtn() {
     const createBoardBtn = document.createElement('button');
@@ -254,10 +255,11 @@ async function main() {
   createNewBoardBtn();
 
 
-  function handleCreateNewBoard() {
+  function handleCreateNewBoard(e) {
+    e.stopPropagation();
     let createNewBoardForm = document.createElement('form');
     createNewBoardForm.classList = "modal-window";
-    createNewBoardForm.id = "new-task-modal-window";
+    createNewBoardForm.id = "new-board-form";
     createNewBoardForm.innerHTML = `<h4 class="modal-title" >Add New Board</h4>
           <div class="input-div">
             <label class="label-modal-window" id="form-title-input" for="title-input">Board Name</label>
@@ -267,16 +269,17 @@ async function main() {
     
     createNewBoardForm.style.display = 'flex';
     document.body.appendChild(createNewBoardForm);
+    createNewBoardForm.style.opacity = 0;
     filterDiv.style.opacity = 0;
     filterDiv.style.display = 'block';
     setTimeout(() => {
       createNewBoardForm.style.marginTop = 0;
       createNewBoardForm.style.opacity = 1;
       filterDiv.style.opacity = 1;
-    }, 10);
+    }, 100);
     
     let boardTitleInput = document.getElementById('board-title-input');
-    console.log(boardTitleInput)
+    // console.log(boardTitleInput)
     
     // console.log(createNewBoardSubmit)
     
@@ -294,35 +297,38 @@ async function main() {
     // createBoardBtn.removeEventListener("click", handleCreateNewBoard)
 
 
+    function createNewBoardOffClick(event) {
+      let newBoardForm = document.getElementById('new-board-form')
+      // console.log(newBoardForm);
+      // console.log('Start-------createNewBoardOffClick')
+      if (event.target !== newBoardForm && !newBoardForm.contains(event.target)) {
+        // console.log(event.target)
+        newBoardForm.remove();
+        filterDiv.style.display = 'none';
+  
+        console.log('end-------createNewBoardOffClick');
+  
+        // threeDotsBtn.removeEventListener('click', createNewBoardOffClick)
+        // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
+        // console.log(editTaskForm.style.display)
+  
+        document.removeEventListener("click", createNewBoardOffClick)
+      } 
+      // else {
+      //   newBoardForm.style.display = 'flex';
+      //   filterDiv.style.display = 'block';
+      // }
+    }
+    document.addEventListener("click", createNewBoardOffClick)
+
 
   }
 
-  let newBoardForm = document.getElementById('createNewBoardForm')
-  console.log(newBoardForm);
-  let createNewBoardSubmit = document.getElementById('create-new-board');
-  console.log(createNewBoardSubmit);
 
-  // function createNewBoardOffClick(event) {
-  //   console.log('Start-------createNewBoardOffClick')
-  //   if (event.target !== createNewBoardSubmit && newBoardForm.contains(event.target)) {
-  //     // console.log(event.target)
-  //     newBoardForm.remove();
-  //     filterDiv.style.display = 'none';
+  // let createNewBoardSubmit = document.getElementById('create-new-board');
+  // console.log(createNewBoardSubmit);
 
-  //     console.log('end-------createNewBoardOffClick');
 
-  //     // threeDotsBtn.removeEventListener('click', createNewBoardOffClick)
-  //     // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
-  //     console.log(editTaskForm.style.display)
-
-  //     document.removeEventListener("click", createNewBoardOffClick)
-  //   } 
-  //   // else {
-  //   //   newBoardForm.style.display = 'flex';
-  //   //   filterDiv.style.display = 'block';
-  //   // }
-  // }
-  // document.addEventListener("click", createNewBoardOffClick)
   
 
   let boardBtns = document.querySelectorAll(".board-btn");
