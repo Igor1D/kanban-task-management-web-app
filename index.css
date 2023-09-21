@@ -213,6 +213,7 @@ header {
     font-size: 30px;
     font-weight: 600;
     box-sizing: border-box;
+    position: relative;
 }
 
 
@@ -227,6 +228,7 @@ header {
     padding-right: 35px;
     font-weight: 600;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 
@@ -348,7 +350,7 @@ header {
     transition: all 0.3s ease-in;
 }
 
-#edit-btn {
+.edit-btn {
     position: absolute; 
     top: 20px;
     right: 20px;
@@ -359,6 +361,18 @@ header {
     font-size: 30px;
     font-weight: 700;
 }
+
+#edit-board-btn{
+    top: 45px;
+    /* padding-left: 40px; */
+}
+
+#three-dots-icon{
+    font-size: 35px;
+    font-weight: 800;
+}
+
+
 
 #editBtnsDiv {
    border-radius: 5px;
@@ -377,6 +391,30 @@ header {
     width: 130px;
     display: none;
 
+}
+
+#editBoardDiv {
+    position: absolute;
+
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    top: 100px;
+    right: 58px;
+    background: #353645;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-around;
+    padding: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    /* display: none; */
+
+}
+
+#deleteBoardBtn{
+    color: white;
 }
 
 .editBtns {

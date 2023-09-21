@@ -59,7 +59,10 @@
     <header id="header">
       <div class="header-board-name" id="header-board-name"></div>
       <button id="add-new-task-btn" class="primary-btn">+ Add New Task</button>
-     
+      <button class="edit-btn" id="edit-board-btn"><p style="display: inline;" id="three-dots-icon">&#8942;</p></button>
+      <div id="editBoardDiv" class="editBtnsDiv">
+        <button class="editBtns" id="deleteBoardBtn">Delete Board</button>
+      </div>
     </header>
 
     <div class="container">
@@ -127,9 +130,9 @@
     <div class="edit-task-div" id="edit-task-header">
     <h4 class="task-title">Research pricing points of various competitors and trial different business models</h4>
     <!-- <input type="text" value="Research pricing points of various competitors and trial different business models"> -->
-    <button id="edit-btn"><p style="display: inline;">&#8942;</p>
+    <button id="edit-btn" class="edit-btn"><p style="display: inline;">&#8942;</p>
     </button>
-    <div id="editBtnsDiv">
+    <div id="editBtnsDiv" class="editBtnsDiv">
       <button class="editBtns" id="editTaskBtn">Edit Task</button>
       <button class="editBtns" id="deleteTaskBtn">Delete Task</button>
     </div>
