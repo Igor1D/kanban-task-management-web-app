@@ -49,6 +49,12 @@ let form = document.getElementById("new-task-modal-window");
 let ddl = document.getElementById("select-status")
 // console.log(ddl.value)
 
+// Board - three dots
+let editBoardBtn = document.getElementById('edit-board-btn');
+let deleteBoardDiv = document.getElementById('editBoardDiv');
+let deleteBoardBtn = document.getElementById('deleteBoardBtn');
+// console.log(deleteBoardDiv.style.display == 'none');
+
 // Board local storage
 let selectedBoard;
 let boardLocalStorage = localStorage.getItem('selectedBoard');
@@ -60,6 +66,7 @@ let sideBarState;
 // true or false - boolean
 // 'flex' or 'none'
 let sideBarLocalStorage = localStorage.getItem('sideBarState');
+
 
 
 
@@ -299,8 +306,6 @@ async function main() {
 
     function createNewBoardOffClick(event) {
       let newBoardForm = document.getElementById('new-board-form')
-      // console.log(newBoardForm);
-      // console.log('Start-------createNewBoardOffClick')
       if (event.target !== newBoardForm && !newBoardForm.contains(event.target)) {
         // console.log(event.target)
         newBoardForm.remove();
@@ -424,6 +429,50 @@ async function main() {
     })
 
   })
+ 
+
+  // Edit board three dots btn
+
+  function editBoardHandler() {
+    if (deleteBoardDiv.style.display === 'none' || deleteBoardDiv.style.display === '') {
+      deleteBoardDiv.style.display = 'flex';
+    } else {
+      deleteBoardDiv.style.display = 'none'
+    }
+  }
+
+
+  editBoardBtn.addEventListener('click' , editBoardHandler);
+
+  function deleteBoardWindowHandler() {
+    let deleteBoardWindowDiv = document.createElement('form');
+    deleteBoardWindowDiv.classList = "modal-window";
+    deleteBoardWindowDiv.id = "delete-board-window";
+    deleteBoardWindowDiv.innerHTML = `<h4 class="modal-title" id="modal-board" >Delete this board?</h4>
+          <div class="deleteBoardWindowText">
+            <p class="board-modal-p">Are you sure you want to delete the ‘Platform Launch’ board? 
+            This action will remove all columns and tasks and cannot be reversed.</p>
+          </div>
+          <div class="deleteBoardWindowBtns">
+          <button type="submit" class="submit-btn" id="delete-board" >Delete</button>
+          <button class="submit-btn" id="cancel-btn">Cancel</button>
+          </div>`
+    
+    deleteBoardWindowDiv.style.display = 'flex';
+    document.body.appendChild(deleteBoardWindowDiv);
+    deleteBoardDiv.style.display = 'none'
+    deleteBoardWindowDiv.style.opacity = 0;
+    filterDiv.style.opacity = 0;
+    filterDiv.style.display = 'block';
+    setTimeout(() => {
+      deleteBoardWindowDiv.style.marginTop = 0;
+      deleteBoardWindowDiv.style.opacity = 1;
+      filterDiv.style.opacity = 1;
+    }, 100);
+  }
+
+
+  deleteBoardBtn.addEventListener('click', deleteBoardWindowHandler);
 
 
   function showTasks() {
@@ -497,7 +546,8 @@ async function main() {
         })
 
 
-
+        
+        
 
         // Three dots
         // threeDotsBtn.addEventListener('click', (e) => {
@@ -672,6 +722,8 @@ async function main() {
 
 
         })
+
+        
 
 
 
