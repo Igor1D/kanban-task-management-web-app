@@ -681,7 +681,7 @@ async function main() {
 
 
           deleteTask(
-            filteredTasks[j], {
+            filteredTasks[j].id, {
             title: filteredTasks[j].title,
             description: filteredTasks[j].description,
             status: filteredTasks[j].status,
