@@ -444,36 +444,7 @@ async function main() {
 
   editBoardBtn.addEventListener('click' , editBoardHandler);
 
-  function deleteBoardWindowHandler() {
-    let deleteBoardWindowDiv = document.createElement('form');
-    deleteBoardWindowDiv.classList = "modal-window";
-    deleteBoardWindowDiv.id = "delete-board-window";
-    deleteBoardWindowDiv.innerHTML = `<h4 class="modal-title" id="modal-board" >Delete this board?</h4>
-          <div class="deleteBoardWindowText">
-            <p class="board-modal-p">Are you sure you want to delete the ‘Platform Launch’ board? 
-            This action will remove all columns and tasks and cannot be reversed.</p>
-          </div>
-          <div class="deleteBoardWindowBtns">
-          <button type="submit" class="submit-btn" id="delete-board" >Delete</button>
-          <button class="submit-btn" id="cancel-btn">Cancel</button>
-          </div>`
-    
-    deleteBoardWindowDiv.style.display = 'flex';
-    document.body.appendChild(deleteBoardWindowDiv);
-    deleteBoardDiv.style.display = 'none'
-    deleteBoardWindowDiv.style.opacity = 0;
-    filterDiv.style.opacity = 0;
-    filterDiv.style.display = 'block';
-    setTimeout(() => {
-      deleteBoardWindowDiv.style.marginTop = 0;
-      deleteBoardWindowDiv.style.opacity = 1;
-      filterDiv.style.opacity = 1;
-    }, 100);
-  }
-
-
-  deleteBoardBtn.addEventListener('click', deleteBoardWindowHandler);
-
+  
 
   function showTasks() {
     
@@ -710,7 +681,7 @@ async function main() {
 
 
           deleteTask(
-            filteredTasks[j].id, {
+            filteredTasks[j], {
             title: filteredTasks[j].title,
             description: filteredTasks[j].description,
             status: filteredTasks[j].status,
@@ -730,6 +701,56 @@ async function main() {
 
       });
 
+      function deleteBoardWindowHandler(e) {
+        e.stopPropagation();
+        editBoardBtn.removeEventListener('click' , editBoardHandler);
+        let deleteBoardWindowDiv = document.createElement('form');
+        deleteBoardWindowDiv.classList = "modal-window";
+        deleteBoardWindowDiv.id = "delete-board-window";
+        deleteBoardWindowDiv.innerHTML = `<h4 class="modal-title" id="modal-board" >Delete this board?</h4>
+              <div class="deleteBoardWindowText">
+                <p class="board-modal-p">Are you sure you want to delete the <b>${selectedBoard}</b> board? 
+                This action will remove all tasks and cannot be reversed.</p>
+              </div>
+              <div class="deleteBoardWindowBtns">
+              <button type="submit" class="submit-btn" id="delete-board" >Delete</button>
+              <button class="submit-btn" id="cancel-btn">Cancel</button>
+              </div>`
+        
+        deleteBoardWindowDiv.style.display = 'flex';
+        document.body.appendChild(deleteBoardWindowDiv);
+        deleteBoardDiv.style.display = 'none'
+        deleteBoardWindowDiv.style.opacity = 0;
+        filterDiv.style.opacity = 0;
+        filterDiv.style.display = 'block';
+        setTimeout(() => {
+          deleteBoardWindowDiv.style.marginTop = 0;
+          deleteBoardWindowDiv.style.opacity = 1;
+          filterDiv.style.opacity = 1;
+        }, 100);
+
+
+        deleteBoardWindowDiv.addEventListener('submit', ()=>{
+          
+          deleteTask(
+            filteredTasks[j].id, {
+            title: filteredTasks[j].title,
+            description: filteredTasks[j].description,
+            status: filteredTasks[j].status,
+            board: selectedBoard
+          }
+
+          );
+
+
+        })
+
+
+      }
+    
+    
+      deleteBoardBtn.addEventListener('click', deleteBoardWindowHandler);
+    
 
 
 
