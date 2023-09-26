@@ -192,7 +192,7 @@ const putTask = async (id, task) => {
 
 }
 
-const deleteTask = async (id, task) => {
+const deleteTask = async (id, refresh) => {
   // console.log(id, task)
   const results = await fetch(`https://kanban-backend-server.onrender.com/tasks/${id}`, {
 
@@ -200,13 +200,14 @@ const deleteTask = async (id, task) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(task)
+    
 
 
   })
-  location.reload();
-
-
+  if (refresh == true) {
+    location.reload();
+  }
+  
 }
 
 
@@ -681,14 +682,8 @@ async function main() {
 
 
           deleteTask(
-            filteredTasks[j].id, {
-            title: filteredTasks[j].title,
-            description: filteredTasks[j].description,
-            status: filteredTasks[j].status,
-            board: selectedBoard
-          }
-
-
+            filteredTasks[j].id,
+            true
           );
 
 
@@ -703,7 +698,6 @@ async function main() {
 
       function deleteBoardWindowHandler(e) {
         e.stopPropagation();
-        editBoardBtn.removeEventListener('click' , editBoardHandler);
         let deleteBoardWindowDiv = document.createElement('form');
         deleteBoardWindowDiv.classList = "modal-window";
         deleteBoardWindowDiv.id = "delete-board-window";
@@ -730,17 +724,18 @@ async function main() {
         }, 100);
 
 
-        deleteBoardWindowDiv.addEventListener('submit', ()=>{
+        deleteBoardWindowDiv.addEventListener('submit', (e)=>{
+          e.preventDefault();
           
-          deleteTask(
-            filteredTasks[j].id, {
-            title: filteredTasks[j].title,
-            description: filteredTasks[j].description,
-            status: filteredTasks[j].status,
-            board: selectedBoard
-          }
+          for (let task of filteredTasks) {
+
+            deleteTask(
+            task.id,
+            false
 
           );
+
+          }
 
 
         })
