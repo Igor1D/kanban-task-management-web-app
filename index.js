@@ -47,8 +47,9 @@ let containerDiv = document.getElementsByClassName('container')[0];
 let themeToggle = document.getElementById('switch');
 let toggleDiv = document.getElementsByClassName('toggle-div')[0];
 console.log(themeToggle.checked)
-let taskDivs = []; 
-console.log(taskDivs)
+
+// let taskDivs = []; 
+// console.log(taskDivs)
 
 // let checkBoxState;
 // let checkBoxLocalStorage = localStorage.getItem('checkBoxState');
@@ -60,15 +61,11 @@ console.log(taskDivs)
 // }
 
 function lightTheme() {
-  document.body.classList.toggle('light-theme-layout');
-  headerDiv.classList.toggle('light-theme-header');
-  sideBarDiv.classList.toggle('light-theme-sidebar');
-  logo.src = "./assets/logo-dark.svg"
-  toggleDiv.classList.toggle('light-theme-layout');
-
-  taskDivs.forEach((taskDiv) => {
-    taskDiv.classList.toggle('light-theme-header');
-  });
+  document.body.classList.toggle('light-theme');
+  
+  if(document.body.classList.contains('light-theme')){
+    logo.src = './assets/logo-dark.svg'
+  }
 
 
 }
@@ -509,7 +506,7 @@ async function main() {
       let taskDiv = document.createElement('div');
       taskDiv.innerText = filteredTasks[j].title; // changed from tasks[i].title to filteredTasks[i].title
       taskDiv.classList.add('task-div');
-      taskDivs.push(taskDiv);
+      // taskDivs.push(taskDiv);
 
       if (filteredTasks[j].status == 'todo') {
         columnDivs[0].appendChild(taskDiv);
