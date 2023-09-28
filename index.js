@@ -241,6 +241,7 @@ const deleteTask = async (id, refresh) => {
 
 
   })
+  console.log('task' + id + 'deleted')
   if (refresh == true) {
     location.reload();
   }
@@ -746,7 +747,7 @@ async function main() {
               </div>
               <div class="deleteBoardWindowBtns">
               <button type="submit" class="submit-btn" id="delete-board" >Delete</button>
-              <button class="submit-btn" id="cancel-btn">Cancel</button>
+              <button type="button" class="submit-btn" id="cancel-btn">Cancel</button>
               </div>`
         
         deleteBoardWindowDiv.style.display = 'flex';
@@ -762,18 +763,23 @@ async function main() {
         }, 100);
 
 
-        deleteBoardWindowDiv.addEventListener('submit', (e)=>{
+        deleteBoardWindowDiv.addEventListener('submit', async (e)=> {
           e.preventDefault();
           
-          for (let task of filteredTasks) {
+          async function deleteTasks(){ 
+            
+            for (let task of filteredTasks) {
 
-            deleteTask(
+            await deleteTask(
             task.id,
             false
 
           );
 
-          }
+          }}
+          await deleteTasks();
+          location.reload();
+
 
 
         })
