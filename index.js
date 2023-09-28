@@ -154,11 +154,7 @@ showSideBarBtn.addEventListener('click', openSideBar);
 //Board local storage
 // console.log(boardLocalStorage);
 
-if (!boardLocalStorage) {
-  selectedBoard = "Platform Launch";
-} else {
-  selectedBoard = boardLocalStorage;
-}
+
 
 
 // ask Lazar about the following - moved to the
@@ -372,11 +368,18 @@ async function main() {
   // let createNewBoardSubmit = document.getElementById('create-new-board');
   // console.log(createNewBoardSubmit);
 
-
-  
-
   let boardBtns = document.querySelectorAll(".board-btn");
-  // console.log(boardBtns)
+
+
+  if (!boardLocalStorage || !uniqueBoards.includes(boardLocalStorage)) {
+    selectedBoard = boardBtns[0].innerText;
+  } else {
+    selectedBoard = boardLocalStorage;
+  }
+
+
+
+  // console.dir(boardBtns[0]);
 
   if (selectedBoard) {
     const activeButton = Array.from(boardBtns).find(boardBtn => boardBtn.innerText === selectedBoard);
@@ -385,6 +388,10 @@ async function main() {
     }
   }
   headerBoardName.innerText = selectedBoard;
+
+
+
+  
 
 
 
