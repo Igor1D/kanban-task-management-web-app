@@ -48,34 +48,6 @@ let themeToggle = document.getElementById('switch');
 let toggleDiv = document.getElementsByClassName('toggle-div')[0];
 console.log(themeToggle.checked)
 
-// let taskDivs = []; 
-// console.log(taskDivs)
-
-// let checkBoxState;
-// let checkBoxLocalStorage = localStorage.getItem('checkBoxState');
-
-// if(!checkBoxLocalStorage) {
-//   checkBoxState = false;
-// } else {
-//   checkBoxState = checkBoxLocalStorage;
-// }
-
-function lightTheme() {
-  document.body.classList.toggle('light-theme');
-  
-  if(document.body.classList.contains('light-theme')){
-    logo.src = './assets/logo-dark.svg'
-  }
-
-
-}
-themeToggle.addEventListener('change',lightTheme )
-
-
-
-
-
-
 
 // Create New board
 
@@ -151,20 +123,45 @@ showSideBarBtn.addEventListener('click', openSideBar);
 
 
 
-//Board local storage
-// console.log(boardLocalStorage);
+
+function lightTheme() {
+
+  document.body.classList.toggle('light-theme');
+
+  
+  if(document.body.classList.contains('light-theme')){
+    logo.src = './assets/logo-dark.svg'
+  } else {
+    logo.src = './assets/logo-light.svg'
+  }
+  localStorage.setItem('checkBoxState', checkBoxState)
+
+}
+themeToggle.addEventListener('change',lightTheme )
 
 
 
 
-// ask Lazar about the following - moved to the
-// if (selectedBoard) {
-//   const activeButton = Array.from(btns).find(btn => btn.innerText === selectedBoard);
-//   if (activeButton) {
-//     activeButton.classList.add('active');
-//   }
-// }
-// headerBoardName.innerText = selectedBoard;
+let checkBoxState;
+let checkBoxLocalStorage = localStorage.getItem('checkBoxState');
+
+if(!checkBoxLocalStorage) {
+  checkBoxState = false;
+} else {
+  checkBoxState = checkBoxLocalStorage;
+}
+localStorage.setItem('checkBoxState', checkBoxState)
+
+if (checkBoxState === false) {
+  document.body
+} else {
+  document.body.classList.toggle('light-theme');
+}
+
+
+
+
+
 
 const createNewTask = async (task) => {
   const response = await fetch(`https://kanban-backend-server.onrender.com/tasks`, {
@@ -512,7 +509,7 @@ async function main() {
 
 
       let taskDiv = document.createElement('div');
-      taskDiv.innerText = filteredTasks[j].title; // changed from tasks[i].title to filteredTasks[i].title
+      taskDiv.innerText = filteredTasks[j].title; 
       taskDiv.classList.add('task-div');
       // taskDivs.push(taskDiv);
 

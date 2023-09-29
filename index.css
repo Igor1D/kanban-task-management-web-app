@@ -17,6 +17,7 @@
     --secondary-color: #20212C;
     --primary-font-color: white;
     --secondary-font-color: #828FA3;
+    --primary-box-shadow: 0px 8px 18px 0px rgba(45, 45, 60, 0.56);
 }
 
 .light-theme {
@@ -24,6 +25,7 @@
     --secondary-color: #F4F7FD;
     --primary-font-color: #000000;
     --secondary-font-color: #828FA3;
+    --primary-box-shadow: 0px 8px 18px 0px rgba(176, 176, 188, 0.56);
 }
 
 
@@ -312,7 +314,7 @@ header {
     color: var(--primary-font-color);
     height: 90px;
     border-radius: 12px;
-    box-shadow: 0px 8px 18px 0px rgba(45, 45, 60, 0.56);
+    box-shadow: var(--primary-box-shadow);
     cursor: pointer;
 
 }
