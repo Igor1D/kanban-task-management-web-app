@@ -121,44 +121,43 @@ function openSideBar() {
 hideSideBarBtn.addEventListener('click', closeSideBar);
 showSideBarBtn.addEventListener('click', openSideBar);
 
+//Theme
+
+let toggleState;
+let toggleLocalStorage = localStorage.getItem('checkBoxState');
+
+if(!toggleLocalStorage) {
+  toggleState = 'false';
+} else {
+  toggleState = toggleLocalStorage;
+}
+
+
+if (toggleState === 'false') {
+  document.body
+} else {
+  document.body.classList.toggle('.light-theme');
+
+}
 
 
 
 function lightTheme() {
-
+  toggleState = 'true';
   document.body.classList.toggle('light-theme');
-
   
   if(document.body.classList.contains('light-theme')){
     logo.src = './assets/logo-dark.svg'
   } else {
     logo.src = './assets/logo-light.svg'
   }
-  localStorage.setItem('checkBoxState', checkBoxState)
+  localStorage.setItem('toggleState', toggleState)
+  
+  
 
 }
+
 themeToggle.addEventListener('change',lightTheme )
-
-
-
-
-let checkBoxState;
-let checkBoxLocalStorage = localStorage.getItem('checkBoxState');
-
-if(!checkBoxLocalStorage) {
-  checkBoxState = false;
-} else {
-  checkBoxState = checkBoxLocalStorage;
-}
-localStorage.setItem('checkBoxState', checkBoxState)
-
-if (checkBoxState === false) {
-  document.body
-} else {
-  document.body.classList.toggle('light-theme');
-}
-
-
 
 
 
