@@ -123,42 +123,73 @@ showSideBarBtn.addEventListener('click', openSideBar);
 
 //Theme
 
-let toggleState;
-let toggleLocalStorage = localStorage.getItem('checkBoxState');
+// let toggleState;
+// let toggleLocalStorage = localStorage.getItem('checkBoxState');
 
-if(!toggleLocalStorage) {
-  toggleState = 'false';
-} else {
-  toggleState = toggleLocalStorage;
-}
-
-
-if (toggleState === 'false') {
-  document.body
-} else {
-  document.body.classList.toggle('.light-theme');
-
-}
+// if(!toggleLocalStorage) {
+//   toggleState = 'false';
+// } else {
+//   toggleState = toggleLocalStorage;
+// }
 
 
+// if (toggleState === 'false') {
+//   document.body
+// } else {
+//   document.body.classList.toggle('.light-theme');
 
-function lightTheme() {
-  toggleState = 'true';
-  document.body.classList.toggle('light-theme');
+// }
+
+
+
+// function lightTheme() {
+//   toggleState = 'true';
+//   document.body.classList.toggle('light-theme');
   
+//   if(document.body.classList.contains('light-theme')){
+//     logo.src = './assets/logo-dark.svg'
+//   } else {
+//     logo.src = './assets/logo-light.svg'
+//   }
+//   localStorage.setItem('toggleState', toggleState)
+  
+  
+
+// }
+
+// themeToggle.addEventListener('change',lightTheme )
+
+let lightTheme = localStorage.getItem('light-theme')
+
+function enableLightMode() {
+  document.body.classList.toggle('light-theme');  
+
   if(document.body.classList.contains('light-theme')){
     logo.src = './assets/logo-dark.svg'
   } else {
     logo.src = './assets/logo-light.svg'
   }
-  localStorage.setItem('toggleState', toggleState)
-  
-  
-
+  localStorage.setItem('light-theme', 'enabled')
 }
 
-themeToggle.addEventListener('change',lightTheme )
+function disableLightMode() {
+  document.body.classList.remove('light-theme');
+//  themeToggle.classList.remove('#label-checkbox-theme:after')
+  localStorage.setItem('light-theme', 'disabled')
+}
 
+if (lightTheme === "enabled") {
+  enableLightMode()
+}
+
+themeToggle.addEventListener('change', ()=>{
+  lightTheme = localStorage.getItem('light-theme');
+  if (lightTheme === 'disabled') {
+    disableLightMode()
+  } else {
+    enableLightMode()
+  }
+})
 
 
 
