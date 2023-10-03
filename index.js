@@ -10,7 +10,8 @@ let btns = document.querySelectorAll(".board-btn");
 let columnDivs = document.getElementsByClassName("column-div");
 
 let headerBoardName = document.getElementById('header-board-name');
-let toDoTasksAmount = document.getElementById('toDoText');
+let columnHeaders = document.getElementsByClassName('columnHeader');
+
 
 // Modal
 let createNewTaskBtn = document.getElementById("add-new-task-btn");
@@ -552,6 +553,9 @@ async function main() {
       } else if (filteredTasks[j].status == 'done') {
         columnDivs[2].appendChild(taskDiv);
       }
+
+      
+
       // console.log(filteredTasks[j].id)
 
 
@@ -833,7 +837,14 @@ async function main() {
 
     }
 
-
+    // console.log(columnDivs[0].children.length)
+    let firstColumn = columnDivs[0].children.length - 1
+    let secondColumn = columnDivs[1].children.length - 1
+    let thirdColumn = columnDivs[2].children.length - 1
+    columnHeaders[0].innerText = 'TODO (' + firstColumn + ')';
+    columnHeaders[1].innerText = 'DOING (' + secondColumn + ')';
+    columnHeaders[2].innerText = 'DONE (' + thirdColumn + ')';
+    console.log(columnHeaders.innerText);
 
   }
 
