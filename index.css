@@ -399,10 +399,11 @@ header {
 
 #edit-board-btn{
     top: 45px;
-    /* padding-left: 40px; */
+
 }
 
 #three-dots-icon{
+    display: inline;
     font-size: 35px;
     font-weight: 800;
 }
@@ -738,3 +739,125 @@ input:checked+#label-checkbox-theme:after {
     }
     
 }
+
+@media screen and (max-width: 480px) {
+    body {
+      font-size: 14px; /* Adjust the base font size for mobile */
+    }
+    .side-bar {
+      display: none; /* Hide the sidebar on mobile */
+    }
+    .container {
+      max-width: 100%; /* Ensure content doesn't overflow on small screens */
+      padding-left: 10px; /* Adjust padding for smaller screens */
+      padding-right: 10px;
+    }
+    #header {
+      padding-left: 10px; /* Adjust header padding for smaller screens */
+      padding-right: 10px;
+    }
+    #add-new-task-btn {
+      font-size: 16px; /* Increase button font size for mobile */
+      padding: 14px; /* Adjust button padding for mobile */
+    }
+    .column-div {
+      padding: 20px; /* Adjust column padding for mobile */
+    }
+    .task-div {
+      height: auto; /* Allow tasks to expand vertically on mobile */
+    }
+    .modal-window {
+      width: 90%; /* Adjust modal width for mobile */
+    }
+  }
+  
+  /* Tablets */
+  @media screen and (min-width: 481px) and (max-width: 1024px) {
+    body {
+      font-size: 16px; /* Adjust the base font size for tablets */
+    }
+    .container {
+      max-width: 100%; /* Ensure content doesn't overflow on tablets */
+      padding-left: 20px; /* Adjust padding for tablets */
+      padding-right: 20px;
+    }
+    #header {
+      padding-left: 20px; /* Adjust header padding for tablets */
+      padding-right: 20px;
+    }
+    #add-new-task-btn {
+      font-size: 18px; /* Increase button font size for tablets */
+      padding: 18px; /* Adjust button padding for tablets */
+    }
+    .column-div {
+      padding: 40px; /* Increase column padding for tablets */
+    }
+    .task-div {
+      height: 110px; /* Set a fixed height for tasks on tablets */
+    }
+    .modal-window {
+      width: 70%; /* Adjust modal width for tablets */
+    }
+  }
+  
+  /* Laptops and Desktops */
+  @media screen and (min-width: 1025px) {
+    body {
+      font-size: 18px; /* Adjust the base font size for laptops and desktops */
+    }
+    .side-bar {
+      display: flex; /* Display the sidebar on laptops and desktops */
+    }
+    .container {
+      max-width: 100%; /* Ensure content doesn't overflow on larger screens */
+      padding-left: 35px; /* Adjust padding for laptops and desktops */
+      padding-right: 35px;
+    }
+    #header {
+      padding-left: 30px; /* Adjust header padding for laptops and desktops */
+      padding-right: 35px;
+    }
+    #add-new-task-btn {
+      font-size: 20px; /* Increase button font size for laptops and desktops */
+      padding: 20px; /* Adjust button padding for laptops and desktops */
+    }
+    .column-div {
+      padding: 60px; /* Increase column padding for laptops and desktops */
+    }
+    .task-div {
+      height: 90px; /* Set a fixed height for tasks on laptops and desktops */
+    }
+    .modal-window {
+      width: 50%; /* Adjust modal width for laptops and desktops */
+    }
+  }
+  @media screen and (min-width: 2560px) {
+    body {
+      font-size: 20px; /* Reduce font size for 4K screens */
+    }
+    .side-bar {
+      width: 300px; /* Narrower sidebar for better balance */
+    }
+    .container {
+      padding-left: 50px; /* Adjust container padding */
+      padding-right: 50px;
+    }
+    #header {
+      padding-left: 40px; /* Adjust header padding */
+      padding-right: 50px;
+    }
+    #add-new-task-btn {
+      font-size: 18px; /* Slightly smaller button font size */
+      padding: 20px; /* Reduce button padding */
+    }
+    .column-div {
+      padding: 60px; /* Adjust column padding */
+    }
+    .task-div {
+      height: 100px; /* Slightly shorter task div */
+      font-size: 16px;
+    }
+    .modal-window {
+      width: 30%; /* Adjust modal window width */
+    }
+  }

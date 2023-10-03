@@ -837,7 +837,7 @@ async function main() {
 
     }
 
-    // console.log(columnDivs[0].children.length)
+    // Tasks Counter
     let firstColumn = columnDivs[0].children.length - 1
     let secondColumn = columnDivs[1].children.length - 1
     let thirdColumn = columnDivs[2].children.length - 1
