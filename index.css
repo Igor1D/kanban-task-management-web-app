@@ -565,6 +565,7 @@ header {
     border: 1px solid #424852;
     border-radius: 4px;
     resize: none;
+    color: var(--primary-font-color);
 
 
 }
@@ -584,7 +585,7 @@ header {
     background-color: var(--primary-color);
     border: 1px solid #424852;
     border-radius: 4px;
-    color: #fff;
+    color: var(--secondary-font-color);
 }
 
 
@@ -620,7 +621,7 @@ header {
 }
 
 ::placeholder {
-    color: #424852;
+    color:var(--secondary-font-color);
     padding-right: 10px;
     display: flex;
     flex-wrap: wrap;
