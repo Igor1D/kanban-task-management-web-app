@@ -44,9 +44,9 @@ let headerDiv = document.getElementById('header');
 let containerDiv = document.getElementsByClassName('container')[0];
 
 //Theme Toggle
-let themeToggle = document.getElementById('switch');
+
 let toggleDiv = document.getElementsByClassName('toggle-div')[0];
-console.log(themeToggle.checked)
+
 
 
 // Create New board
@@ -158,39 +158,51 @@ showSideBarBtn.addEventListener('click', openSideBar);
 // }
 
 // themeToggle.addEventListener('change',lightTheme )
-
+let themeToggle = document.getElementById('switch');
 let lightTheme = localStorage.getItem('light-theme')
 
-function enableLightMode() {
-  document.body.classList.toggle('light-theme');  
+// function themeToggleState() {
+//   if (themeToggle.checked) {
+//     document.body.classList.toggle('light-theme');
+//     localStorage.setItem('light-theme', 'enabled')
+//   } else {
+//     document.body.classList.remove('light-theme');
+//     localStorage.setItem('light-theme', 'disabled')
+//   }
+// }
 
-  if(document.body.classList.contains('light-theme')){
-    logo.src = './assets/logo-dark.svg'
-  } else {
-    logo.src = './assets/logo-light.svg'
-  }
+function enableLightMode() {
+
+  document.body.classList.toggle('light-theme');
+  logo.src = './assets/logo-dark.svg'
   localStorage.setItem('light-theme', 'enabled')
+  themeToggle.setAttribute('checked', 'true')
 }
 
 function disableLightMode() {
   document.body.classList.remove('light-theme');
-//  themeToggle.classList.remove('#label-checkbox-theme:after')
+  // localStorage.setItem('themeToggle', false)
+  // localStorage.getItem('themeToggle')
+  logo.src = './assets/logo-light.svg'
   localStorage.setItem('light-theme', 'disabled')
 }
 
 if (lightTheme === "enabled") {
   enableLightMode()
+} else {
+  disableLightMode()
 }
 
 themeToggle.addEventListener('change', ()=>{
   lightTheme = localStorage.getItem('light-theme');
   if (lightTheme === 'disabled') {
-    disableLightMode()
-  } else {
     enableLightMode()
+    
+  } else {
+    disableLightMode()
   }
 })
-
+// console.log(themeToggle.contains())
 
 
 const createNewTask = async (task) => {
