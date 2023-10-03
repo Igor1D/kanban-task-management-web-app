@@ -161,28 +161,18 @@ showSideBarBtn.addEventListener('click', openSideBar);
 let themeToggle = document.getElementById('switch');
 let lightTheme = localStorage.getItem('light-theme')
 
-// function themeToggleState() {
-//   if (themeToggle.checked) {
-//     document.body.classList.toggle('light-theme');
-//     localStorage.setItem('light-theme', 'enabled')
-//   } else {
-//     document.body.classList.remove('light-theme');
-//     localStorage.setItem('light-theme', 'disabled')
-//   }
-// }
-
 function enableLightMode() {
-
   document.body.classList.toggle('light-theme');
   logo.src = './assets/logo-dark.svg'
   localStorage.setItem('light-theme', 'enabled')
-  themeToggle.setAttribute('checked', 'true')
+  themeToggle.setAttribute('checked', 'true'); 
+  // themeToggle.checked = true;
 }
 
+
 function disableLightMode() {
+  console.log('disabled mode triggered')
   document.body.classList.remove('light-theme');
-  // localStorage.setItem('themeToggle', false)
-  // localStorage.getItem('themeToggle')
   logo.src = './assets/logo-light.svg'
   localStorage.setItem('light-theme', 'disabled')
 }
@@ -824,6 +814,7 @@ async function main() {
 
           }}
           await deleteTasks();
+          console.log('tasks deleted')
           location.reload();
 
 
