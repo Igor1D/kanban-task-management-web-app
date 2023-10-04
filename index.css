@@ -741,123 +741,169 @@ input:checked+#label-checkbox-theme:after {
 }
 
 @media screen and (max-width: 480px) {
+/* 
+    #layout {
+        overflow-x: Hidden
+    } */
+
     body {
-      font-size: 14px; /* Adjust the base font size for mobile */
+      font-size: 14px; 
+      overflow-x: hidden;
     }
     .side-bar {
-      display: none; /* Hide the sidebar on mobile */
+      display: none; 
+      padding: 0;
     }
     .container {
-      max-width: 100%; /* Ensure content doesn't overflow on small screens */
-      padding-left: 10px; /* Adjust padding for smaller screens */
-      padding-right: 10px;
+      width: 1000px; 
+      height: 100%;
+      max-height: auto;
+
+      padding: 0;
     }
+
+    .card-column-main{
+        height: 100%;
+        overflow-x: scroll; /* Allow horizontal scrolling */
+        overscroll-behavior: contain;
+    }
+
     #header {
-      padding-left: 10px; /* Adjust header padding for smaller screens */
+      padding-left: 10px;
       padding-right: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2; 
     }
+
+    .sticky-header {
+        position: sticky;
+        top: 0;
+        background-color: var(--primary-color);
+        z-index: 2;
+      }
+
     #add-new-task-btn {
-      font-size: 16px; /* Increase button font size for mobile */
-      padding: 14px; /* Adjust button padding for mobile */
+      font-size: 14px; 
+      padding: 12px; 
     }
     .column-div {
-      padding: 20px; /* Adjust column padding for mobile */
+      padding: 18px; 
     }
     .task-div {
-      height: auto; /* Allow tasks to expand vertically on mobile */
+      height: 70px; 
     }
     .modal-window {
-      width: 90%; /* Adjust modal width for mobile */
+      width: 80%; 
     }
+
+    .columnHeader {
+        font-size: 12px;
+    }
+    .dot {
+        height: 8px;
+        width: 8px;
+    }
+    .column-head-div {
+        gap: 8px;
+    }
+
+    .edit-task-modal-window {
+        width: 80%;
+
+    }
+
+    
   }
   
   /* Tablets */
   @media screen and (min-width: 481px) and (max-width: 1024px) {
     body {
-      font-size: 16px; /* Adjust the base font size for tablets */
+      font-size: 16px; 
     }
     .container {
-      max-width: 100%; /* Ensure content doesn't overflow on tablets */
-      padding-left: 20px; /* Adjust padding for tablets */
+      max-width: 100%; 
+      padding-left: 20px; 
       padding-right: 20px;
     }
     #header {
-      padding-left: 20px; /* Adjust header padding for tablets */
+      padding-left: 20px;
       padding-right: 20px;
     }
     #add-new-task-btn {
-      font-size: 18px; /* Increase button font size for tablets */
-      padding: 18px; /* Adjust button padding for tablets */
+      font-size: 18px; 
+      padding: 18px; 
     }
     .column-div {
-      padding: 40px; /* Increase column padding for tablets */
+      padding: 40px; 
     }
     .task-div {
-      height: 110px; /* Set a fixed height for tasks on tablets */
+      height: 110px; 
     }
     .modal-window {
-      width: 70%; /* Adjust modal width for tablets */
+      width: 70%; 
     }
   }
   
   /* Laptops and Desktops */
   @media screen and (min-width: 1025px) {
     body {
-      font-size: 18px; /* Adjust the base font size for laptops and desktops */
+      font-size: 18px; 
     }
     .side-bar {
-      display: flex; /* Display the sidebar on laptops and desktops */
+      display: flex; 
     }
     .container {
-      max-width: 100%; /* Ensure content doesn't overflow on larger screens */
-      padding-left: 35px; /* Adjust padding for laptops and desktops */
+      max-width: 100%; 
+      padding-left: 35px; 
       padding-right: 35px;
     }
     #header {
-      padding-left: 30px; /* Adjust header padding for laptops and desktops */
+      padding-left: 30px; 
       padding-right: 35px;
     }
     #add-new-task-btn {
-      font-size: 20px; /* Increase button font size for laptops and desktops */
-      padding: 20px; /* Adjust button padding for laptops and desktops */
+      font-size: 20px;
+      padding: 20px; 
     }
     .column-div {
-      padding: 60px; /* Increase column padding for laptops and desktops */
+      padding: 60px; 
     }
     .task-div {
-      height: 90px; /* Set a fixed height for tasks on laptops and desktops */
+      height: 90px; 
     }
     .modal-window {
-      width: 50%; /* Adjust modal width for laptops and desktops */
+      width: 30%; 
     }
   }
   @media screen and (min-width: 2560px) {
     body {
-      font-size: 20px; /* Reduce font size for 4K screens */
+      font-size: 20px; 
     }
     .side-bar {
-      width: 300px; /* Narrower sidebar for better balance */
+      width: 300px;
     }
     .container {
-      padding-left: 50px; /* Adjust container padding */
+      padding-left: 50px;
       padding-right: 50px;
     }
     #header {
-      padding-left: 40px; /* Adjust header padding */
+      padding-left: 40px; 
       padding-right: 50px;
     }
     #add-new-task-btn {
-      font-size: 18px; /* Slightly smaller button font size */
-      padding: 20px; /* Reduce button padding */
+      font-size: 18px; 
+      padding: 20px;
     }
     .column-div {
-      padding: 60px; /* Adjust column padding */
+      padding: 60px; 
     }
     .task-div {
-      height: 100px; /* Slightly shorter task div */
+      height: 100px; 
       font-size: 16px;
     }
     .modal-window {
-      width: 30%; /* Adjust modal window width */
+      width: 30%;
     }
   }
