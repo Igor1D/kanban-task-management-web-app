@@ -755,7 +755,7 @@ input:checked+#label-checkbox-theme:after {
       padding: 0;
     }
     .container {
-      width: 1000px; 
+      width: 100%; 
       height: auto;
       max-height: auto;
       overflow-x: scroll; 
@@ -764,9 +764,14 @@ input:checked+#label-checkbox-theme:after {
     }
 
     .card-column-main{
-        height: auto%;
-        overflow-x: scroll;
+        height: auto;
+        width: 100%;
+        /* overflow-x: scroll; */
         /* overscroll-behavior: contain; */
+    }
+
+    .column-div {
+        width: 75vw;
     }
 
     #header {
