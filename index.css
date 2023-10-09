@@ -741,10 +741,10 @@ input:checked+#label-checkbox-theme:after {
 }
 
 @media screen and (max-width: 480px) {
-/*  
+
     #layout {
-        height: 100%;
-    }  */
+        width: 100%;
+    }  
 
     body {
       font-size: 14px; 
@@ -757,10 +757,11 @@ input:checked+#label-checkbox-theme:after {
     .container {
       width: 100%; 
       height: auto;
-      max-height: auto;
-      overflow-x: scroll; 
+      /* max-height: auto; */
+      overflow-x: auto; 
       /* overscroll-behavior: contain; */
       padding: 0;
+      
     }
 
     .card-column-main{
@@ -772,6 +773,7 @@ input:checked+#label-checkbox-theme:after {
 
     .column-div {
         width: 75vw;
+
     }
 
     #header {
@@ -780,7 +782,7 @@ input:checked+#label-checkbox-theme:after {
       /* position: absolute; */
       top: 0;
       left: 0;
-      /* width: 100%; */
+      width: 100%;
     }
 
     /* .sticky-header {
@@ -789,7 +791,15 @@ input:checked+#label-checkbox-theme:after {
         background-color: var(--primary-color);
         z-index: 2;
       } */
-      
+    
+      #edit-board-btn{
+        top: 20px;
+        display: flex;
+        right: -20px;
+        top: -25px;
+        
+
+      }
 
     #add-new-task-btn {
       font-size: 14px; 

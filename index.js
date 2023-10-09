@@ -279,9 +279,17 @@ const deleteTask = async (id, refresh) => {
 
 async function main() {
 
+  // alert('main beginning');
+
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
   let tasks = await results.json();
   console.log(tasks);
+
+  // alert(tasks[0].title);
+
+  // if (!tasks[0].id) {
+  //   alert('No tasks');
+  // }
 
   function createNewBoardBtn() {
     const createBoardBtn = document.createElement('button');
@@ -316,13 +324,15 @@ async function main() {
     // boardBtn.className = "board-btn";
 
 
-    boardBtn.id = "board-btn";
+    // boardBtn.id = "board-btn";
     boardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">${uniqueBoards[i]}</button>`
     boardNavLinksDiv.appendChild(boardBtn);
     // console.log("button" + i + "appended")
     
     // boardBtn.classList = 'active';
+    // alert(boardBtn.innerText)
   }
+
   
   createNewBoardBtn();
 
@@ -402,11 +412,14 @@ async function main() {
 
 
   if (!boardLocalStorage || !uniqueBoards.includes(boardLocalStorage)) {
-    selectedBoard = boardBtns[0].innerText;
+    selectedBoard = uniqueBoards[0];
   } else {
     selectedBoard = boardLocalStorage;
   }
-
+  // alert(boardLocalStorage + 'boardLocalStorage')
+  // alert(typeof boardLocalStorage + 'type of boardlocalstorage')
+  // alert(boardBtns[0].innerText + 'btn inner text')
+  // alert(boardBtns.length + ' board btns')
 
 
   // console.dir(boardBtns[0]);
@@ -527,6 +540,8 @@ async function main() {
 
     for (let i = 0; i < columnDivs.length; i++) {
 
+  
+
       let header = columnDivs[i].children[0];
       columnDivs[i].innerHTML = '';
       columnDivs[i].appendChild(header);
@@ -534,7 +549,7 @@ async function main() {
 
 
     const filteredTasks = tasks.filter(task => task.board === selectedBoard);
-
+    // alert(selectedBoard)
     // console.log(filteredTasks, tasks, selectedBoard)
 
 
