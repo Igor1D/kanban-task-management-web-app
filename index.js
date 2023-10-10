@@ -425,8 +425,11 @@ async function main() {
   // console.dir(boardBtns[0]);
 
   if (selectedBoard) {
+    // alert(boardBtns[0].getAttribute('innerText'))
     const activeButton = Array.from(boardBtns).find(boardBtn => boardBtn.innerText === selectedBoard);
+
     if (activeButton) {
+      // alert('active btn')
       activeButton.classList.add('active');
     }
   }

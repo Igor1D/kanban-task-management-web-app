@@ -744,21 +744,44 @@ input:checked+#label-checkbox-theme:after {
 
     #layout {
         width: 100%;
+        border: 2px solid yellow;
+        overflow-x: auto;
     }  
 
     body {
-      font-size: 14px; 
+      font-size: 0.8rem; 
+
       /* overflow-x: hidden; */
     }
+
+    .board-btn {
+        font-size: 0.8rem; 
+    }
+
+    #side-logo-div {
+        display: none;
+    }
+
     .side-bar {
       display: none; 
       padding: 0;
+      height: 60%;
+      width: 60%;
+      border: 2px solid green;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 0.8rem;
     }
     .container {
-      width: 100%; 
+        border: 2px solid red;
+      width: 200vw; 
       height: auto;
       /* max-height: auto; */
-      overflow-x: auto; 
+      overflow-x: scroll; 
+      overflow-y: auto;
+      height: 100%;
       /* overscroll-behavior: contain; */
       padding: 0;
       
@@ -773,6 +796,7 @@ input:checked+#label-checkbox-theme:after {
 
     .column-div {
         width: 75vw;
+
 
     }
 
