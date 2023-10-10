@@ -722,6 +722,10 @@ input:checked+#label-checkbox-theme:after {
     width: 50px;
 }
 
+.side-bar.show-sidebar {
+    display: flex !important; /* Important to override other display styles */
+  }
+
 @media screen and (max-width: 800px) {
 
     /* .task-div {
@@ -754,12 +758,72 @@ input:checked+#label-checkbox-theme:after {
       /* overflow-x: hidden; */
     }
 
+    #headline-sidepanel{
+        padding-left: 15px;
+    }
+
+    .boards-nav-links-div {
+        gap: 0;
+        height: 100%;
+    }
+
     .board-btn {
         font-size: 0.8rem; 
+        padding-left: 15px;
+        margin-right: 15px;
+        font-weight: 700;
+    }
+
+    #create-board-btn {
+        padding-left: 15px;
+        font-size: 0.8rem; 
+        font-weight: 700;
     }
 
     #side-logo-div {
         display: none;
+    }
+
+    .side-bar-bottom {
+        /* gap: 200px; */
+        height: 100%;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+
+
+    .hide-side-bar-div {
+        display: none;
+    }
+
+    .toggle-div {
+        width: 120px;
+        height: 20px;
+        margin-left: 14px;
+        padding-left: 45px;
+        padding-right: 45px;
+        
+    }
+
+    #label-checkbox-theme {
+        width: 50px;
+        right: 12px;
+        /* padding-right: 10px; */
+    }
+
+    #icon-dark {
+        width: 15px;
+        margin: 0;
+    }
+
+    #icon-light {
+        width: 19px;
+        margin: 0;
+    }
+
+    #headline-sidepanel {
+        padding-bottom: 10px;
     }
 
     .side-bar {
@@ -773,6 +837,8 @@ input:checked+#label-checkbox-theme:after {
       left: 50%;
       transform: translate(-50%,-50%);
       font-size: 0.8rem;
+      gap: 0;
+      padding-top: 15px;
     }
     .container {
         border: 2px solid red;
@@ -780,8 +846,8 @@ input:checked+#label-checkbox-theme:after {
       height: auto;
       /* max-height: auto; */
       overflow-x: scroll; 
-      overflow-y: auto;
-      height: 100%;
+      overflow-y: scroll;
+      /* height: 100%; */
       /* overscroll-behavior: contain; */
       padding: 0;
       
@@ -789,7 +855,7 @@ input:checked+#label-checkbox-theme:after {
 
     .card-column-main{
         height: auto;
-        width: 100%;
+        width: 900px;
         /* overflow-x: scroll; */
         /* overscroll-behavior: contain; */
     }

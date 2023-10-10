@@ -1,7 +1,7 @@
 
 //Logo
 let logo = document.getElementById('logo');
-console.log(logo)
+
 
 // Btns 
 let btns = document.querySelectorAll(".board-btn");
@@ -89,76 +89,56 @@ if (!sideBarLocalStorage) {
 
 if (sideBarState === 'flex') {
   showSideBarBtn.style.display = "none";
+  sideBar.classList.add('show-sidebar');
 } else {
   showSideBarBtn.style.display = "block";
+  sideBar.classList.remove('show-sidebar');
 }
 
 sideBar.style.setProperty('display', sideBarState);
 
 
+// Check the screen width and close the sidebar if necessary
+
+
 function closeSideBar() {
+  sideBar.classList.remove('show-sidebar');
+  showSideBarBtn.style.display = "block";
   // console.log(sideBarState);
   sideBarState = 'none';
   sideBar.style.display = sideBarState;
-  showSideBarBtn.style.display = "block";
+ 
   localStorage.setItem("sideBarState", sideBarState)
+ 
 
 
 }
 
 function openSideBar() {
+  sideBar.classList.add('show-sidebar');
+  showSideBarBtn.style.display = "none";
   // console.log(sideBarState);
   sideBarState = 'flex';
   sideBar.style.display = sideBarState;
-  showSideBarBtn.style.display = "none";
+  
   localStorage.setItem("sideBarState", sideBarState)
+  
 
 
 }
 
-
-
+//Ask Lazar
+if (window.innerWidth <= 850) {
+  closeSideBar();
+  showSideBarBtn.style.display = "none";
+} else {
+  openSideBar()
+}
 
 hideSideBarBtn.addEventListener('click', closeSideBar);
 showSideBarBtn.addEventListener('click', openSideBar);
 
-//Theme
 
-// let toggleState;
-// let toggleLocalStorage = localStorage.getItem('checkBoxState');
-
-// if(!toggleLocalStorage) {
-//   toggleState = 'false';
-// } else {
-//   toggleState = toggleLocalStorage;
-// }
-
-
-// if (toggleState === 'false') {
-//   document.body
-// } else {
-//   document.body.classList.toggle('.light-theme');
-
-// }
-
-
-
-// function lightTheme() {
-//   toggleState = 'true';
-//   document.body.classList.toggle('light-theme');
-  
-//   if(document.body.classList.contains('light-theme')){
-//     logo.src = './assets/logo-dark.svg'
-//   } else {
-//     logo.src = './assets/logo-light.svg'
-//   }
-//   localStorage.setItem('toggleState', toggleState)
-  
-  
-
-// }
-
-// themeToggle.addEventListener('change',lightTheme )
 let themeToggle = document.getElementById('switch');
 let lightTheme = localStorage.getItem('light-theme')
 
