@@ -847,8 +847,6 @@ input:checked+#label-checkbox-theme:after {
       /* max-height: auto; */
       overflow-x: scroll; 
       overflow-y: scroll;
-      /* height: 100%; */
-      /* overscroll-behavior: contain; */
       padding: 0;
       
     }
@@ -892,9 +890,25 @@ input:checked+#label-checkbox-theme:after {
       }
 
     #add-new-task-btn {
-      font-size: 14px; 
+      font-size: 0; 
       padding: 12px; 
+
     }
+    #add-new-task-btn::before {
+        content: "+";
+        font-size: 18px;
+        font-weight: 800;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+    }
+
+    #header-board-name {
+        font-size: 16px;
+    }
+
     .column-div {
       padding: 18px; 
     }
