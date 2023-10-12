@@ -72,71 +72,55 @@ let boardLocalStorage = localStorage.getItem('selectedBoard');
 // Side bar local storage
 // let flexSideBar = sideBar.style.setProperty('display', 'flex');
 // let noneSideBar = sideBar.style.setProperty('display', 'none')
-let sideBarState;
 // true or false - boolean
 // 'flex' or 'none'
-let sideBarLocalStorage = localStorage.getItem('sideBarState');
-
+let sideBarLocalStorage = localStorage.getItem('showSideBar');
 
 
 
 if (!sideBarLocalStorage) {
-  sideBarState = 'flex'
+  openSideBar();
 } else {
-  // here sideBarLocalStorage may be 'flex' or it may be 'none
-  sideBarState = sideBarLocalStorage;
+  if(sideBarLocalStorage == 'true'){
+    console.log('open was triggered')
+    openSideBar();
+    showSideBarBtn.style.display = "none";
+  } else {
+    console.log('close was triggered')
+    closeSideBar()
+    showSideBarBtn.style.display = "block";
+  }
 }
-
-if (sideBarState === 'flex') {
-  showSideBarBtn.style.display = "none";
-  sideBar.classList.add('show-sidebar');
-} else {
-  showSideBarBtn.style.display = "block";
-  sideBar.classList.remove('show-sidebar');
-}
-
-sideBar.style.setProperty('display', sideBarState);
-
-
-// Check the screen width and close the sidebar if necessary
 
 
 function closeSideBar() {
-  sideBar.classList.remove('show-sidebar');
-  showSideBarBtn.style.display = "block";
-  // console.log(sideBarState);
-  sideBarState = 'none';
-  sideBar.style.display = sideBarState;
+  sideBar.className = 'side-bar'
+  localStorage.setItem("showSideBar", 'false')
  
-  localStorage.setItem("sideBarState", sideBarState)
- 
-
-
 }
 
 function openSideBar() {
-  sideBar.classList.add('show-sidebar');
-  showSideBarBtn.style.display = "none";
-  // console.log(sideBarState);
-  sideBarState = 'flex';
-  sideBar.style.display = sideBarState;
-  
-  localStorage.setItem("sideBarState", sideBarState)
-  
-
+  sideBar.className = 'side-bar show-sidebar'
+  localStorage.setItem("showSideBar", 'true')
 
 }
 
-//Ask Lazar
-if (window.innerWidth <= 850) {
+// // Ask Lazar
+// if (window.innerWidth <= 850) {
+//   closeSideBar();
+//   showSideBarBtn.style.display = "none";
+// } else {
+//   openSideBar()
+// }
+
+hideSideBarBtn.addEventListener('click', () => {
   closeSideBar();
+  showSideBarBtn.style.display = "block";
+});
+showSideBarBtn.addEventListener('click', () => {
+  openSideBar();
   showSideBarBtn.style.display = "none";
-} else {
-  openSideBar()
-}
-
-hideSideBarBtn.addEventListener('click', closeSideBar);
-showSideBarBtn.addEventListener('click', openSideBar);
+});
 
 
 let themeToggle = document.getElementById('switch');
@@ -844,6 +828,7 @@ async function main() {
     columnHeaders[2].innerText = 'DONE (' + thirdColumn + ')';
     console.log(columnHeaders.innerText);
 
+    // alert(sideBar.display)
   }
 
   

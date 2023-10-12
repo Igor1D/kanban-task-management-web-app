@@ -60,7 +60,7 @@ body {
     /* border: 5px solid rgb(0, 0, 0); */
     border-right: 0.1px solid #979797;
     /* flex: 0.8; */
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 50px;
     /* padding-left: 50px; */
@@ -722,8 +722,16 @@ input:checked+#label-checkbox-theme:after {
     width: 50px;
 }
 
+.header-name-div {
+    display: flex;
+}
+
+.dropdownBtn{
+    display: none;
+}
+
 .side-bar.show-sidebar {
-    display: flex !important; /* Important to override other display styles */
+    display: flex !important 
   }
 
 @media screen and (max-width: 800px) {
@@ -734,6 +742,8 @@ input:checked+#label-checkbox-theme:after {
     .side-bar {
         display: none;
     }
+
+   
     .container {
         max-width: 100%;
     }
@@ -751,6 +761,10 @@ input:checked+#label-checkbox-theme:after {
         border: 2px solid yellow;
         overflow-x: auto;
     }  
+
+    .dropdownBtn{
+        display: block;
+    }
 
     body {
       font-size: 0.8rem; 
