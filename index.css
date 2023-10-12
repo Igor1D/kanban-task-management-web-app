@@ -734,6 +734,10 @@ input:checked+#label-checkbox-theme:after {
     display: flex !important 
   }
 
+.logo-mobile {
+    display: none;
+}
+
 @media screen and (max-width: 800px) {
 
     /* .task-div {
@@ -764,7 +768,18 @@ input:checked+#label-checkbox-theme:after {
 
     .dropdownBtn{
         display: block;
+        background-color: transparent;
+        border: none;
+        margin-left: 10px;
+        padding: 0;
     }
+
+    .logo-mobile {
+        display: block;
+        margin-right: 10px;
+    }
+
+
 
     body {
       font-size: 0.8rem; 
