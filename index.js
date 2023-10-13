@@ -34,6 +34,8 @@ let deleteTaskBtn = document.getElementById('deleteTaskBtn');
 
 // Side Bar
 let boardNavLinksDiv = document.getElementById("boards-nav-links-div")
+let dropDownButton = document.getElementById("dropdownBtn")
+// console.log(dropDownButton)
 // console.log(boardNavLinksDiv)
 let sideBar = document.getElementsByClassName('side-bar')[0];
 let sideBarDiv = document.getElementById('side-bar-div')
@@ -121,6 +123,23 @@ showSideBarBtn.addEventListener('click', () => {
   openSideBar();
   showSideBarBtn.style.display = "none";
 });
+
+
+// function openMobileMenu() {
+
+// }
+dropDownButton.addEventListener('click', ()=> {
+  if (sideBar.classList.contains('show-sidebar')) {
+    sideBar.classList.remove('show-sidebar')
+    localStorage.setItem("showSideBar", 'false')
+    showSideBarBtn.style.display = "none";
+    
+  } else {
+    sideBar.classList.add('show-sidebar')
+    localStorage.setItem("showSideBar", 'true')
+    showSideBarBtn.style.display = "none";
+  }
+})
 
 
 let themeToggle = document.getElementById('switch');
@@ -500,6 +519,7 @@ async function main() {
 
   editBoardBtn.addEventListener('click' , editBoardHandler);
 
+
   
 
   function showTasks() {
@@ -538,7 +558,7 @@ async function main() {
 
       
 
-      // console.log(filteredTasks[j].id)
+      
 
 
       
