@@ -90,7 +90,13 @@ if (!sideBarLocalStorage) {
   } else {
     console.log('close was triggered')
     closeSideBar()
-    showSideBarBtn.style.display = "block";
+    // showSideBarBtn.style.display = "block"
+      if (window.innerWidth >= 480) {
+        showSideBarBtn.style.display = "block"; // this one is making issue on mobile 
+      }
+    
+    
+    
   }
 }
 
@@ -118,6 +124,7 @@ function openSideBar() {
 hideSideBarBtn.addEventListener('click', () => {
   closeSideBar();
   showSideBarBtn.style.display = "block";
+  
 });
 showSideBarBtn.addEventListener('click', () => {
   openSideBar();
