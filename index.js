@@ -80,22 +80,20 @@ let sideBarLocalStorage = localStorage.getItem('showSideBar');
 
 
 
-if (!sideBarLocalStorage) {
+if (window.innerWidth >= 480 && !sideBarLocalStorage) {
   openSideBar();
 } else {
-  if(sideBarLocalStorage == 'true'){
+  if(window.innerWidth >= 480 && sideBarLocalStorage == 'true'){
     console.log('open was triggered')
     openSideBar();
     showSideBarBtn.style.display = "none";
   } else {
     console.log('close was triggered')
     closeSideBar()
-    // showSideBarBtn.style.display = "block"
-      if (window.innerWidth >= 480) {
-        showSideBarBtn.style.display = "block"; // this one is making issue on mobile 
+    showSideBarBtn.style.display = "block"
+      if (window.innerWidth <= 480) {
+        showSideBarBtn.style.display = "none"; // this one is making issue on mobile 
       }
-    
-    
     
   }
 }
@@ -415,11 +413,12 @@ async function main() {
   // console.dir(boardBtns[0]);
 
   if (selectedBoard) {
+    // alert('yes')
     // alert(boardBtns[0].getAttribute('innerText'))
-    const activeButton = Array.from(boardBtns).find(boardBtn => boardBtn.innerText === selectedBoard);
-
+    const activeButton = Array.from(boardBtns).find(boardBtn => boardBtn.textContent === selectedBoard);
+    // alert(boardBtns[0].textContent)
     if (activeButton) {
-      // alert('active btn')
+      // alert('active btn' + activeButton)
       activeButton.classList.add('active');
     }
   }
