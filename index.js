@@ -265,6 +265,8 @@ const deleteTask = async (id, refresh) => {
 
 
 
+
+
 async function main() {
 
   // alert('main beginning');
@@ -798,7 +800,9 @@ async function main() {
               <button type="button" class="submit-btn" id="cancel-btn">Cancel</button>
               </div>`
         
-        deleteBoardWindowDiv.style.display = 'flex';
+
+              // let cancelBtn = document.getElementById('cancel-btn');
+              deleteBoardWindowDiv.style.display = 'flex';
         document.body.appendChild(deleteBoardWindowDiv);
         deleteBoardDiv.style.display = 'none'
         deleteBoardWindowDiv.style.opacity = 0;
@@ -811,6 +815,20 @@ async function main() {
         }, 100);
 
 
+
+
+        // console.log(cancelBtn)
+
+        // cancelBtn.addEventListener('click', ()=> {
+        //   console.log('clicked')
+        // })
+
+        deleteBoardWindowDiv.addEventListener('click', (e) => {
+          if(e.target.id === 'cancel-btn') {
+            location.reload();
+          }
+        })
+        
         deleteBoardWindowDiv.addEventListener('submit', async (e)=> {
           e.preventDefault();
           
@@ -835,6 +853,7 @@ async function main() {
 
 
       }
+
     
     
       deleteBoardBtn.addEventListener('click', deleteBoardWindowHandler);
@@ -852,7 +871,7 @@ async function main() {
     columnHeaders[0].innerText = 'TODO (' + firstColumn + ')';
     columnHeaders[1].innerText = 'DOING (' + secondColumn + ')';
     columnHeaders[2].innerText = 'DONE (' + thirdColumn + ')';
-    console.log(columnHeaders.innerText);
+    // console.log(columnHeaders.innerText);
 
     // alert(sideBar.display)
   }
