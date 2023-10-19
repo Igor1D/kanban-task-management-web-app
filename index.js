@@ -83,7 +83,7 @@ let sideBarLocalStorage = localStorage.getItem('showSideBar');
 if (window.innerWidth >= 480 && !sideBarLocalStorage) {
   openSideBar();
 } else {
-  if(window.innerWidth >= 480 && sideBarLocalStorage == 'true'){
+  if (window.innerWidth >= 480 && sideBarLocalStorage == 'true') {
     console.log('open was triggered')
     openSideBar();
     showSideBarBtn.style.display = "none";
@@ -91,10 +91,10 @@ if (window.innerWidth >= 480 && !sideBarLocalStorage) {
     console.log('close was triggered')
     closeSideBar()
     showSideBarBtn.style.display = "block"
-      if (window.innerWidth <= 480) {
-        showSideBarBtn.style.display = "none"; // this one is making issue on mobile 
-      }
-    
+    if (window.innerWidth <= 480) {
+      showSideBarBtn.style.display = "none"; // this one is making issue on mobile 
+    }
+
   }
 }
 
@@ -102,7 +102,7 @@ if (window.innerWidth >= 480 && !sideBarLocalStorage) {
 function closeSideBar() {
   sideBar.className = 'side-bar'
   localStorage.setItem("showSideBar", 'false')
- 
+
 }
 
 function openSideBar() {
@@ -122,7 +122,7 @@ function openSideBar() {
 hideSideBarBtn.addEventListener('click', () => {
   closeSideBar();
   showSideBarBtn.style.display = "block";
-  
+
 });
 showSideBarBtn.addEventListener('click', () => {
   openSideBar();
@@ -133,16 +133,20 @@ showSideBarBtn.addEventListener('click', () => {
 // function openMobileMenu() {
 
 // }
-dropDownButton.addEventListener('click', ()=> {
+dropDownButton.addEventListener('click', () => {
   if (sideBar.classList.contains('show-sidebar')) {
     sideBar.classList.remove('show-sidebar')
     localStorage.setItem("showSideBar", 'false')
     showSideBarBtn.style.display = "none";
-    
+
+
   } else {
     sideBar.classList.add('show-sidebar')
     localStorage.setItem("showSideBar", 'true')
     showSideBarBtn.style.display = "none";
+    // filterDiv.style.opacity = 0;
+    // filterDiv.style.display = 'block';
+    // console.log(filterDiv)
   }
 })
 
@@ -154,7 +158,7 @@ function enableLightMode() {
   document.body.classList.toggle('light-theme');
   logo.src = './assets/logo-dark.svg'
   localStorage.setItem('light-theme', 'enabled')
-  themeToggle.setAttribute('checked', 'true'); 
+  themeToggle.setAttribute('checked', 'true');
   // themeToggle.checked = true;
 }
 
@@ -172,11 +176,11 @@ if (lightTheme === "enabled") {
   disableLightMode()
 }
 
-themeToggle.addEventListener('change', ()=>{
+themeToggle.addEventListener('change', () => {
   lightTheme = localStorage.getItem('light-theme');
   if (lightTheme === 'disabled') {
     enableLightMode()
-    
+
   } else {
     disableLightMode()
   }
@@ -251,7 +255,7 @@ const deleteTask = async (id, refresh) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    
+
 
 
   })
@@ -259,7 +263,7 @@ const deleteTask = async (id, refresh) => {
   if (refresh == true) {
     location.reload();
   }
-  
+
 }
 
 
@@ -287,7 +291,7 @@ async function main() {
     createBoardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-new-board">+ Create New Board`;
     boardNavLinksDiv.append(createBoardBtn);
 
-    
+
     createBoardBtn.addEventListener("click", handleCreateNewBoard)
     // console.log(createNewBoardForm)
   }
@@ -306,7 +310,7 @@ async function main() {
 
   let uniqueBoards = [...mySet]
 
-  
+
   for (let i = 0; i < uniqueBoards.length; i++) {
     let boardBtn = document.createElement('button')
 
@@ -318,12 +322,12 @@ async function main() {
     boardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">${uniqueBoards[i]}</button>`
     boardNavLinksDiv.appendChild(boardBtn);
     // console.log("button" + i + "appended")
-    
+
     // boardBtn.classList = 'active';
     // alert(boardBtn.innerText)
   }
 
-  
+
   createNewBoardBtn();
 
 
@@ -338,7 +342,7 @@ async function main() {
             <input type="text" class="modal-input" id="board-title-input" value="">
           </div>
           <button type="submit" class="submit-btn" id="create-new-board" >Create New Board</button>`
-    
+
     createNewBoardForm.style.display = 'flex';
     document.body.appendChild(createNewBoardForm);
     createNewBoardForm.style.opacity = 0;
@@ -349,19 +353,19 @@ async function main() {
       createNewBoardForm.style.opacity = 1;
       filterDiv.style.opacity = 1;
     }, 100);
-    
+
     let boardTitleInput = document.getElementById('board-title-input');
     // console.log(boardTitleInput)
-    
+
     // console.log(createNewBoardSubmit)
-    
+
 
     createNewBoardForm.addEventListener("submit", (event) => {
       event.preventDefault();
       createNewTask({
         "title": boardTitleInput.value,
-        "description":"",
-        "status":"",
+        "description": "",
+        "status": "",
         "board": boardTitleInput.value,
       });
     })
@@ -375,15 +379,15 @@ async function main() {
         // console.log(event.target)
         newBoardForm.remove();
         filterDiv.style.display = 'none';
-  
+
         console.log('end-------createNewBoardOffClick');
-  
+
         // threeDotsBtn.removeEventListener('click', createNewBoardOffClick)
         // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
         // console.log(editTaskForm.style.display)
-  
+
         document.removeEventListener("click", createNewBoardOffClick)
-      } 
+      }
       // else {
       //   newBoardForm.style.display = 'flex';
       //   filterDiv.style.display = 'block';
@@ -428,7 +432,7 @@ async function main() {
 
 
 
-  
+
 
 
 
@@ -450,18 +454,18 @@ async function main() {
 
 
     })
-    
-    
+
+
 
   }
-  
- 
-
-  
 
 
 
-  
+
+
+
+
+
 
   // for (let i = 0; i < btns.length; i++) {
   //   btns[i].addEventListener("click", () => {
@@ -512,30 +516,33 @@ async function main() {
     })
 
   })
- 
+
 
   // Edit board three dots btn
 
   function editBoardHandler() {
     if (deleteBoardDiv.style.display === 'none' || deleteBoardDiv.style.display === '') {
       deleteBoardDiv.style.display = 'flex';
+
     } else {
       deleteBoardDiv.style.display = 'none'
     }
   }
 
+console.log('event listener')
+  editBoardBtn.addEventListener('click', editBoardHandler);
 
-  editBoardBtn.addEventListener('click' , editBoardHandler);
 
 
-  
+
+
 
   function showTasks() {
-    
+
 
     for (let i = 0; i < columnDivs.length; i++) {
 
-  
+
 
       let header = columnDivs[i].children[0];
       columnDivs[i].innerHTML = '';
@@ -547,12 +554,11 @@ async function main() {
     // alert(selectedBoard)
     // console.log(filteredTasks, tasks, selectedBoard)
 
-
     for (let j = 0; j < filteredTasks.length; j++) {
 
 
       let taskDiv = document.createElement('div');
-      taskDiv.innerText = filteredTasks[j].title; 
+      taskDiv.innerText = filteredTasks[j].title;
       taskDiv.classList.add('task-div');
       // taskDivs.push(taskDiv);
 
@@ -564,12 +570,12 @@ async function main() {
         columnDivs[2].appendChild(taskDiv);
       }
 
-      
-
-      
 
 
-      
+
+
+
+
 
 
 
@@ -607,8 +613,8 @@ async function main() {
         })
 
 
-        
-        
+
+
 
         // Three dots
         // threeDotsBtn.addEventListener('click', (e) => {
@@ -778,91 +784,99 @@ async function main() {
 
         })
 
-        
 
-      
+
+
 
 
       });
 
-      function deleteBoardWindowHandler(e) {
-        e.stopPropagation();
-        let deleteBoardWindowDiv = document.createElement('form');
-        deleteBoardWindowDiv.classList = "modal-window";
-        deleteBoardWindowDiv.id = "delete-board-window";
-        deleteBoardWindowDiv.innerHTML = `<h4 class="modal-title" id="modal-board" >Delete this board?</h4>
-              <div class="deleteBoardWindowText">
-                <p class="board-modal-p">Are you sure you want to delete the <b>${selectedBoard}</b> board? 
-                This action will remove all tasks and cannot be reversed.</p>
-              </div>
-              <div class="deleteBoardWindowBtns">
-              <button type="submit" class="submit-btn" id="delete-board" >Delete</button>
-              <button type="button" class="submit-btn" id="cancel-btn">Cancel</button>
-              </div>`
-        
-
-              // let cancelBtn = document.getElementById('cancel-btn');
-              deleteBoardWindowDiv.style.display = 'flex';
-        document.body.appendChild(deleteBoardWindowDiv);
-        deleteBoardDiv.style.display = 'none'
-        deleteBoardWindowDiv.style.opacity = 0;
-        filterDiv.style.opacity = 0;
-        filterDiv.style.display = 'block';
-        setTimeout(() => {
-          deleteBoardWindowDiv.style.marginTop = 0;
-          deleteBoardWindowDiv.style.opacity = 1;
-          filterDiv.style.opacity = 1;
-        }, 100);
 
 
-
-
-        // console.log(cancelBtn)
-
-        // cancelBtn.addEventListener('click', ()=> {
-        //   console.log('clicked')
-        // })
-
-        deleteBoardWindowDiv.addEventListener('click', (e) => {
-          if(e.target.id === 'cancel-btn') {
-            location.reload();
-          }
-        })
-        
-        deleteBoardWindowDiv.addEventListener('submit', async (e)=> {
-          e.preventDefault();
-          
-          async function deleteTasks(){ 
-            
-            for (let task of filteredTasks) {
-
-            await deleteTask(
-            task.id,
-            false
-
-          );
-
-          }}
-          await deleteTasks();
-          console.log('tasks deleted')
-          location.reload();
-
-
-
-        })
-
-
-      }
-
-    
-    
-      deleteBoardBtn.addEventListener('click', deleteBoardWindowHandler);
-    
 
 
 
 
     }
+
+    function deleteBoardWindowHandler(e) {
+      // console.log('clicked 1')
+      e.stopPropagation();
+      let deleteBoardWindowDiv = document.createElement('form');
+      deleteBoardWindowDiv.classList = "modal-window";
+      deleteBoardWindowDiv.id = "delete-board-window";
+      deleteBoardWindowDiv.innerHTML = `<h4 class="modal-title" id="modal-board" >Delete this board?</h4>
+            <div class="deleteBoardWindowText">
+              <p class="board-modal-p">Are you sure you want to delete the <b>${selectedBoard}</b> board? 
+              This action will remove all tasks and cannot be reversed.</p>
+            </div>
+            <div class="deleteBoardWindowBtns">
+            <button type="submit" class="submit-btn" id="delete-board" >Delete</button>
+            <button type="button" class="submit-btn" id="cancel-btn">Cancel</button>
+            </div>`
+
+
+      
+      deleteBoardWindowDiv.style.display = 'flex';
+      document.body.appendChild(deleteBoardWindowDiv);
+      let cancelBtn = document.getElementById('cancel-btn');
+      deleteBoardDiv.style.display = 'none'
+      deleteBoardWindowDiv.style.opacity = 0;
+      filterDiv.style.opacity = 0;
+      filterDiv.style.display = 'block';
+      
+
+      setTimeout(() => {
+        deleteBoardWindowDiv.style.marginTop = 0;
+        deleteBoardWindowDiv.style.opacity = 1;
+        filterDiv.style.opacity = 1;
+        
+      }, 100);
+
+
+
+
+      // console.log(cancelBtn)
+
+      cancelBtn.addEventListener('click', () => {
+        location.reload();
+      })
+
+      // deleteBoardWindowDiv.addEventListener('click', (e) => {
+      //   if(e.target.id === 'cancel-btn') {
+      //     location.reload();
+      //   }
+      // })
+
+      deleteBoardWindowDiv.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        async function deleteTasks() {
+
+          for (let task of filteredTasks) {
+
+            await deleteTask(
+              task.id,
+              false
+
+            );
+
+          }
+        }
+        await deleteTasks();
+        // console.log('tasks deleted')
+        location.reload();
+
+
+
+      })
+
+
+    }
+
+
+    
+    deleteBoardBtn.addEventListener('click', deleteBoardWindowHandler);
 
     // Tasks Counter
     let firstColumn = columnDivs[0].children.length - 1
@@ -876,7 +890,7 @@ async function main() {
     // alert(sideBar.display)
   }
 
-  
+
 
 
   showTasks();

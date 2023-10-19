@@ -12,6 +12,13 @@
     background-color: #FFFFFF !important;
 } */
 
+*, *::before, *::after
+{
+    box-sizing: inherit;
+}
+
+
+
 :root {
     --primary-color: #2B2C37;
     --secondary-color: #20212C;
@@ -67,7 +74,7 @@ body {
     /* padding-left: 50px; */
     padding-right: 20px;
     height: 100vh;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     margin-right: 0;
     /* padding: 0 12px 0 26px; */
     width: 350px;
@@ -278,7 +285,8 @@ header {
     /* padding-top: 130px; */
     padding-left: 35px;
     max-height: auto;
-    overflow: auto;
+    /* overflow: auto; */
+    box-sizing: border-box;
 
 }
 
@@ -741,6 +749,7 @@ input:checked+#label-checkbox-theme:after {
 
 .side-bar.show-sidebar {
     display: flex !important
+    
 }
 
 .logo-mobile {
@@ -783,13 +792,13 @@ input:checked+#label-checkbox-theme:after {
 
 
     #filterDiv {
-        min-height: 200vh;
-        overflow-y: hidden;
+        min-height: 100vh;
+        /* overflow-y: hidden; */
     }
 
-    body.filterDiv {
+    /* body.filterDiv {
         overflow: hidden;
-    }
+    } */
 
     .dropdownBtn {
         display: block;
@@ -810,7 +819,7 @@ input:checked+#label-checkbox-theme:after {
         font-size: 0.8rem;
         padding: 0;
         margin: 0;
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
     }
 
     #headline-sidepanel {
@@ -892,14 +901,19 @@ input:checked+#label-checkbox-theme:after {
         font-size: 0.8rem;
         gap: 0;
         padding-top: 15px;
+        border-radius: 10px;
+        border-right: 0;
     }
 
     .container {
         /* border: 2px solid red; */
         height: auto;
         padding: 0;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
         margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+        /* border: 2px solid yellow; */
 
     }
 
@@ -908,6 +922,8 @@ input:checked+#label-checkbox-theme:after {
         flex-direction: column;
         margin: 0;
         padding: 0;
+        /* border: 2px solid red; */
+        
         
     }
 
@@ -952,7 +968,7 @@ input:checked+#label-checkbox-theme:after {
         right: 10px;
         bottom: 0;
         z-index: 6;
-        padding: 7px;
+        padding: 20px;
 
 
     }
@@ -960,6 +976,8 @@ input:checked+#label-checkbox-theme:after {
     #deleteBoardBtn {
         font-size: 12px;
         font-weight: 500;
+
+
     }
 
     #add-new-task-btn::before {
@@ -980,16 +998,19 @@ input:checked+#label-checkbox-theme:after {
 
     .column-div {
         padding: 18px;
-        width: 75vw;
+        width: 100%;
+        /* border: 2px solid rgb(93, 0, 255); */
+        /* box-sizing: border-box; */
     }
 
     .task-div {
         height: 70px;
+        /* box-sizing: border-box; */
 
     }
 
     .modal-window {
-        width: 80%;
+        width: 95%;
     }
 
     .columnHeader {
@@ -1006,7 +1027,7 @@ input:checked+#label-checkbox-theme:after {
     }
 
     .edit-task-modal-window {
-        width: 80%;
+        width: 95%;
 
     }
 
