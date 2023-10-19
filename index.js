@@ -138,15 +138,18 @@ dropDownButton.addEventListener('click', () => {
     sideBar.classList.remove('show-sidebar')
     localStorage.setItem("showSideBar", 'false')
     showSideBarBtn.style.display = "none";
+    // filterDiv.style.opacity = 0
+    // sideBar.style.opacity = 0
 
 
   } else {
     sideBar.classList.add('show-sidebar')
     localStorage.setItem("showSideBar", 'true')
     showSideBarBtn.style.display = "none";
-    // filterDiv.style.opacity = 0;
-    // filterDiv.style.display = 'block';
-    // console.log(filterDiv)
+    // filterDiv.style.display = 'block'
+    // filterDiv.style.opacity = 1
+    // sideBar.style.opacity = 1
+
   }
 })
 
@@ -372,6 +375,12 @@ async function main() {
 
     // createBoardBtn.removeEventListener("click", handleCreateNewBoard)
 
+    // function mobileSideBarOffClick(event) {
+
+    //   console.log(sideBar)
+      
+    // }
+    // document.addEventListener('click', mobileSideBarOffClick);
 
     function createNewBoardOffClick(event) {
       let newBoardForm = document.getElementById('new-board-form')
