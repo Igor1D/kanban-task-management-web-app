@@ -299,6 +299,8 @@ async function main() {
     // console.log(createNewBoardForm)
   }
 
+
+
   // console.log(tasks[0].board)
   let allBoards = [];
 
@@ -375,12 +377,7 @@ async function main() {
 
     // createBoardBtn.removeEventListener("click", handleCreateNewBoard)
 
-    // function mobileSideBarOffClick(event) {
 
-    //   console.log(sideBar)
-      
-    // }
-    // document.addEventListener('click', mobileSideBarOffClick);
 
     function createNewBoardOffClick(event) {
       let newBoardForm = document.getElementById('new-board-form')
@@ -540,9 +537,6 @@ async function main() {
 
 console.log('event listener')
   editBoardBtn.addEventListener('click', editBoardHandler);
-
-
-
 
 
 
@@ -807,6 +801,23 @@ console.log('event listener')
 
 
     }
+
+    function mobileSideBarOffClick(event) {
+
+    console.log('start---------mobileSideBarOffClick')
+
+      if(event.target !== sideBar && !sideBar.contains(event.target) && !dropDownButton) {
+        // console.log(event.target)
+        sideBar.remove();
+        console.log('end---------mobileSideBarOffClick')
+        
+        
+  
+        document.removeEventListener('click', mobileSideBarOffClick);
+      }
+      
+    }
+    document.addEventListener('click', mobileSideBarOffClick);
 
     function deleteBoardWindowHandler(e) {
       // console.log('clicked 1')
