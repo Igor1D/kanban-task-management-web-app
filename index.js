@@ -130,29 +130,34 @@ showSideBarBtn.addEventListener('click', () => {
 });
 
 
-// function openMobileMenu() {
-
-// }
-dropDownButton.addEventListener('click', () => {
+function dropDownBtnHandler() {
   if (sideBar.classList.contains('show-sidebar')) {
     sideBar.classList.remove('show-sidebar')
     localStorage.setItem("showSideBar", 'false')
     showSideBarBtn.style.display = "none";
-    // filterDiv.style.opacity = 0
+    filterDiv.style.display = 'none';
     // sideBar.style.opacity = 0
+    
+    
 
 
   } else {
     sideBar.classList.add('show-sidebar')
     localStorage.setItem("showSideBar", 'true')
     showSideBarBtn.style.display = "none";
-    // filterDiv.style.display = 'block'
+    filterDiv.style.display = 'block'
     // filterDiv.style.opacity = 1
     // sideBar.style.opacity = 1
+    
 
   }
-})
 
+}
+
+
+dropDownButton.addEventListener('click', dropDownBtnHandler)
+
+    
 
 let themeToggle = document.getElementById('switch');
 let lightTheme = localStorage.getItem('light-theme')
@@ -801,23 +806,40 @@ console.log('event listener')
 
 
     }
-
+    
+   
+  
     function mobileSideBarOffClick(event) {
+      let dropDownIcon = document.getElementById('dropDownIcon')
 
-    console.log('start---------mobileSideBarOffClick')
+    // console.log('start---------mobileSideBarOffClick')
+    console.log('Event triggered');
+    console.log('event.target:', event.target);
+    console.log('dropDownButton:', dropDownButton);
+    console.log('sideBarDiv.contains(event.target):', sideBarDiv.contains(event.target));
 
-      if(event.target !== sideBar && !sideBar.contains(event.target) && !dropDownButton) {
-        // console.log(event.target)
-        sideBar.remove();
+
+      if(event.target !== dropDownButton && event.target !== dropDownIcon && !sideBarDiv.contains(event.target)) {
+        closeSideBar();
+        filterDiv.style.display = 'none';
         console.log('end---------mobileSideBarOffClick')
         
         
-  
-        document.removeEventListener('click', mobileSideBarOffClick);
+        
+        // document.removeEventListener('click', mobileSideBarOffClick);
+        
+      } 
+      else {
+        openSideBar();
+        filterDiv.style.display = 'block';
+        
+
       }
       
     }
+
     document.addEventListener('click', mobileSideBarOffClick);
+
 
     function deleteBoardWindowHandler(e) {
       // console.log('clicked 1')
