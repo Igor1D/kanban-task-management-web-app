@@ -30,6 +30,7 @@ let threeDotsBtn = document.getElementById("edit-btn");
 let editBtnsDiv = document.getElementById("editBtnsDiv");
 let editTaskBtn = document.getElementById("editTaskBtn");
 let deleteTaskBtn = document.getElementById("deleteTaskBtn");
+let editBoardBtnP = document.getElementById('three-dots-icon')
 // console.log(deleteTaskBtn);
 // console.log(editBtnsDiv.style.display);
 
@@ -474,8 +475,9 @@ async function main() {
 
 
   function editBoardOffClick(event) {
-    if (event.target !== deleteBoardBtn && !deleteBoardBtn.contains(event.target)) {
-      deleteBoardDiv.style.display === "none"
+    if (event.target !== deleteBoardDiv && event.target !== editBoardBtnP && !deleteBoardDiv.contains(event.target)) {
+      deleteBoardDiv.style.display = "none";
+      console.log('Event Target', event.target)
     }
   }
 
