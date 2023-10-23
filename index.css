@@ -308,6 +308,7 @@ header {
     padding: 40px;
     padding-left: 12px;
     padding-right: 80px;
+    width: 400px;
 
 
 }
@@ -317,6 +318,7 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     padding-left: 20px;
     /* border-color: rgb(177, 187, 84); */
     width: 100%;
@@ -413,7 +415,7 @@ header {
 }
 
 #edit-board-btn {
-    top: 45px;
+    top: 30px;
     right: 20px;
 
 }
@@ -450,15 +452,15 @@ header {
     /* z-index: 3; */
     /* display: flex; */
     flex-direction: column;
-    top: 100px;
+    top: 110px;
     right: 58px;
     background: var(--primary-color);
     align-items: center;
     gap: 10px;
     justify-content: space-around;
     padding: 10px;
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 50px;
     border-radius: 8px;
     display: none;
     z-index: 5;
@@ -507,10 +509,9 @@ header {
     color: #EA5555;
 }
 
-/* .show {
-    display: flex;
-  } */
-
+h2 {
+    font-size: 1.2em;
+}
 .task-title-input {
     background-color: var(--primary-color);
     border: 1px solid #424852;
@@ -798,10 +799,10 @@ input:checked+#label-checkbox-theme:after {
 
     }
 
-    .side-bar {
-        /* box-sizing: content-box; */
-    }
+    #edit-btn {
+        right: 0px;
 
+    }
 
 
     #filterDiv {
@@ -1006,6 +1007,8 @@ input:checked+#label-checkbox-theme:after {
         bottom: 0;
         z-index: 6;
         padding: 20px;
+        width: 80px;
+        height: 30px;
 
 
     }
@@ -1069,6 +1072,7 @@ input:checked+#label-checkbox-theme:after {
     }
 
 
+
 }
 
 /* Tablets */
@@ -1089,7 +1093,7 @@ input:checked+#label-checkbox-theme:after {
     }
 
     #add-new-task-btn {
-        font-size: 18px;
+        font-size: 16px;
         padding: 18px;
     }
 
@@ -1105,13 +1109,17 @@ input:checked+#label-checkbox-theme:after {
         width: 70%;
     }
 
+    h2 {
+        font-size: 1.0em;
+    }
+
 
 }
 
 /* Laptops and Desktops */
 @media screen and (min-width: 1025px) {
     body {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .container {
@@ -1126,7 +1134,7 @@ input:checked+#label-checkbox-theme:after {
     }
 
     #add-new-task-btn {
-        font-size: 20px;
+        font-size: 16px;
         padding: 20px;
     }
 
@@ -1135,21 +1143,28 @@ input:checked+#label-checkbox-theme:after {
     }
 
     .task-div {
-        height: 90px;
+        height: 80px;
     }
 
     .modal-window {
         width: 30%;
     }
+    .side-bar {
+        width: 300px;
+    }
+    h2 {
+        font-size: 1.0em;
+    }
+
 }
 
 @media screen and (min-width: 2560px) {
     body {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .side-bar {
-        width: 300px;
+        width: 350px;
     }
 
     .container {
@@ -1173,7 +1188,8 @@ input:checked+#label-checkbox-theme:after {
     }
 
     .task-div {
-        height: 100px;
+        height: 90px;
+        width: 90%;
         font-size: 16px;
     }
 

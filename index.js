@@ -89,7 +89,7 @@ if (window.innerWidth >= 480 && !sideBarLocalStorage) {
     closeSideBar();
     showSideBarBtn.style.display = "block";
     if (window.innerWidth <= 480) {
-      showSideBarBtn.style.display = "none"; 
+      showSideBarBtn.style.display = "none";
     }
   }
 }
@@ -472,6 +472,15 @@ async function main() {
   // console.log("event listener");
   editBoardBtn.addEventListener("click", editBoardHandler);
 
+
+  function editBoardOffClick(event) {
+    if (event.target !== deleteBoardBtn && !deleteBoardBtn.contains(event.target)) {
+      deleteBoardDiv.style.display === "none"
+    }
+  }
+
+  document.addEventListener('click', editBoardOffClick)
+
   function showTasks() {
     for (let i = 0; i < columnDivs.length; i++) {
       let header = columnDivs[i].children[0];
@@ -558,8 +567,7 @@ async function main() {
         function offClick(event) {
           console.log("----------");
           if (
-            event.target != editTaskModalWindow &&
-            !editTaskModalWindow.contains(event.target)
+            event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)
           ) {
             editTaskModalWindow.style.display = "none";
             filterDiv.style.display = "none";
@@ -593,28 +601,23 @@ async function main() {
           editTaskForm.innerHTML = `<h4 class="modal-title" >Edit Task</h4>
           <div class="input-div">
             <label class="label-modal-window" id="modal-title-input" for="title-input">Title</label>
-            <input type="text" class="modal-input" id="title-input-edit-task" value="${
-              filteredTasks[j].title
+            <input type="text" class="modal-input" id="title-input-edit-task" value="${filteredTasks[j].title
             }">
           </div>
           <div class="input-div">
             <label class="label-modal-window" id="modal-desc-input" for="desc-input-edit-task">Description</label>
-          <textarea name="description" id="desc-input-edit-task">${
-            filteredTasks[j].description
-          }</textarea>
+          <textarea name="description" id="desc-input-edit-task">${filteredTasks[j].description
+            }</textarea>
           </div>
           <div class="input-div">
             <label class="label-modal-window" id="modal-select-status-task" for="edit-select-status-task">Status</label>
             <select name="status"  id="edit-select-status-task">
-              <option value="todo" ${
-                filteredTasks[j].status == "todo" ? "selected" : ""
-              }>Todo</option>
-              <option value="doing" ${
-                filteredTasks[j].status == "doing" ? "selected" : ""
-              }>Doing</option>
-              <option value="done" ${
-                filteredTasks[j].status == "done" ? "selected" : ""
-              }>Done</option>>
+              <option value="todo" ${filteredTasks[j].status == "todo" ? "selected" : ""
+            }>Todo</option>
+              <option value="doing" ${filteredTasks[j].status == "doing" ? "selected" : ""
+            }>Doing</option>
+              <option value="done" ${filteredTasks[j].status == "done" ? "selected" : ""
+            }>Done</option>>
             </select>
           </div>
           <button type="submit" class="submit-btn" id="change-task-btn" >Save Changes</button>`;
@@ -688,7 +691,6 @@ async function main() {
       });
     }
 
-
     function mobileSideBarOffClick(event) {
       let dropDownIcon = document.getElementById("dropDownIcon");
 
@@ -701,15 +703,13 @@ async function main() {
       //   sideBarDiv.contains(event.target)
       // );
 
-      if (event.target !== dropDownButton && event.target !== dropDownIcon && !sideBarDiv.contains(event.target)) {
+      if (event.target !== dropDownButton && event.target !== dropDownIcon && !sideBarDiv.contains(event.target)
+      ) {
         sideBar.className = "side-bar";
         filterDiv.style.display = "none";
         console.log("end---------mobileSideBarOffClick");
 
-
-          // document.removeEventListener('click', mobileSideBarOffClick)
-
-
+        // document.removeEventListener('click', mobileSideBarOffClick)
       } else {
         sideBar.className = "side-bar show-sidebar";
         filterDiv.style.display = "block";
@@ -719,8 +719,6 @@ async function main() {
     if (window.innerWidth <= 480) {
       document.addEventListener("click", mobileSideBarOffClick);
     }
-    
-    
 
     function deleteBoardWindowHandler(e) {
       // console.log('clicked 1')
