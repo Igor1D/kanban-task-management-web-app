@@ -784,6 +784,7 @@ input:checked+#label-checkbox-theme:after {
 
     .side-bar.show-sidebar {
         position: fixed;
+        height: auto;
         
         
         

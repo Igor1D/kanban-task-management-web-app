@@ -122,7 +122,37 @@ showSideBarBtn.addEventListener("click", () => {
   showSideBarBtn.style.display = "none";
 });
 
-function dropDownBtnHandler() {
+
+
+function mobileSideBarOffClick(event) {
+  let dropDownIcon = document.getElementById("dropDownIcon");
+
+  console.log('start---------mobileSideBarOffClick')
+  // console.log("Event triggered");
+  // console.log("event.target:", event.target);
+  // console.log("dropDownButton:", dropDownButton);
+  // console.log(
+  //   "sideBarDiv.contains(event.target):",
+  //   sideBarDiv.contains(event.target)
+  // );
+
+  if (event.target !== dropDownButton && event.target !== dropDownIcon && !sideBarDiv.contains(event.target)
+  ) {
+    sideBar.className = "side-bar";
+    filterDiv.style.display = "none";
+    console.log("end---------mobileSideBarOffClick");
+
+    // document.removeEventListener('click', mobileSideBarOffClick)
+  } else {
+    sideBar.className = "side-bar show-sidebar";
+    filterDiv.style.display = "block";
+  }
+}
+
+
+
+function dropDownBtnHandler(event) {
+  event.stopPropagation()
   if (sideBar.classList.contains("show-sidebar")) {
     sideBar.classList.remove("show-sidebar");
     localStorage.setItem("showSideBar", "false");
@@ -130,6 +160,9 @@ function dropDownBtnHandler() {
     filterDiv.style.display = "none";
     // sideBar.style.opacity = 0
   } else {
+    if (window.innerWidth <= 480) {
+      document.addEventListener("click", mobileSideBarOffClick);
+    }
     sideBar.classList.add("show-sidebar");
     localStorage.setItem("showSideBar", "true");
     showSideBarBtn.style.display = "none";
@@ -459,7 +492,8 @@ async function main() {
 
   // Edit board three dots btn
 
-  function editBoardHandler() {
+  function editBoardHandler(event) {
+    event.stopPropagation();
     if (
       deleteBoardDiv.style.display === "none" ||
       deleteBoardDiv.style.display === ""
@@ -468,6 +502,11 @@ async function main() {
     } else {
       deleteBoardDiv.style.display = "none";
     }
+
+    
+    document.addEventListener('click', editBoardOffClick)
+
+
   }
 
   // console.log("event listener");
@@ -476,12 +515,14 @@ async function main() {
 
   function editBoardOffClick(event) {
     if (event.target !== deleteBoardDiv && event.target !== editBoardBtnP && !deleteBoardDiv.contains(event.target)) {
+    
       deleteBoardDiv.style.display = "none";
-      console.log('Event Target', event.target)
+
     }
+    document.removeEventListener('click', editBoardOffClick)
   }
 
-  document.addEventListener('click', editBoardOffClick)
+  
 
   function showTasks() {
     for (let i = 0; i < columnDivs.length; i++) {
@@ -693,34 +734,9 @@ async function main() {
       });
     }
 
-    function mobileSideBarOffClick(event) {
-      let dropDownIcon = document.getElementById("dropDownIcon");
 
-      // console.log('start---------mobileSideBarOffClick')
-      // console.log("Event triggered");
-      // console.log("event.target:", event.target);
-      // console.log("dropDownButton:", dropDownButton);
-      // console.log(
-      //   "sideBarDiv.contains(event.target):",
-      //   sideBarDiv.contains(event.target)
-      // );
 
-      if (event.target !== dropDownButton && event.target !== dropDownIcon && !sideBarDiv.contains(event.target)
-      ) {
-        sideBar.className = "side-bar";
-        filterDiv.style.display = "none";
-        console.log("end---------mobileSideBarOffClick");
 
-        // document.removeEventListener('click', mobileSideBarOffClick)
-      } else {
-        sideBar.className = "side-bar show-sidebar";
-        filterDiv.style.display = "block";
-      }
-    }
-
-    if (window.innerWidth <= 480) {
-      document.addEventListener("click", mobileSideBarOffClick);
-    }
 
     function deleteBoardWindowHandler(e) {
       // console.log('clicked 1')
