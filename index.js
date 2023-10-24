@@ -141,12 +141,14 @@ function mobileSideBarOffClick(event) {
     sideBar.className = "side-bar";
     filterDiv.style.display = "none";
     console.log("end---------mobileSideBarOffClick");
-
-    // document.removeEventListener('click', mobileSideBarOffClick)
+    document.removeEventListener('click', mobileSideBarOffClick)
+    
   } else {
     sideBar.className = "side-bar show-sidebar";
     filterDiv.style.display = "block";
   }
+
+  
 }
 
 
@@ -170,7 +172,9 @@ function dropDownBtnHandler(event) {
     // filterDiv.style.opacity = 1
     // sideBar.style.opacity = 1
   }
+
 }
+
 
 dropDownButton.addEventListener("click", dropDownBtnHandler);
 
@@ -299,6 +303,8 @@ async function main() {
     createBoardBtn.id = "create-board-btn";
     createBoardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-new-board">+ Create New Board`;
     boardNavLinksDiv.append(createBoardBtn);
+    console.log('305')
+    
 
     createBoardBtn.addEventListener("click", handleCreateNewBoard);
     // console.log(createNewBoardForm)
@@ -335,7 +341,10 @@ async function main() {
   createNewBoardBtn();
 
   function handleCreateNewBoard(e) {
+    
     e.stopPropagation();
+    sideBar.classList.remove("show-sidebar");
+    document.removeEventListener('click', mobileSideBarOffClick);
     let createNewBoardForm = document.createElement("form");
     createNewBoardForm.classList = "modal-window";
     createNewBoardForm.id = "new-board-form";
