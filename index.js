@@ -148,7 +148,7 @@ function dropDownBtnHandler(event) {
     showSideBarBtn.style.display = "none";
     filterDiv.style.display = "none";
   } else {
-    if (window.innerWidth <= 480) {
+    if (window.innerWidth <= 800) {
       document.addEventListener("click", mobileSideBarOffClick);
     }
     sideBar.classList.add("show-sidebar");
