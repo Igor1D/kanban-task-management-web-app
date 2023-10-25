@@ -1,3 +1,8 @@
+import { createNewTask } from "./utils/taskFunctions.js";
+import { patchTask } from "./utils/taskFunctions.js";
+import { putTask } from "./utils/taskFunctions.js";
+import { deleteTask } from "./utils/taskFunctions.js";
+
 //Logo
 let logo = document.getElementById("logo");
 
@@ -30,7 +35,7 @@ let threeDotsBtn = document.getElementById("edit-btn");
 let editBtnsDiv = document.getElementById("editBtnsDiv");
 let editTaskBtn = document.getElementById("editTaskBtn");
 let deleteTaskBtn = document.getElementById("deleteTaskBtn");
-let editBoardBtnP = document.getElementById('three-dots-icon')
+let editBoardBtnP = document.getElementById("three-dots-icon");
 // console.log(deleteTaskBtn);
 // console.log(editBtnsDiv.style.display);
 
@@ -49,10 +54,7 @@ let headerDiv = document.getElementById("header");
 let containerDiv = document.getElementsByClassName("container")[0];
 
 //Theme Toggle
-
 let toggleDiv = document.getElementsByClassName("toggle-div")[0];
-
-// Create New board
 
 // Form
 let form = document.getElementById("new-task-modal-window");
@@ -65,15 +67,12 @@ let ddl = document.getElementById("select-status");
 let editBoardBtn = document.getElementById("edit-board-btn");
 let deleteBoardDiv = document.getElementById("editBoardDiv");
 let deleteBoardBtn = document.getElementById("deleteBoardBtn");
-// console.log(deleteBoardDiv.style.display == 'none');
 
 // Board local storage
 let selectedBoard;
 let boardLocalStorage = localStorage.getItem("selectedBoard");
 
 // Side bar local storage
-// let flexSideBar = sideBar.style.setProperty('display', 'flex');
-// let noneSideBar = sideBar.style.setProperty('display', 'none')
 // true or false - boolean
 // 'flex' or 'none'
 let sideBarLocalStorage = localStorage.getItem("showSideBar");
@@ -105,14 +104,6 @@ function openSideBar() {
   localStorage.setItem("showSideBar", "true");
 }
 
-// // Ask Lazar
-// if (window.innerWidth <= 850) {
-//   closeSideBar();
-//   showSideBarBtn.style.display = "none";
-// } else {
-//   openSideBar()
-// }
-
 hideSideBarBtn.addEventListener("click", () => {
   closeSideBar();
   showSideBarBtn.style.display = "block";
@@ -122,12 +113,10 @@ showSideBarBtn.addEventListener("click", () => {
   showSideBarBtn.style.display = "none";
 });
 
-
-
 function mobileSideBarOffClick(event) {
   let dropDownIcon = document.getElementById("dropDownIcon");
 
-  console.log('start---------mobileSideBarOffClick')
+  console.log("start---------mobileSideBarOffClick");
   // console.log("Event triggered");
   // console.log("event.target:", event.target);
   // console.log("dropDownButton:", dropDownButton);
@@ -136,31 +125,28 @@ function mobileSideBarOffClick(event) {
   //   sideBarDiv.contains(event.target)
   // );
 
-  if (event.target !== dropDownButton && event.target !== dropDownIcon && !sideBarDiv.contains(event.target)
+  if (
+    event.target !== dropDownButton &&
+    event.target !== dropDownIcon &&
+    !sideBarDiv.contains(event.target)
   ) {
     sideBar.className = "side-bar";
     filterDiv.style.display = "none";
     console.log("end---------mobileSideBarOffClick");
-    document.removeEventListener('click', mobileSideBarOffClick)
-    
+    document.removeEventListener("click", mobileSideBarOffClick);
   } else {
     sideBar.className = "side-bar show-sidebar";
     filterDiv.style.display = "block";
   }
-
-  
 }
 
-
-
 function dropDownBtnHandler(event) {
-  event.stopPropagation()
+  event.stopPropagation();
   if (sideBar.classList.contains("show-sidebar")) {
     sideBar.classList.remove("show-sidebar");
     localStorage.setItem("showSideBar", "false");
     showSideBarBtn.style.display = "none";
     filterDiv.style.display = "none";
-    // sideBar.style.opacity = 0
   } else {
     if (window.innerWidth <= 480) {
       document.addEventListener("click", mobileSideBarOffClick);
@@ -169,12 +155,8 @@ function dropDownBtnHandler(event) {
     localStorage.setItem("showSideBar", "true");
     showSideBarBtn.style.display = "none";
     filterDiv.style.display = "block";
-    // filterDiv.style.opacity = 1
-    // sideBar.style.opacity = 1
   }
-
 }
-
 
 dropDownButton.addEventListener("click", dropDownBtnHandler);
 
@@ -186,7 +168,6 @@ function enableLightMode() {
   logo.src = "./assets/logo-dark.svg";
   localStorage.setItem("light-theme", "enabled");
   themeToggle.setAttribute("checked", "true");
-  // themeToggle.checked = true;
 }
 
 function disableLightMode() {
@@ -212,20 +193,6 @@ themeToggle.addEventListener("change", () => {
 });
 // console.log(themeToggle.contains())
 
-const createNewTask = async (task) => {
-  const response = await fetch(
-    `https://kanban-backend-server.onrender.com/tasks`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(task),
-    }
-  );
-  location.reload();
-};
-
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   createNewTask({
@@ -236,81 +203,19 @@ form.addEventListener("submit", (event) => {
   });
 });
 
-// func that takes an ID and the task OBJ and updates it on the server
-const patchTask = async (id, task) => {
-  // console.log(id, task)
-
-  const results = await fetch(
-    `https://kanban-backend-server.onrender.com/tasks/${id}`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(task),
-    }
-  );
-  location.reload();
-};
-
-const putTask = async (id, task) => {
-  // console.log(id, task)
-  const results = await fetch(
-    `https://kanban-backend-server.onrender.com/tasks/${id}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(task),
-    }
-  );
-  location.reload();
-};
-
-const deleteTask = async (id, refresh) => {
-  // console.log(id, task)
-  const results = await fetch(
-    `https://kanban-backend-server.onrender.com/tasks/${id}`,
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  console.log("task" + id + "deleted");
-  if (refresh == true) {
-    location.reload();
-  }
-};
-
 async function main() {
-  // alert('main beginning');
-
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
   let tasks = await results.json();
-  console.log(tasks);
-
-  // alert(tasks[0].title);
-
-  // if (!tasks[0].id) {
-  //   alert('No tasks');
-  // }
 
   function createNewBoardBtn() {
     const createBoardBtn = document.createElement("button");
     createBoardBtn.id = "create-board-btn";
     createBoardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-new-board">+ Create New Board`;
     boardNavLinksDiv.append(createBoardBtn);
-    console.log('305')
-    
+    console.log("305");
 
     createBoardBtn.addEventListener("click", handleCreateNewBoard);
-    // console.log(createNewBoardForm)
   }
-
-  // console.log(tasks[0].board)
   let allBoards = [];
 
   for (let i = 0; i < tasks.length; i++) {
@@ -327,24 +232,16 @@ async function main() {
     let boardBtn = document.createElement("button");
 
     boardBtn.classList.add("board-btn");
-    // boardBtn.className = "board-btn";
-
-    // boardBtn.id = "board-btn";
     boardBtn.innerHTML = `<img src="./assets/icon-board.svg" alt="icon-board" class="icon-board">${uniqueBoards[i]}</button>`;
     boardNavLinksDiv.appendChild(boardBtn);
-    // console.log("button" + i + "appended")
-
-    // boardBtn.classList = 'active';
-    // alert(boardBtn.innerText)
   }
 
   createNewBoardBtn();
 
   function handleCreateNewBoard(e) {
-    
     e.stopPropagation();
     sideBar.classList.remove("show-sidebar");
-    document.removeEventListener('click', mobileSideBarOffClick);
+    document.removeEventListener("click", mobileSideBarOffClick);
     let createNewBoardForm = document.createElement("form");
     createNewBoardForm.classList = "modal-window";
     createNewBoardForm.id = "new-board-form";
@@ -367,9 +264,6 @@ async function main() {
     }, 100);
 
     let boardTitleInput = document.getElementById("board-title-input");
-    // console.log(boardTitleInput)
-
-    // console.log(createNewBoardSubmit)
 
     createNewBoardForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -380,8 +274,6 @@ async function main() {
         board: boardTitleInput.value,
       });
     });
-
-    // createBoardBtn.removeEventListener("click", handleCreateNewBoard)
 
     function createNewBoardOffClick(event) {
       let newBoardForm = document.getElementById("new-board-form");
@@ -395,22 +287,11 @@ async function main() {
 
         console.log("end-------createNewBoardOffClick");
 
-        // threeDotsBtn.removeEventListener('click', createNewBoardOffClick)
-        // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
-        // console.log(editTaskForm.style.display)
-
         document.removeEventListener("click", createNewBoardOffClick);
       }
-      // else {
-      //   newBoardForm.style.display = 'flex';
-      //   filterDiv.style.display = 'block';
-      // }
     }
     document.addEventListener("click", createNewBoardOffClick);
   }
-
-  // let createNewBoardSubmit = document.getElementById('create-new-board');
-  // console.log(createNewBoardSubmit);
 
   let boardBtns = document.querySelectorAll(".board-btn");
 
@@ -419,31 +300,19 @@ async function main() {
   } else {
     selectedBoard = boardLocalStorage;
   }
-  // alert(boardLocalStorage + 'boardLocalStorage')
-  // alert(typeof boardLocalStorage + 'type of boardlocalstorage')
-  // alert(boardBtns[0].innerText + 'btn inner text')
-  // alert(boardBtns.length + ' board btns')
-
-  // console.dir(boardBtns[0]);
 
   if (selectedBoard) {
-    // alert('yes')
-    // alert(boardBtns[0].getAttribute('innerText'))
     const activeButton = Array.from(boardBtns).find(
       (boardBtn) => boardBtn.textContent === selectedBoard
     );
-    // alert(boardBtns[0].textContent)
     if (activeButton) {
-      // alert('active btn' + activeButton)
       activeButton.classList.add("active");
     }
   }
   headerBoardName.innerText = selectedBoard;
 
   for (let i = 0; i < boardBtns.length; i++) {
-    // console.log(boardBtns)
     boardBtns[i].addEventListener("click", () => {
-      // console.log("clicked")
       document.querySelector(".active")?.classList.remove("active");
       boardBtns[i].classList.add("active");
 
@@ -456,24 +325,6 @@ async function main() {
       showTasks();
     });
   }
-
-  // for (let i = 0; i < btns.length; i++) {
-  //   btns[i].addEventListener("click", () => {
-
-  //     document.querySelector('.active')?.classList.remove('active');
-  //     btns[i].classList.add('active');
-
-  //     selectedBoard = btns[i].innerText;
-
-  //     headerBoardName.innerText = selectedBoard;
-  //     console.log("Button clicked:", selectedBoard);
-  //     localStorage.setItem("selectedBoard", selectedBoard)//added here localStorage.setItem("selectedBoard", selectedBoard)
-  //     console.log(selectedBoard);
-  //     showTasks();
-
-  //   });
-
-  // }
 
   createNewTaskBtn.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -499,8 +350,6 @@ async function main() {
     });
   });
 
-  // Edit board three dots btn
-
   function editBoardHandler(event) {
     event.stopPropagation();
     if (
@@ -512,26 +361,21 @@ async function main() {
       deleteBoardDiv.style.display = "none";
     }
 
-    
-    document.addEventListener('click', editBoardOffClick)
-
-
+    document.addEventListener("click", editBoardOffClick);
   }
 
-  // console.log("event listener");
   editBoardBtn.addEventListener("click", editBoardHandler);
 
-
   function editBoardOffClick(event) {
-    if (event.target !== deleteBoardDiv && event.target !== editBoardBtnP && !deleteBoardDiv.contains(event.target)) {
-    
+    if (
+      event.target !== deleteBoardDiv &&
+      event.target !== editBoardBtnP &&
+      !deleteBoardDiv.contains(event.target)
+    ) {
       deleteBoardDiv.style.display = "none";
-
     }
-    document.removeEventListener('click', editBoardOffClick)
+    document.removeEventListener("click", editBoardOffClick);
   }
-
-  
 
   function showTasks() {
     for (let i = 0; i < columnDivs.length; i++) {
@@ -541,14 +385,11 @@ async function main() {
     }
 
     const filteredTasks = tasks.filter((task) => task.board === selectedBoard);
-    // alert(selectedBoard)
-    // console.log(filteredTasks, tasks, selectedBoard)
 
     for (let j = 0; j < filteredTasks.length; j++) {
       let taskDiv = document.createElement("div");
       taskDiv.innerText = filteredTasks[j].title;
       taskDiv.classList.add("task-div");
-      // taskDivs.push(taskDiv);
 
       if (filteredTasks[j].status == "todo") {
         columnDivs[0].appendChild(taskDiv);
@@ -557,8 +398,6 @@ async function main() {
       } else if (filteredTasks[j].status == "done") {
         columnDivs[2].appendChild(taskDiv);
       }
-
-      // Modal window task
       taskDiv.addEventListener("click", (e) => {
         e.stopPropagation();
         editTaskModalWindow.style.display = "flex";
@@ -583,17 +422,6 @@ async function main() {
           });
         });
 
-        // Three dots
-        // threeDotsBtn.addEventListener('click', (e) => {
-        //   e.stopPropagation();
-        //   console.log('clicked');
-
-        //   if (editBtnsDiv.classList.contains('show')) {
-        //     editBtnsDiv.classList.remove('show');
-        //   } else {
-        //     editBtnsDiv.classList.add('show');
-        //   }
-        // });
         function handleThreeDots(e) {
           e.stopPropagation();
           console.log("------------");
@@ -619,7 +447,8 @@ async function main() {
         function offClick(event) {
           console.log("----------");
           if (
-            event.target != editTaskModalWindow && !editTaskModalWindow.contains(event.target)
+            event.target != editTaskModalWindow &&
+            !editTaskModalWindow.contains(event.target)
           ) {
             editTaskModalWindow.style.display = "none";
             filterDiv.style.display = "none";
@@ -639,37 +468,34 @@ async function main() {
           threeDotsBtn.removeEventListener("click", handleThreeDots);
           document.removeEventListener("click", offClick);
 
-          // taskTitle.contentEditable = true;
-
-          // let inputField = document.createElement('input');
-          // inputField.className = 'task-title-input';
-          // inputField.type ='text';
-          // inputField.value = taskTitle.innerText;
-          // taskTitle.parentElement.replaceChild(inputField, taskTitle);
-
           let editTaskForm = document.createElement("form");
           editTaskForm.className = "modal-window";
           editTaskForm.id = "new-task-modal-window";
           editTaskForm.innerHTML = `<h4 class="modal-title" >Edit Task</h4>
           <div class="input-div">
             <label class="label-modal-window" id="modal-title-input" for="title-input">Title</label>
-            <input type="text" class="modal-input" id="title-input-edit-task" value="${filteredTasks[j].title
+            <input type="text" class="modal-input" id="title-input-edit-task" value="${
+              filteredTasks[j].title
             }">
           </div>
           <div class="input-div">
             <label class="label-modal-window" id="modal-desc-input" for="desc-input-edit-task">Description</label>
-          <textarea name="description" id="desc-input-edit-task">${filteredTasks[j].description
-            }</textarea>
+          <textarea name="description" id="desc-input-edit-task">${
+            filteredTasks[j].description
+          }</textarea>
           </div>
           <div class="input-div">
             <label class="label-modal-window" id="modal-select-status-task" for="edit-select-status-task">Status</label>
             <select name="status"  id="edit-select-status-task">
-              <option value="todo" ${filteredTasks[j].status == "todo" ? "selected" : ""
-            }>Todo</option>
-              <option value="doing" ${filteredTasks[j].status == "doing" ? "selected" : ""
-            }>Doing</option>
-              <option value="done" ${filteredTasks[j].status == "done" ? "selected" : ""
-            }>Done</option>>
+              <option value="todo" ${
+                filteredTasks[j].status == "todo" ? "selected" : ""
+              }>Todo</option>
+              <option value="doing" ${
+                filteredTasks[j].status == "doing" ? "selected" : ""
+              }>Doing</option>
+              <option value="done" ${
+                filteredTasks[j].status == "done" ? "selected" : ""
+              }>Done</option>>
             </select>
           </div>
           <button type="submit" class="submit-btn" id="change-task-btn" >Save Changes</button>`;
@@ -679,7 +505,6 @@ async function main() {
           let titleInputEditTask = document.getElementById(
             "title-input-edit-task"
           );
-          // console.log(titleInputEditTask.value)
           let descInputEditTask = document.getElementById(
             "desc-input-edit-task"
           );
@@ -716,7 +541,6 @@ async function main() {
               console.log("end-------editTaskOffClick");
 
               threeDotsBtn.removeEventListener("click", handleThreeDots);
-              // editTaskBtn.removeEventListener("click", handleEditTaskBtn)
               console.log(editTaskForm.style.display);
 
               document.removeEventListener("click", editTaskOffClick);
@@ -731,8 +555,6 @@ async function main() {
           editTaskBtn.removeEventListener("click", handleEditTaskBtn);
         }
 
-        // document.removeEventListener("click", handleEditTaskBtn)
-
         //Edit task btn - we are adding an event handler to a btn that we never actually remove(btn)
         // because of that we need to remove the event handler from the btn to avoid adding event handler thousand times
         editTaskBtn.addEventListener("click", handleEditTaskBtn);
@@ -743,12 +565,7 @@ async function main() {
       });
     }
 
-
-
-
-
     function deleteBoardWindowHandler(e) {
-      // console.log('clicked 1')
       e.stopPropagation();
       let deleteBoardWindowDiv = document.createElement("form");
       deleteBoardWindowDiv.classList = "modal-window";
@@ -783,12 +600,6 @@ async function main() {
         location.reload();
       });
 
-      // deleteBoardWindowDiv.addEventListener('click', (e) => {
-      //   if(e.target.id === 'cancel-btn') {
-      //     location.reload();
-      //   }
-      // })
-
       deleteBoardWindowDiv.addEventListener("submit", async (e) => {
         e.preventDefault();
 
@@ -812,7 +623,6 @@ async function main() {
     columnHeaders[0].innerText = "TODO (" + firstColumn + ")";
     columnHeaders[1].innerText = "DOING (" + secondColumn + ")";
     columnHeaders[2].innerText = "DONE (" + thirdColumn + ")";
-    // console.log(columnHeaders.innerText);
 
     // alert(sideBar.display)
   }
