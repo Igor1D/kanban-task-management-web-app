@@ -6,11 +6,6 @@ Desktop:
 
 <img width="1630" alt="image" src="https://github.com/Igor1D/kanban-task-management-web-app/assets/43789550/77e082f2-f9f3-482d-9cd6-b11f14f33fb4">
 
-Mobile:
-
-![image](https://github.com/Igor1D/kanban-task-management-web-app/assets/43789550/9fe0dcb1-420d-48bd-a920-0125566d9638)
-
-
 
 ## Demo
 
