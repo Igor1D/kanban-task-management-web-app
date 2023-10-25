@@ -1,15 +1,18 @@
+// Import functions from taskFunctions.js
 import { createNewTask } from "./utils/taskFunctions.js";
 import { patchTask } from "./utils/taskFunctions.js";
 import { putTask } from "./utils/taskFunctions.js";
 import { deleteTask } from "./utils/taskFunctions.js";
 
+
+// DOM Elements
 //Logo
 let logo = document.getElementById("logo");
 
 // Btns
 let btns = document.querySelectorAll(".board-btn");
 
-//Tasks
+//Task columns
 let columnDivs = document.getElementsByClassName("column-div");
 
 let headerBoardName = document.getElementById("header-board-name");
@@ -59,7 +62,7 @@ let toggleDiv = document.getElementsByClassName("toggle-div")[0];
 // Form
 let form = document.getElementById("new-task-modal-window");
 
-//DDL
+// Dropdown List (DDL)
 let ddl = document.getElementById("select-status");
 // console.log(ddl.value)
 
@@ -76,6 +79,8 @@ let boardLocalStorage = localStorage.getItem("selectedBoard");
 // true or false - boolean
 // 'flex' or 'none'
 let sideBarLocalStorage = localStorage.getItem("showSideBar");
+
+
 
 if (window.innerWidth >= 480 && !sideBarLocalStorage) {
   openSideBar();
@@ -94,15 +99,21 @@ if (window.innerWidth >= 480 && !sideBarLocalStorage) {
   }
 }
 
+// Function to close the side bar
+
 function closeSideBar() {
   sideBar.className = "side-bar";
   localStorage.setItem("showSideBar", "false");
 }
 
+
+// Function to open the side bar
 function openSideBar() {
   sideBar.className = "side-bar show-sidebar";
   localStorage.setItem("showSideBar", "true");
 }
+
+//Event listeners for side bar toggling
 
 hideSideBarBtn.addEventListener("click", () => {
   closeSideBar();
@@ -113,6 +124,7 @@ showSideBarBtn.addEventListener("click", () => {
   showSideBarBtn.style.display = "none";
 });
 
+// Function to handle clicks outside the mobile side bar
 function mobileSideBarOffClick(event) {
   let dropDownIcon = document.getElementById("dropDownIcon");
 
@@ -140,6 +152,8 @@ function mobileSideBarOffClick(event) {
   }
 }
 
+// Event listener for the drop-down button
+
 function dropDownBtnHandler(event) {
   event.stopPropagation();
   if (sideBar.classList.contains("show-sidebar")) {
@@ -163,6 +177,7 @@ dropDownButton.addEventListener("click", dropDownBtnHandler);
 let themeToggle = document.getElementById("switch");
 let lightTheme = localStorage.getItem("light-theme");
 
+// Function to enable light mode
 function enableLightMode() {
   document.body.classList.toggle("light-theme");
   logo.src = "./assets/logo-dark.svg";
@@ -170,6 +185,7 @@ function enableLightMode() {
   themeToggle.setAttribute("checked", "true");
 }
 
+// Function to disable light mode
 function disableLightMode() {
   console.log("disabled mode triggered");
   document.body.classList.remove("light-theme");
@@ -183,6 +199,7 @@ if (lightTheme === "enabled") {
   disableLightMode();
 }
 
+// Event listener for the theme toggle
 themeToggle.addEventListener("change", () => {
   lightTheme = localStorage.getItem("light-theme");
   if (lightTheme === "disabled") {
@@ -193,6 +210,7 @@ themeToggle.addEventListener("change", () => {
 });
 // console.log(themeToggle.contains())
 
+// Event listener for the form submission
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   createNewTask({
@@ -203,6 +221,7 @@ form.addEventListener("submit", (event) => {
   });
 });
 
+// Main function
 async function main() {
   let results = await fetch(`https://kanban-backend-server.onrender.com/tasks`);
   let tasks = await results.json();
